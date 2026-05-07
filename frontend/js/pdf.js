@@ -1,0 +1,10 @@
+const cnpj = "cnpj: 60.997.717/0001-81";
+const idEminente = "IDENTIFICAÇÃO DO EMITENTE";
+const cinthia = "Cinthia Leone da Cunha";
+const cro = "126.543" ;
+const email = "documentos.cinthialeone@gmail.com";
+const ass1 = "____________________________" ;
+const ass2 = "Dra Cinthia Leone - CRO: 126.543";
+const telefone = "Telefone (11) 96801-3319";
+const endereco = "Praça Barão de Macaúbas, 31 - Vila Formosa - CEP: 03357-040";
+//const endereco = "Rua Claudio H de Paula, 66 - Jd Santo Eduardo - CEP: 03384-000";

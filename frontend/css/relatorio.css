@@ -1,0 +1,427 @@
+/* =========================================
+   RELATÓRIOS — PREMIUM (Azul Royal + Bege)
+   Compatível com relatorio.html atual
+========================================= */
+
+:root{
+  --azul:#1238A8;
+  --azul-hover:#1E4BD8;
+  --azul-escuro:#0D2C82;
+
+  --bege:#FAF3E7;
+  --bege-card:#F5E9DA;
+
+  --branco:#FFFFFF;
+  --texto:#1F2937;
+  --texto-fraco:#6B7280;
+  --borda:#E7E1D7;
+
+  --sombra: 0 10px 30px rgba(13,44,130,.10);
+  --radius: 14px;
+
+  --ok-bg: rgba(31,122,58,.12);
+  --ok-bd: rgba(31,122,58,.25);
+  --ok-tx: #1f7a3a;
+
+  --warn-bg: rgba(176,137,46,.14);
+  --warn-bd: rgba(176,137,46,.25);
+
+  --danger-bg: rgba(198,40,40,.12);
+  --danger-bd: rgba(198,40,40,.25);
+  --danger-tx: #8b1d1d;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bege);
+  color: var(--texto);
+  min-height: 100vh;
+  padding: 16px;
+}
+
+/* Container */
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* Título da página */
+h1{
+  margin: 0 0 14px 0;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--azul-escuro);
+
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--branco), var(--bege-card));
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* =========================
+   Grid do dashboard
+========================= */
+.dashboard-grid{
+  display: grid;
+  grid-template-columns: 2fr 1.3fr;
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* =========================
+   Card base
+========================= */
+.card{
+  background: var(--branco);
+  border-radius: var(--radius);
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+  overflow: hidden;
+}
+
+.card-header{
+  padding: 14px;
+  border-bottom: 1px solid var(--borda);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.card-body{
+  padding: 14px;
+}
+
+/* H2 dentro de card */
+.card h2{
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--azul-escuro);
+  margin: 0;
+}
+
+/* Subtitulo */
+.subtitulo{
+  font-size: 12px;
+  color: var(--texto-fraco);
+}
+
+/* =========================
+   Filtros (mês)
+========================= */
+.filtros-faturamento,
+.filtros-detalhamento{
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filtro-item{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.filtro-item label{
+  color: var(--texto);
+  font-weight: 900;
+}
+
+.filtro-item input[type="month"]{
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 12px;
+  border: 1px solid var(--borda);
+  font-size: 12px;
+  color: var(--texto);
+  background: var(--branco);
+  outline: none;
+}
+
+.filtro-item input[type="month"]:focus{
+  border-color: rgba(18,56,168,.45);
+  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+}
+
+/* =========================
+   Faturamento (pizza + resumo)
+========================= */
+.corpo-faturamento{
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.linha-faturamento-superior{
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Gráfico */
+.bloco-grafico{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#graficoFaturamentoPizza{
+  max-width: 260px;
+  max-height: 260px;
+}
+
+/* Legenda */
+.legenda-grafico{
+  display:flex;
+  gap: 16px;
+  font-size: 12px;
+  color: var(--texto-fraco);
+}
+
+.legenda-grafico span{
+  display:inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legenda-grafico .cor{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+/* mantém cores sem depender do Chart.js */
+.legenda-grafico .cor.entrada{ background: #1f7a3a; }
+.legenda-grafico .cor.saida{ background: #c62828; }
+
+/* Resumo */
+.bloco-resumo{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.resumo-item{
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(245,233,218,.40);
+  border: 1px solid var(--borda);
+  display:flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.resumo-item span{
+  font-size: 12px;
+  color: var(--texto-fraco);
+  font-weight: 700;
+}
+
+.resumo-item strong{
+  font-size: 14px;
+  color: var(--texto);
+  font-weight: 900;
+}
+
+.resumo-item.saldo{
+  background: var(--ok-bg);
+  border-color: var(--ok-bd);
+}
+
+/* =========================
+   Pendentes
+========================= */
+.card-pendentes{
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-bd);
+}
+
+.card-pendentes h3{
+  font-size: 13px;
+  margin: 0 0 6px 0;
+  color: var(--danger-tx);
+  font-weight: 900;
+}
+
+.descricao-pendentes{
+  font-size: 12px;
+  color: var(--danger-tx);
+  margin-bottom: 10px;
+}
+
+#listaPendentes{
+  list-style: none;
+  display:flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-pendente{
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.65);
+  border: 1px solid var(--danger-bd);
+  font-size: 12px;
+}
+
+.pendente-linha-superior,
+.pendente-linha-inferior{
+  display:flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.pendente-paciente{
+  font-weight: 900;
+  color: var(--danger-tx);
+}
+
+.pendente-valor{
+  font-weight: 900;
+  color: var(--danger-tx);
+}
+
+.pendente-descricao{
+  color: var(--danger-tx);
+}
+
+.pendente-vencimento{
+  color: var(--danger-tx);
+  font-size: 12px;
+  opacity: .9;
+}
+
+/* =========================
+   Tabela detalhamento
+========================= */
+.tabela-faturamento-wrapper{
+  margin-top: 10px;
+}
+
+.tabela-faturamento{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--branco);
+}
+
+.tabela-faturamento thead{
+  background: var(--azul);
+  color: #fff;
+}
+
+.tabela-faturamento th,
+.tabela-faturamento td{
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--borda);
+  border-right: 1px solid var(--borda);
+  text-align: left;
+  font-size: 12px;
+}
+
+.tabela-faturamento tr > *:last-child{ border-right:none; }
+
+.tabela-faturamento th{
+  font-weight: 900;
+}
+
+.tabela-faturamento tbody tr:nth-child(even){
+  background: rgba(245,233,218,.28);
+}
+
+.tabela-faturamento tbody tr:hover{
+  background: rgba(18,56,168,.06);
+}
+
+.tabela-faturamento .linha-total{
+  font-weight: 900;
+  background: rgba(245,233,218,.40);
+}
+
+.tabela-faturamento .linha-total td{
+  border-top: 2px solid var(--borda);
+}
+
+/* Cores de saldo */
+.saldo-positivo{ color: var(--ok-tx); font-weight: 900; }
+.saldo-negativo{ color: var(--danger-tx); font-weight: 900; }
+
+/* =========================
+   Botão ícone (aplicar detalhamento)
+========================= */
+.btn-icone{
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: var(--azul);
+  border: none;
+  cursor: pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition: transform .08s ease, filter .2s ease;
+  padding: 0;
+}
+
+.btn-icone:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.btn-icone:active{
+  transform: translateY(0);
+}
+
+.btn-icone svg{
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+/* =========================
+   Responsivo
+========================= */
+@media (max-width: 960px){
+  .dashboard-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .card-header{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filtros-faturamento,
+  .filtros-detalhamento{
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 720px){
+  .linha-faturamento-superior{
+    grid-template-columns: 1fr;
+  }
+
+  #graficoFaturamentoPizza{
+    max-width: 240px;
+    max-height: 240px;
+  }
+}

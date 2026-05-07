@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Paciente</title>
+    <link rel="stylesheet" href="css/anamnese.css">
+</head>
+
+<body>
+
+    <h1>Cadastro de Paciente</h1>
+
+    <form action="/pacientes/cadastrar" method="POST" enctype="multipart/form-data">
+
+        <div class="section-anamnese">
+            <h2 id="tituloAnamnese">Anamnese Médica</h2>
+            <input type="hidden" id="cpf" name="cpf" value="">
+
+            <div class="form-section">
+
+                <div class="pergunta">
+                    <label for="queixa_principal">Queixa principal:</label>
+                    <select name="queixa_principal" id="queixa_principal" required>
+                        <option value="" disabled selected>Selecione</option>
+                        <option value="dor">Dor</option>
+                        <option value="estetica">Estética</option>
+                        <option value="prevencao">Prevenção</option>
+                    </select>
+                </div>
+
+                <div class="pergunta">
+                    <label>Tem alergia ou já teve reação a medicamento?</label>
+                    <div class="resposta">
+                        <input type="radio" id="alergia_sim" name="alergia" value="sim">
+                        <label for="alergia_sim">Sim</label>
+                        <input type="radio" id="alergia_nao" name="alergia" value="nao">
+                        <label for="alergia_nao">Não</label>
+                        <input type="text" class="campo-texto" name="alergia_qual" data-name="alergia"
+                            placeholder="Qual?" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="pergunta">
+                    <label>Está grávida?</label>
+                    <div class="resposta">
+                        <input type="radio" id="gravida_sim" name="gravida" value="sim">
+                        <label for="gravida_sim">Sim</label>
+                        <input type="radio" id="gravida_nao" name="gravida" value="nao">
+                        <label for="gravida_nao">Não</label>
+                        <input type="text" class="campo-texto" name="gravida_meses" data-name="gravida"
+                            placeholder="Quantos meses?" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="pergunta">
+                    <label>Já passou por cirurgia?</label>
+                    <div class="resposta">
+                        <input type="radio" id="cirurgia_sim" name="cirurgia" value="sim">
+                        <label for="cirurgia_sim">Sim</label>
+                        <input type="radio" id="cirurgia_nao" name="cirurgia" value="nao">
+                        <label for="cirurgia_nao">Não</label>
+                        <input type="text" class="campo-texto" name="cirurgia_qual" data-name="cirurgia"
+                            placeholder="Qual?" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="pergunta">
+                    <label>Está sob algum tratamento médico?</label>
+                    <div class="resposta">
+                        <input type="radio" id="tratamento_sim" name="tratamento" value="sim">
+                        <label for="tratamento_sim">Sim</label>
+                        <input type="radio" id="tratamento_nao" name="tratamento" value="nao">
+                        <label for="tratamento_nao">Não</label>
+                        <input type="text" class="campo-texto" name="tratamento_qual" data-name="tratamento"
+                            placeholder="Qual?" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="pergunta">
+                    <label>Usa medicamentos?</label>
+                    <div class="resposta">
+                        <input type="radio" id="medicamento_sim" name="medicamento" value="sim">
+                        <label for="medicamento_sim">Sim</label>
+                        <input type="radio" id="medicamento_nao" name="medicamento" value="nao">
+                        <label for="medicamento_nao">Não</label>
+                        <input type="text" class="campo-texto" name="medicamento_qual" data-name="medicamento"
+                            placeholder="Qual?" style="display: none;">
+                    </div>
+                </div>
+
+                <div class="pergunta">
+                    <label>Fuma?</label>
+                    <div class="resposta">
+                        <input type="radio" id="fuma_sim" name="fuma" value="sim">
+                        <label for="fuma_sim">Sim</label>
+                        <input type="radio" id="fuma_nao" name="fuma" value="nao">
+                        <label for="fuma_nao">Não</label>
+                    </div>
+                </div>
+
+                <div class="pergunta">
+                    <label>Sofre de alguma dessas enfermidades?</label>
+                    <div class="enfermidades">
+                        <label><input type="checkbox" name="enfermidades[]" value="hiv"> HIV</label><br>
+                        <label><input type="checkbox" name="enfermidades[]" value="diabetes"> Diabetes</label><br>
+                        <label><input type="checkbox" name="enfermidades[]" value="tuberculose"> Tuberculose</label><br>
+                        <label><input type="checkbox" name="enfermidades[]" value="artrite"> Artrite</label><br>
+                        <label><input type="checkbox" name="enfermidades[]" value="cardiaco"> Problemas
+                            Cardiacos</label><br>
+                        <label><input type="checkbox" name="enfermidades[]" value="asma"> Asma</label><br>
+                        <label><input type="checkbox" name="enfermidades[]" value="hipertensao"> Hipertensão</label><br>
+                        <label><input type="checkbox" name="enfermidades[]" value="renais"> Problemas Renais</label><br>
+                        <label><input type="checkbox" name="enfermidades[]" value="hepaticos"> Problemas
+                            Hepáticos</label><br>
+                        <label>
+                            <input type="checkbox" name="enfermidades[]" value="outros"> Outros
+                            <input type="text" name="enfermidade_outros" placeholder="Se outros, qual?">
+                        </label>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section">
+                <h3>Observações</h3>
+                <div class="form-group">
+                    <label for="observacoesGerais">Observações gerais:</label>
+                    <textarea name="observacoesGerais" id="observacoesGerais"></textarea>
+                </div>
+            </div>
+
+            <button class="btn" type="submit">Salvar Cadastro</button>
+
+        </div>
+
+    </form>
+
+    <script src="js/cadastropacienteanamnese.js"></script>
+    <script src="js/utils.js"></script>
+
+</body>
+
+</html>

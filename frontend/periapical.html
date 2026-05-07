@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="css/styleDoc.css">
+</head>
+
+<body>
+    <div class="card2">
+        <h2>Pedido - Periapical</h2><br>
+        <p><strong>Dra. Cinthia Leone</strong> | CRO: 126.543</p>
+
+        <label>Nome do Paciente:</label>
+        <input type="text" id="paciente" placeholder="Digite o nome" style="width: 100%;">
+        <br>
+        <label>Dente:
+            <input type="number" id="numDente" style="width: 62px;" placeholder="Dente">
+        </label>
+
+        <div class="acoes-doc">
+            <div class="acoes-row">
+                <button class="btn-add" onclick="addDente()">+ Adicionar</button>
+                <button class="btn-pdf" onclick="gerarPeriapical()">Gerar Pedido</button>
+            </div>
+
+            <div class="med-list" id="listaDentes"></div>
+        </div>
+
+        <div class="assinatura-container">
+            <input type="checkbox" id="assinatura">
+            <label for="assinatura">Carimbo</label>
+        </div>
+
+
+    </div>
+
+    <script>
+        document.getElementById("numDente").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                addDente();
+            }
+        });
+    </script>
+    <script src="libs/jspdf.umd.min.js"></script>
+    <script src="js/periapical.js"></script>
+    <script src="js/logo.js"></script>
+    <script src="js/pdf.js"></script>
+
+</body>
+
+</html>

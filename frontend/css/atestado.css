@@ -1,0 +1,201 @@
+/* =========================================
+   ATESTADO (horas / dias) — PREMIUM
+   Azul Royal + Bege
+========================================= */
+
+:root{
+  --azul:#1238A8;
+  --azul-hover:#1E4BD8;
+  --azul-escuro:#0D2C82;
+
+  --bege:#FAF3E7;
+  --bege-card:#F5E9DA;
+
+  --branco:#FFFFFF;
+  --texto:#1F2937;
+  --texto-fraco:#6B7280;
+  --borda:#E7E1D7;
+
+  --sombra: 0 10px 30px rgba(13,44,130,.10);
+  --radius: 14px;
+}
+
+*{ box-sizing: border-box; }
+
+body.pagina-interna{
+  margin: 0;
+  padding: 16px;
+  min-height: 100vh;
+  background: var(--bege);
+  color: var(--texto);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+/* Card central */
+.card2{
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  padding: 16px;
+}
+
+/* Título */
+.card2 h2{
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--azul-escuro);
+
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--branco), var(--bege-card));
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+  text-align: center;
+}
+
+/* Linha da Dra. */
+.card2 p{
+  margin: 10px 0 14px;
+  color: var(--texto-fraco);
+  font-size: 12px;
+}
+
+/* Labels */
+label{
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 900;
+  color: var(--texto);
+}
+
+/* Inputs / Selects (base) */
+input,
+select{
+  display: inline-block;
+  margin-top: 6px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  outline: none;
+  background: var(--branco);
+  font-size: 12px;
+  height: 36px;
+  padding: 0 10px;
+}
+
+/* Faz os inputs com width inline (style="width:..") ficarem bonitos */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="number"],
+select{
+  max-width: 100%;
+}
+
+/* Foco padrão */
+input:focus,
+select:focus{
+  border-color: rgba(18,56,168,.45);
+  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+}
+
+/* Select CID um pouco maior e confortável */
+#cid{
+  min-width: 320px;
+}
+
+/* Botão PDF */
+.btn-pdf{
+  margin-top: 14px;
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 12px;
+  background: var(--azul);
+  color: #fff;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform .08s ease, filter .2s ease;
+  width: auto;
+}
+
+.btn-pdf:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.btn-pdf:active{
+  transform: translateY(0);
+}
+
+/* Assinatura */
+.assinatura-container{
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--texto);
+}
+
+.assinatura-container input[type="checkbox"]{
+  width: auto;
+  height: auto;
+  margin-right: 6px;
+  transform: translateY(1px);
+}
+
+/* Autocomplete */
+.autocomplete-sugestoes{
+  position: absolute;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  box-shadow: var(--sombra);
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 9999;
+}
+
+/* Cada sugestão (se você cria <div> dentro) */
+.autocomplete-sugestoes div{
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.autocomplete-sugestoes div:hover{
+  background: rgba(18,56,168,.06);
+}
+
+/* Responsivo */
+@media (max-width: 600px){
+  .card2{ padding: 14px; }
+  #cid{ min-width: 100%; }
+  .btn-pdf{ width: 100%; }
+}
+/* ===== Assinatura (checkbox + texto lado a lado) ===== */
+.assinatura-container{
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-align: left;
+  max-width: 900px;
+  font-size: 12px;
+}
+
+.assinatura-container label{
+  display: inline; /* sobrescreve o label global */
+  margin: 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.assinatura-container input[type="checkbox"]{
+  margin: 0;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+}

@@ -1,0 +1,220 @@
+/* =========================================
+   MATERIAIS — PREMIUM (Azul Royal + Bege)
+   Compatível com o HTML atual
+========================================= */
+
+:root{
+  --azul:#1238A8;
+  --azul-hover:#1E4BD8;
+  --azul-escuro:#0D2C82;
+
+  --bege:#FAF3E7;
+  --bege-card:#F5E9DA;
+
+  --branco:#FFFFFF;
+  --texto:#1F2937;
+  --texto-fraco:#6B7280;
+  --borda:#E7E1D7;
+
+  --sombra: 0 10px 30px rgba(13,44,130,.10);
+  --radius: 14px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  padding:16px;
+  font-family: Arial, sans-serif;
+  background: var(--bege);
+  color: var(--texto);
+  font-size: 12px;
+}
+
+/* Card principal */
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  padding: 16px;
+}
+
+/* Topo: título + botão */
+.container > h2{
+  margin: 0 0 14px 0;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--azul-escuro);
+
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--branco), var(--bege-card));
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* Botão Novo */
+#btnNovo{
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 12px;
+  background: var(--azul);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 12px;
+  transition: transform .08s ease, filter .2s ease;
+  margin-bottom: 12px;
+}
+
+#btnNovo:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* Formulário (abre/fecha) como CARD interno */
+#formMaterial{
+  display: none; /* seu JS liga/desliga */
+  margin: 12px 0 14px;
+  padding: 14px;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+
+  /* layout premium */
+  grid-template-columns: 1.3fr 1fr 1fr 0.8fr 0.8fr 0.9fr auto;
+  gap: 10px;
+  align-items: end;
+}
+
+/* Quando o JS trocar display para block, a gente força virar grid */
+#formMaterial[style*="display: block"],
+#formMaterial[style*="display:block"]{
+  display: grid !important;
+}
+
+/* Inputs */
+#formMaterial input{
+  width: 100%;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  outline: none;
+  background: var(--branco);
+  font-size: 12px;
+}
+
+#formMaterial input:focus{
+  border-color: rgba(18,56,168,.45);
+  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+}
+
+#formMaterial input::placeholder{
+  color:#9CA3AF;
+}
+
+/* Botão cadastrar */
+#formMaterial button[type="submit"]{
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 12px;
+  background: var(--azul);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 12px;
+  transition: transform .08s ease, filter .2s ease;
+  white-space: nowrap;
+}
+
+#formMaterial button[type="submit"]:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* Tabela premium */
+#tabelaMateriais{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--branco);
+}
+
+#tabelaMateriais thead{
+  background: var(--azul);
+  color: #fff;
+}
+
+#tabelaMateriais th,
+#tabelaMateriais td{
+  padding: 10px 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--borda);
+  border-right: 1px solid var(--borda);
+  font-size: 12px;
+}
+
+#tabelaMateriais tr > *:last-child{
+  border-right: none;
+}
+
+#tabelaMateriais tbody tr:nth-child(even) td{
+  background: rgba(245,233,218,.28);
+}
+
+#tabelaMateriais tbody tr:hover td{
+  background: rgba(18,56,168,.06);
+}
+
+/* Destaques de estoque */
+.zero td{
+  background: rgba(198,40,40,.12) !important;
+}
+
+.baixo-estoque td{
+  background: rgba(176,137,46,.14) !important;
+}
+
+/* Ações: se seus botões estiverem dentro de uma td com classe "acoes" */
+.acoes button{
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 900;
+  border: none;
+  cursor: pointer;
+  transition: transform .08s ease, filter .2s ease;
+}
+
+.acoes button:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* Responsivo */
+@media (max-width: 980px){
+  #formMaterial{
+    grid-template-columns: 1fr 1fr;
+  }
+  #formMaterial button[type="submit"]{
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px){
+  #formMaterial{
+    grid-template-columns: 1fr;
+  }
+}

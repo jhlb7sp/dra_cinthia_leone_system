@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Nota Fiscal</title>
+
+  <link rel="stylesheet" href="css/nota-fiscal.css" />
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+
+<body>
+  <div class="nota-container">
+
+    <header class="nota-header">
+      <div>
+        <h1>
+          <i class="fa-solid fa-file-invoice-dollar"></i>
+          Nota Fiscal
+        </h1>
+        <p>Central de apoio para emissão e controle de notas fiscais dos pacientes.</p>
+      </div>
+    </header>
+
+    <section class="nota-card">
+      <div class="nota-card-title">
+        <h2>Dados da Nota</h2>
+      </div>
+
+      <div class="nota-grid">
+        <div class="form-group">
+          <label for="buscaPaciente">Buscar paciente</label>
+          <input
+            type="text"
+            id="buscaPaciente"
+            placeholder="Digite nome ou CPF"
+            autocomplete="off"
+          />
+          <div id="listaPacientes" class="lista-pacientes"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="nomePaciente">Nome do paciente</label>
+          <input
+            type="text"
+            id="nomePaciente"
+            placeholder="Nome completo"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="cpfPaciente">CPF</label>
+          <input
+            type="text"
+            id="cpfPaciente"
+            placeholder="000.000.000-00"
+            maxlength="14"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="emailPaciente">E-mail cadastrado</label>
+          <input
+            type="email"
+            id="emailPaciente"
+            placeholder="email@exemplo.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="valorNota">Valor</label>
+          <input
+            type="text"
+            id="valorNota"
+            placeholder="R$ 0,00"
+          />
+        </div>
+
+        <div class="form-group form-group-full">
+          <label for="descricaoNota">Descrição do serviço</label>
+          <textarea
+            id="descricaoNota"
+            rows="4"
+            placeholder="Ex: Consulta odontológica, profilaxia, restauração..."
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="copiar-area">
+        <h3>Copiar dados para o portal</h3>
+
+        <div class="copiar-botoes">
+          <button type="button" class="btn btn-copy" data-copy="nomePaciente">
+            <i class="fa-regular fa-copy"></i>
+            Copiar Nome
+          </button>
+
+          <button type="button" class="btn btn-copy" data-copy="cpfPaciente">
+            <i class="fa-regular fa-copy"></i>
+            Copiar CPF
+          </button>
+
+          <button type="button" class="btn btn-copy" data-copy="valorNota">
+            <i class="fa-regular fa-copy"></i>
+            Copiar Valor
+          </button>
+
+          <button type="button" class="btn btn-copy" data-copy="descricaoNota">
+            <i class="fa-regular fa-copy"></i>
+            Copiar Descrição
+          </button>
+        </div>
+      </div>
+
+      <div class="nota-actions">
+        <button type="button" id="btnAbrirPortal" class="btn btn-primary">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          Abrir Portal NFS-e
+        </button>
+
+        <button type="button" id="btnSalvarNota" class="btn btn-success">
+          <i class="fa-solid fa-floppy-disk"></i>
+          Já emiti a nota / Salvar no sistema
+        </button>
+
+        <button type="button" id="btnLimpar" class="btn btn-secondary">
+          <i class="fa-solid fa-eraser"></i>
+          Limpar
+        </button>
+      </div>
+    </section>
+
+    <section class="nota-card" id="cardSalvarNota" style="display: none;">
+      <div class="nota-card-title">
+        <h2>Salvar Nota Emitida</h2>
+      </div>
+
+      <div class="nota-grid">
+        <div class="form-group">
+          <label for="numeroNota">Número da nota</label>
+          <input
+            type="text"
+            id="numeroNota"
+            placeholder="Ex: 123456"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="dataEmissao">Data de emissão</label>
+          <input
+            type="date"
+            id="dataEmissao"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="codigoVerificacao">Código de verificação</label>
+          <input
+            type="text"
+            id="codigoVerificacao"
+            placeholder="Opcional"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="arquivoNota">Anexar PDF da nota</label>
+          <input
+            type="file"
+            id="arquivoNota"
+            accept="application/pdf"
+          />
+        </div>
+      </div>
+
+      <div class="nota-actions">
+        <button type="button" id="btnConfirmarSalvarNota" class="btn btn-success">
+          <i class="fa-solid fa-check"></i>
+          Salvar Nota
+        </button>
+
+        <button type="button" id="btnCancelarSalvarNota" class="btn btn-secondary">
+          Cancelar
+        </button>
+      </div>
+    </section>
+
+    <section class="nota-card">
+      <div class="nota-card-title">
+        <h2>Últimas Notas Geradas</h2>
+      </div>
+
+      <div class="tabela-wrapper">
+        <table class="tabela-notas">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Paciente</th>
+              <th>CPF</th>
+              <th>Nota</th>
+              <th>Valor</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+
+          <tbody id="tbodyNotas">
+            <tr>
+              <td colspan="7" class="tabela-vazia">
+                Nenhuma nota salva ainda.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="js/nota-fiscal.js"></script>
+</body>
+</html>

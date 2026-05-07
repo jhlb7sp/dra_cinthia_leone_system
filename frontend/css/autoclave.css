@@ -1,0 +1,339 @@
+/* =========================================
+   AUTOCLAVE — PREMIUM (Azul Royal + Bege)
+   Tabs + Form + Tabela clean
+========================================= */
+
+:root{
+  --azul:#1238A8;
+  --azul-hover:#1E4BD8;
+  --azul-escuro:#0D2C82;
+
+  --bege:#FAF3E7;
+  --bege-card:#F5E9DA;
+
+  --branco:#FFFFFF;
+  --texto:#1F2937;
+  --texto-fraco:#6B7280;
+  --borda:#E7E1D7;
+
+  --sombra: 0 10px 30px rgba(13,44,130,.10);
+  --radius: 14px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 16px;
+  background: var(--bege);
+  color: var(--texto);
+  font-size: 12px;
+}
+
+/* Card principal */
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--branco);
+  padding: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* Títulos */
+h2, h3{
+  margin: 0 0 12px 0;
+  color: var(--azul-escuro);
+  font-weight: 900;
+  letter-spacing: .2px;
+}
+
+h2{
+  font-size: 14px;
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--branco), var(--bege-card));
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* =========================
+   TABS premium
+========================= */
+.tabs{
+  display:flex;
+  gap: 10px;
+  margin: 14px 0 16px 0;
+  flex-wrap: wrap;
+}
+
+.tablink{
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--borda);
+  background: rgba(245,233,218,.40);
+  cursor:pointer;
+  border-radius: 12px;
+  font-weight: 900;
+  color: var(--azul-escuro);
+  transition: transform .08s ease, filter .2s ease, background .2s ease;
+}
+
+.tablink:hover{
+  filter: brightness(1.02);
+  transform: translateY(-1px);
+}
+
+.tablink.active{
+  background: var(--azul);
+  color: #fff;
+  border-color: rgba(255,255,255,.25);
+}
+
+/* Conteúdo das abas */
+.tabcontent{
+  display:none;
+  padding: 0;
+}
+
+.tabcontent.active{
+  display:block;
+}
+
+/* =========================
+   Filtros / Formulário
+========================= */
+.filtros,
+.formulario{
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.filtros label,
+.formulario label{
+  display:block;
+  margin-bottom: 6px;
+  font-weight: 900;
+  color: var(--texto);
+}
+
+/* Inputs */
+.filtros input,
+.formulario input{
+  width: 100%;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  outline:none;
+  background: var(--branco);
+  font-size: 12px;
+}
+
+.filtros input:focus,
+.formulario input:focus{
+  border-color: rgba(18,56,168,.45);
+  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+}
+
+/* Grid do formulário (mantém sua lógica) */
+.formulario{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+/* Botões padrão (salvar/registrar etc) */
+.filtros button,
+.formulario button{
+  height: 36px;
+  padding: 0 14px;
+  background: var(--azul);
+  color:#fff;
+  border:none;
+  border-radius: 12px;
+  cursor:pointer;
+  font-weight: 900;
+  transition: transform .08s ease, filter .2s ease;
+}
+
+.filtros button:hover,
+.formulario button:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* Se seu botão estiver em grid e você quer que ele vá para a linha inteira: */
+.formulario button{
+  grid-column: 1 / -1;
+  justify-self: end;    /* fica alinhado à direita */
+  width: auto;          /* não fica gigante */
+  min-width: 180px;
+}
+
+/* =========================
+   Tabela premium
+========================= */
+table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 10px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--branco);
+}
+
+table thead{
+  background: var(--azul);
+  color:#fff;
+}
+
+table th, table td{
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--borda);
+  border-right: 1px solid var(--borda);
+  text-align: center;
+  font-size: 12px;
+}
+
+table tr > *:last-child{
+  border-right: none;
+}
+
+table tbody tr:nth-child(even){
+  background: rgba(245,233,218,.28);
+}
+
+table tbody tr:hover{
+  background: rgba(18,56,168,.06);
+}
+
+/* Botão excluir */
+.btnExcluir{
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: none;
+  cursor:pointer;
+  font-weight: 900;
+  background: #c62828;
+  color: #fff;
+  transition: transform .08s ease, filter .2s ease;
+}
+
+.btnExcluir:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* Responsivo */
+@media (max-width: 520px){
+  body{ padding: 12px; }
+  .container{ padding: 14px; }
+  .formulario button{
+    width: 100%;
+    min-width: 0;
+    justify-self: stretch;
+  }
+}
+/* =========================================
+   AUTOCLAVE — FIX layout (alinhamento + grid)
+========================================= */
+
+/* Formulário com campos agrupados */
+.formulario{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.formulario .field{
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formulario .field label{
+  margin: 0;
+  font-weight: 900;
+}
+
+/* Área de ações do formulário */
+.formulario .actions{
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.formulario .actions button{
+  min-width: 180px;
+}
+
+/* Filtros: grid compacto e alinhado */
+.filtros{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(220px, 1fr)) auto auto;
+  gap: 10px 12px;
+  align-items: end;
+}
+
+.filtros label{
+  margin: 0 0 6px 0;
+}
+
+.filtros button{
+  min-width: 140px;
+}
+
+/* ===== TABELA compacta (igual medicamentos) ===== */
+table th, table td{
+  padding: 4px 8px;         /* <- seu padrão */
+  font-size: 11px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+thead th{
+  padding: 6px 8px;         /* cabeçalho um pouco maior */
+  font-size: 11px;
+}
+
+/* Botão excluir menor pra não “inflar” a linha */
+.btnExcluir{
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 9px;
+  font-size: 11px;
+}
+
+/* Responsivo */
+@media (max-width: 980px){
+  .formulario{
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+  .filtros{
+    grid-template-columns: 1fr 1fr;
+  }
+  .filtros button{
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px){
+  .formulario{
+    grid-template-columns: 1fr;
+  }
+  .formulario .actions button{
+    width: 100%;
+    min-width: 0;
+  }
+}

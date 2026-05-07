@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Relatórios do Consultório</title>
+  <link rel="stylesheet" href="css/relatorio.css">
+  <script src="libs/chart.min.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Relatórios do Consultório</h1>
+
+    <div class="dashboard-grid">
+      <!-- QUADRO 1 – FATURAMENTO GERAL (ANO) + GRÁFICO PIZZA (MÊS) -->
+      <section class="card card-faturamento">
+        <div class="card-header topo-faturamento">
+          <div class="titulo-faturamento">
+            <h2>Faturamento</h2>
+            <p class="subtitulo">Resumo do mês selecionado</p>
+          </div>
+
+          <div class="filtros-faturamento">
+            <div class="filtro-item">
+              <label for="mesReferencia">Mês / Ano</label>
+              <input type="month" id="mesReferencia">
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body corpo-faturamento">
+          <div class="linha-faturamento-superior">
+            <!-- Gráfico pizza (mês selecionado) -->
+            <div class="bloco-grafico">
+              <canvas id="graficoFaturamentoPizza"></canvas>
+              <div class="legenda-grafico">
+                <span><span class="cor entrada"></span> Entrada</span>
+                <span><span class="cor saida"></span> Saída</span>
+              </div>
+            </div>
+
+            <!-- Totais do MÊS selecionado -->
+            <div class="bloco-resumo">
+              <div class="resumo-item">
+                <span>Entrada do mês</span>
+                <strong id="totalEntrada">R$ 0,00</strong>
+              </div>
+              <div class="resumo-item">
+                <span>Saída do mês</span>
+                <strong id="totalSaida">R$ 0,00</strong>
+              </div>
+              <div class="resumo-item saldo">
+                <span>Saldo do mês</span>
+                <strong id="saldoPeriodo">R$ 0,00</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagamentos pendentes (do mês) -->
+          <div id="cardPendentes" class="card-pendentes" style="display: none;">
+            <h3>Pagamentos pendentes</h3>
+            <p class="descricao-pendentes">
+              Pagamentos que ainda não foram compensados ou recebidos no mês selecionado.
+            </p>
+            <ul id="listaPendentes"></ul>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- QUADRO 2 – DETALHAMENTO POR MÊS (TABELA) -->
+      <section class="card card-detalhamento">
+        <div class="card-header topo-detalhamento">
+          <div class="titulo-detalhamento">
+            <h2>Detalhamento por mês</h2>
+            <p class="subtitulo">Mês/ano, entrada, saída e saldo</p>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <div class="filtros-detalhamento">
+            <div class="filtro-item">
+              <label for="inicioDetalhamento">Início</label>
+              <input type="month" id="inicioDetalhamento">
+            </div>
+            <div class="filtro-item">
+              <label for="fimDetalhamento">Fim</label>
+              <input type="month" id="fimDetalhamento">
+            </div>
+            <button id="btnAplicarDetalhamento" class="btn-icone">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="1 4 1 10 7 10"></polyline>
+                <polyline points="23 20 23 14 17 14"></polyline>
+                <path d="M20.49 9A9 9 0 0 0 5.63 5.63L1 10"></path>
+                <path d="M3.51 15A9 9 0 0 0 18.37 18.37L23 14"></path>
+              </svg>
+            </button>
+          </div>
+
+          <div class="tabela-faturamento-wrapper" style="margin-top: 10px;">
+            <table class="tabela-faturamento">
+              <thead>
+                <tr>
+                  <th>Mês/Ano</th>
+                  <th>Entrada</th>
+                  <th>Saída</th>
+                  <th>Saldo</th>
+                </tr>
+              </thead>
+              <tbody id="tabelaFaturamento"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="js/relatorio.js"></script>
+</body>
+
+</html>

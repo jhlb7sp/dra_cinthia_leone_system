@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Orçamentos do Paciente</title>
+  <link rel="stylesheet" href="css/orcamentoPaciente.css">
+</head>
+<body>
+
+  <div class="card-orcamentos">
+    <h2>Orçamentos</h2>
+    <p id="cpfPaciente">Carregando CPF...</p>
+
+    <div class="tabela-wrap">
+      <table id="tabelaOrcamentos">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Valor Total</th>
+            <th>Parcelas</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="bodyOrcamentos">
+          <tr>
+            <td colspan="4" class="sem-registros">Carregando orçamentos...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="js/orcamentoPaciente.js"></script>
+</body>
+</html>

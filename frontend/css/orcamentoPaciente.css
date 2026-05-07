@@ -1,0 +1,88 @@
+body {
+  font-family: Arial, sans-serif;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.card-orcamentos {
+  background: #fff;
+  border: 1px solid #d9d1c3;
+  border-radius: 10px;
+  padding: 24px;
+}
+
+.card-orcamentos h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #0d2f92;
+}
+
+#cpfPaciente {
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #333;
+}
+
+.tabela-wrap {
+  overflow-x: auto;
+}
+
+#tabelaOrcamentos {
+  width: 100%;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+#tabelaOrcamentos thead {
+  background: #173ea5;
+  color: #fff;
+}
+
+#tabelaOrcamentos th,
+#tabelaOrcamentos td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid #e7dfd2;
+  font-size: 14px;
+}
+
+#tabelaOrcamentos tbody tr:hover {
+  background: #f8f6f2;
+}
+
+.sem-registros {
+  text-align: center;
+  color: #777;
+  padding: 20px;
+}
+
+.acoes {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-acao {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn-ver {
+  background: #3b82f6;
+}
+
+.btn-editar {
+  background: #16a34a;
+}
+
+.btn-excluir {
+  background: #dc2626;
+}

@@ -1,0 +1,138 @@
+/* =========================================
+   ANAMNESE — PREMIUM (Azul Royal + Bege)
+   dadosAnamneses.css (refatorado)
+========================================= */
+
+:root{
+  --azul:#1238A8;
+  --azul-hover:#1E4BD8;
+  --azul-escuro:#0D2C82;
+
+  --bege:#FAF3E7;
+  --bege-card:#F5E9DA;
+
+  --branco:#FFFFFF;
+  --texto:#1F2937;
+  --texto-fraco:#6B7280;
+  --borda:#E7E1D7;
+
+  --sombra: 0 10px 30px rgba(13,44,130,.10);
+  --radius: 14px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: Arial, sans-serif;
+  background: var(--bege);
+  color: var(--texto);
+  font-size: 12px;
+  padding: 16px;
+}
+
+/* Se você tiver um container/wrapper no HTML, ele vai ficar lindo */
+.container, .card, .card2{
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  padding: 14px;
+}
+
+/* Labels */
+label{
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 900;
+  color: var(--texto);
+  font-size: 12px;
+}
+
+/* Inputs e textarea */
+input,
+textarea,
+select{
+  width: 100%;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  outline: none;
+  background: var(--branco);
+  font-size: 12px;
+  padding: 10px 12px;
+}
+
+input{
+  height: 36px;
+}
+
+textarea{
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.4;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  border-color: rgba(18,56,168,.45);
+  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+}
+
+/* Linha de botões (se você colocar os botões dentro de uma div) */
+.botoes{
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* Botões padrão */
+.btn_salvar,
+.btn_alterar{
+  height: 36px;
+  padding: 0 16px;         /* sem 200px (isso deixava gigante) */
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 12px;
+  color: #fff;
+  transition: transform .08s ease, filter .2s ease;
+  width: auto;
+  min-width: 140px;        /* tamanho elegante */
+}
+
+.btn_salvar{
+  background: #1f7a3a;     /* verde elegante */
+}
+
+.btn_salvar:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.btn_alterar{
+  background: var(--azul);
+}
+
+.btn_alterar:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* Responsivo */
+@media (max-width: 520px){
+  .botoes{
+    justify-content: stretch;
+  }
+  .btn_salvar,
+  .btn_alterar{
+    width: 100%;
+    min-width: 0;
+  }
+}

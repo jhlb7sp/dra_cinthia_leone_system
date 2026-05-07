@@ -1,0 +1,143 @@
+let dentes = [];
+document.getElementById('regiao').value = '';
+
+
+function addDente() {
+    const regiao = document.getElementById('regiao').value;
+    const numDente = document.getElementById('numDente').value;
+    if (regiao && numDente) {
+        const texto = `Dente: ${numDente}.`
+        dentes.push(texto);
+        atualizarListaDente();
+        const texto2 = `Região: ${regiao}.`;
+        dentes.push(texto2);
+        atualizarListaDente();
+
+        document.getElementById('regiao').value = '';
+        document.getElementById('numDente').value = '';
+
+    } else if (!regiao && numDente) {
+        const texto2 = `Dente: ${numDente}.`;
+        dentes.push(texto2);
+        atualizarListaDente();
+
+        document.getElementById('regiao').value = '';
+        document.getElementById('numDente').value = '';
+
+    } else if (regiao && !numDente) {
+        const texto2 = `Região: ${regiao}.`;
+        dentes.push(texto2);
+        atualizarListaDente();
+
+        document.getElementById('regiao').value = '';
+        document.getElementById('numDente').value = '';
+    } else {
+        alert("Preencha o campo dente ou região.");
+    }
+}
+
+function removerDente(index) {
+    dentes.splice(index, 1);
+    atualizarListaDente();
+}
+
+function atualizarListaDente() {
+    const lista = document.getElementById('listaDentes');
+    lista.innerHTML = dentes.map((m, i) =>
+        `<p>${m} <button class="btn-removerdente" onclick="removerDente(${i})">Remover</button></p>`
+    ).join('');
+}
+
+function gerarTomografia() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const paciente = document.getElementById('paciente').value;
+
+    for (let via = 1; via < 2; via++) {
+        if (via > 1) doc.addPage();
+
+        // Marca d'água no centro da página
+        doc.addImage(logoBase642, 'PNG', 30, 90, 150, 150);
+        // Adiciona logo no topo
+        doc.addImage(logoBase64, 'PNG', 30, 10, 150, 23);
+
+        // Caixa de identificação do eminente (ajustada pra descer)
+        doc.setFontSize(12);
+        const inicioY = 45; // nova posição abaixo do logo
+        doc.rect(15, inicioY, 180, 30);
+        doc.setFont(undefined, 'bold');
+        doc.text(idEminente, 70, inicioY + 7);
+        doc.line(15, inicioY + 9, 195, inicioY + 9);
+
+        doc.setFont(undefined, 'bold');
+        doc.text("Nome:", 20, inicioY + 15);
+
+        doc.setFont(undefined, 'normal');
+        doc.text(cinthia, 35, inicioY + 15);
+
+        doc.setFont(undefined, 'bold');
+        doc.text("CRO:", 85, inicioY + 15);
+
+        doc.setFont(undefined, 'normal');
+        doc.text(cro, 100, inicioY + 15);
+
+        doc.setFont(undefined, 'bold');
+        doc.text("Data:", 20, inicioY + 23);
+
+        doc.setFont(undefined, 'normal');
+        doc.text(new Date().toLocaleDateString(), 35, inicioY + 23);
+
+        doc.setFont(undefined, 'bold');
+        doc.text("-    São Paulo - SP", 60, inicioY + 23);
+
+        // Palavra "Paciente:" em negrito
+        doc.setFontSize(14);
+        doc.setFont(undefined, 'bold');
+        doc.text('Paciente:', 20, inicioY + 37);
+
+        // Nome do paciente normal, logo depois
+        doc.setFontSize(14);
+        doc.setFont(undefined, 'normal');
+        doc.text(paciente, 45, inicioY + 37); // 50 é a posição X ajustada para ficar depois de "Paciente:"
+
+
+        // Título Prescrição
+        doc.setFontSize(14);
+        doc.setFont(undefined, 'normal');
+        doc.text("Solicito,", 20, inicioY + 57, { align: 'left' });
+
+        // Lista de medicamentos
+        doc.setFontSize(14);
+        doc.setFont(undefined, 'normal');
+        doc.text("Tomografia computadorizada dos(as), para avaliação endodôntica.", 20, inicioY + 67);
+
+        // Lista de medicamentos
+        doc.setFont(undefined, 'normal');
+        let y = inicioY + 77;
+        dentes.forEach(m => {
+            const linhas = doc.splitTextToSize(`- ${m}`, 180);
+            doc.text(linhas, 20, y);
+            y += linhas.length * 6;
+        });
+
+        // Ass se houver
+        if (assinatura.checked) {
+            y = 200;
+            doc.addImage(carimbo, 'PNG', 135, 215, 38, 38);
+        }
+
+        //Assinatura
+        doc.setFontSize(9);
+        doc.setFont(undefined, 'normal');
+        doc.text(ass1, 130, inicioY + 205);
+        doc.text(ass2, 130, inicioY + 210);
+
+
+        // Rodapé
+        doc.setFontSize(9);
+        doc.text(endereco, 50, 275);
+        doc.text(telefone, 80, 280);
+    }
+
+    doc.save(`Solicitação_Tomografia_${paciente}.pdf`);
+}

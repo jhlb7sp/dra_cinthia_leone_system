@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Sobre - Dra. Cinthia Leone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    :root{
+      --azul:#1238A8;
+      --azul-escuro:#0D2C82;
+      --bege:#FAF3E7;
+      --bege-card:#F5E9DA;
+      --branco:#FFFFFF;
+      --texto:#1F2937;
+      --borda:#E7E1D7;
+      --radius:14px;
+      --sombra:0 10px 30px rgba(13,44,130,.10);
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      padding:16px;
+      font-family: Arial, sans-serif;
+      background: var(--bege);
+      color: var(--texto);
+      font-size:12px;
+    }
+
+    .card{
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--branco);
+      border:1px solid var(--borda);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      padding: 20px;
+      text-align:center;
+    }
+
+    h2{
+      margin:0 0 14px 0;
+      font-size:14px;
+      font-weight:900;
+      color: var(--azul-escuro);
+
+      padding:12px 14px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg,var(--branco),var(--bege-card));
+      border:1px solid var(--borda);
+      box-shadow: var(--sombra);
+    }
+
+    .logo{
+      max-width:120px;
+      margin: 10px auto 14px;
+      display:block;
+    }
+
+    p{
+      margin:8px 0;
+      line-height:1.5;
+    }
+
+    .rodape{
+      margin-top:18px;
+      font-size:11px;
+      color:#6B7280;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h2>Sobre o Sistema</h2>
+
+    <!-- se quiser pode trocar a logo -->
+    <img src="img/logoM3.gif" class="logo" alt="Logo">
+
+    <p><strong>Consultório Dra. Cinthia Leone</strong></p>
+    <p>Sistema interno desenvolvido para auxiliar na gestão clínica.</p>
+
+    <p>✨ Controle de pacientes<br>
+       ✨ Receituários<br>
+       ✨ Orçamentos<br>
+       ✨ Autoclave e muito mais</p>
+
+    <div class="rodape">
+      Versão 1.0 • Uso interno
+    </div>
+  </div>
+</body>
+</html>

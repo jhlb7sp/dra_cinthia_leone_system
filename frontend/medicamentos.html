@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro de Medicamentos</title>
+  <link rel="stylesheet" href="css/medicamentos.css">
+</head>
+
+<body>
+
+  <h2>Cadastro de Medicamentos</h2>
+
+  <div class="linha-campos">
+
+    <div class="campo">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome">
+    </div>
+    <div class="campo">
+      <label for="mg">MG:</label>
+      <input type="text" id="mg">
+    </div>
+    <div class="campo campo-botao">
+      <button onclick="adicionarMedicamento()">Adicionar</button>
+    </div>
+  </div>
+
+  <label for="filtro">Filtrar por Nome:</label>
+  <input type="text" id="filtro" oninput="filtrarMedicamentos()">
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>MG</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody id="tabelaMedicamentos">
+      <!-- Medicamentos adicionados aparecem aqui -->
+    </tbody>
+  </table>
+  <script src="js/medicamentos.js"></script>
+</body>
+
+</html>

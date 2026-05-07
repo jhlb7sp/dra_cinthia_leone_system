@@ -1,0 +1,433 @@
+/* =========================================
+   orcamento.css — ORÇAMENTO (Premium)
+   Azul Royal + Bege | compatível com orcamento.html
+========================================= */
+
+:root{
+  --azul:#1238A8;
+  --azul-hover:#1E4BD8;
+  --azul-escuro:#0D2C82;
+
+  --bege:#FAF3E7;
+  --bege-card:#F5E9DA;
+
+  --branco:#FFFFFF;
+  --texto:#1F2937;
+  --texto-fraco:#6B7280;
+  --borda:#E7E1D7;
+
+  --sombra: 0 10px 30px rgba(13,44,130,.10);
+  --radius: 14px;
+
+  --danger:#c62828;
+  --danger-hover:#b71c1c;
+
+  --ok:#1f7a3a;
+  --ok-hover:#196a32;
+}
+
+*{ box-sizing: border-box; }
+
+body{
+  margin: 0;
+  padding: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bege);
+  color: var(--texto);
+  font-size: 12px;
+}
+
+/* Card central */
+.card2{
+  background: var(--branco);
+  padding: 16px;
+  border-radius: var(--radius);
+  max-width: 980px;
+  margin: 0 auto;
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* Título */
+h2{
+  text-align: center;
+  color: var(--azul-escuro);
+  font-size: 14px;
+  font-weight: 900;
+  margin: 0 0 14px 0;
+
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--branco), var(--bege-card));
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* Linha "Dra + CRO" */
+p{
+  margin: 0 0 14px 0;
+}
+
+/* Labels */
+label{
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 900;
+  text-align: left;
+  color: var(--texto);
+}
+
+/* Inputs / selects */
+input[type="text"],
+input[type="number"],
+select{
+  width: 100%;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  outline: none;
+  background: var(--branco);
+  color: var(--texto);
+  font-size: 12px;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder{
+  color: #9CA3AF;
+}
+
+input:focus,
+select:focus{
+  border-color: rgba(18,56,168,.45);
+  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+}
+
+/* ===== Linha de orçamento (campos) ===== */
+.linha-orcamento{
+  background: linear-gradient(180deg, var(--branco), var(--bege-card));
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 25px rgba(13,44,130,.08);
+  padding: 12px 14px;
+
+  display: grid;
+  grid-template-columns: 2.4fr 0.8fr 0.8fr 0.9fr;
+  gap: 12px;
+  align-items: end;
+}
+
+.campo{
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Autocomplete ===== */
+.autocomplete-wrap{
+  position: relative;
+}
+
+.autocomplete-list{
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 50;
+
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(13,44,130,.16);
+  overflow: hidden;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+/* se seu JS injeta <div> nas sugestões */
+.autocomplete-list > div{
+  padding: 10px 12px;
+  cursor: pointer;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(231,225,215,.7);
+}
+
+.autocomplete-list > div:hover{
+  background: rgba(18,56,168,.06);
+}
+
+.autocomplete-list > div:last-child{
+  border-bottom: none;
+}
+
+/* ===== Botões ===== */
+.btn-add,
+.btn-pdf,
+.btn-remove{
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 12px;
+  color: #fff;
+  transition: transform .08s ease, filter .2s ease;
+  width: auto;
+}
+
+.btn-add{
+  background: var(--ok);
+  margin-top: 10px;
+}
+.btn-add:hover{
+  background: var(--ok-hover);
+  transform: translateY(-1px);
+}
+
+.btn-pdf{
+  background: var(--azul);
+  margin-top: 12px;
+}
+.btn-pdf:hover{
+  background: var(--azul-hover);
+  transform: translateY(-1px);
+}
+
+/* ===== Tabela (premium) ===== */
+table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--branco);
+  box-shadow: var(--sombra);
+  margin-top: 10px;
+}
+
+/* remove estilo inline border="1" visualmente */
+table[border="1"]{
+  border: 1px solid var(--borda);
+}
+
+thead th{
+  background: var(--azul);
+  color: #fff;
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+tbody td{
+  padding: 8px 12px;
+  border-top: 1px solid var(--borda);
+  font-size: 12px;
+  color: var(--texto);
+}
+
+tbody tr:nth-child(even){
+  background: rgba(245,233,218,.26);
+}
+
+tbody tr:hover{
+  background: rgba(18,56,168,.06);
+}
+
+/* Rodapé (desconto/parcelas/total) */
+tfoot td{
+  border-top: 1px solid var(--borda);
+  padding: 8px 12px;
+  background: #fff;
+}
+
+tfoot input[type="number"]{
+  height: 32px;
+  border-radius: 10px;
+}
+
+/* Total e textos finais */
+#total{
+  font-weight: 900;
+  color: var(--azul-escuro);
+}
+
+#valorParcela{
+  color: var(--azul-escuro);
+}
+
+/* Botão remover (se seu JS colocar class btn-remove) */
+.btn-remove{
+  background: var(--danger);
+  padding: 0 12px;
+  height: 30px;
+  border-radius: 10px;
+}
+.btn-remove:hover{
+  background: var(--danger-hover);
+  transform: translateY(-1px);
+}
+
+/* Responsivo */
+@media (max-width: 900px){
+  .linha-orcamento{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 520px){
+  body{ padding: 12px; }
+  .card2{ padding: 14px; }
+
+  .linha-orcamento{
+    grid-template-columns: 1fr;
+  }
+
+  /* botões full no mobile */
+  .btn-add,
+  .btn-pdf{
+    width: 100%;
+  }
+}
+.autocomplete-wrap {
+    position: relative;
+}
+
+.autocomplete-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 220px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.autocomplete-item {
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.autocomplete-item:hover {
+    background: #f3f4f6;
+}
+/* Bloco do paciente */
+.linha-paciente {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.campo-paciente-nome {
+  flex: 1;
+  position: relative;
+}
+
+.campo-paciente-cpf {
+  width: 220px;
+}
+
+/* Lista de sugestões */
+.autocomplete-sugestoes {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #d8cfc2;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  z-index: 999;
+  max-height: 180px;
+  overflow-y: auto;
+  display: none;
+}
+
+.autocomplete-sugestoes:not(:empty) {
+  display: block;
+}
+
+.autocomplete-sugestoes div {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #1f2937;
+  border-bottom: 1px solid #f1ece5;
+}
+
+.autocomplete-sugestoes div:last-child {
+  border-bottom: none;
+}
+
+.autocomplete-sugestoes div:hover {
+  background: #f7f4ef;
+}
+
+/* Só para garantir que os inputs fiquem alinhados */
+.linha-paciente input {
+  width: 100%;
+  box-sizing: border-box;
+}
+/* Bloco do paciente */
+.linha-paciente {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.campo-paciente-nome {
+  flex: 1;
+  position: relative;
+}
+
+.campo-paciente-cpf {
+  width: 220px;
+}
+
+/* Lista de sugestões */
+.autocomplete-sugestoes {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #d8cfc2;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  z-index: 999;
+  max-height: 180px;
+  overflow-y: auto;
+  display: none;
+}
+
+.autocomplete-sugestoes:not(:empty) {
+  display: block;
+}
+
+.autocomplete-sugestoes div {
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #1f2937;
+  border-bottom: 1px solid #f1ece5;
+}
+
+.autocomplete-sugestoes div:last-child {
+  border-bottom: none;
+}
+
+.autocomplete-sugestoes div:hover {
+  background: #f7f4ef;
+}
+
+/* Só para garantir que os inputs fiquem alinhados */
+.linha-paciente input {
+  width: 100%;
+  box-sizing: border-box;
+}

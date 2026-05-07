@@ -1,0 +1,293 @@
+/* =========================================
+   receita.css — RECEITUÁRIO (Simples/Controlada)
+   Tema Premium (Azul Royal + Bege)
+========================================= */
+
+:root{
+  --azul:#1238A8;
+  --azul-hover:#1E4BD8;
+  --azul-escuro:#0D2C82;
+
+  --bege:#FAF3E7;
+  --bege-card:#F5E9DA;
+
+  --branco:#FFFFFF;
+  --texto:#1F2937;
+  --texto-fraco:#6B7280;
+  --borda:#E7E1D7;
+
+  --sombra: 0 10px 30px rgba(13,44,130,.10);
+  --radius: 14px;
+
+  --danger:#c62828;
+  --danger-hover:#b71c1c;
+
+  --ok:#1f7a3a;
+  --ok-hover:#196a32;
+}
+
+/* Reset básico */
+*{ box-sizing: border-box; }
+
+/* Base (página interna sem sidebar/flex) */
+body{
+  margin: 0;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+  background: var(--bege);
+  color: var(--texto);
+  font-size: 12px;
+}
+
+/* Card central */
+.card2{
+  background: var(--branco);
+  padding: 16px;
+  border-radius: var(--radius);
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* Título */
+h2{
+  text-align: center;
+  color: var(--azul-escuro);
+  font-size: 14px;
+  font-weight: 900;
+  margin: 0 0 14px 0;
+
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--branco), var(--bege-card));
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* Texto do cabeçalho (Dra + CRO) */
+p{
+  margin: 0 0 12px 0;
+  color: var(--texto);
+}
+
+/* Labels padrão */
+label{
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 900;
+  text-align: left;
+  color: var(--texto);
+}
+
+/* Seu <label2> existe no HTML (não é tag padrão, mas o browser aceita).
+   Vamos tratar como container pra dosagem. */
+label2{
+  display: block;
+  margin: 0;
+}
+
+/* Inputs / selects / textarea */
+input[type="text"],
+input[type="number"],
+select,
+textarea{
+  width: 100%;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  font-size: 12px;
+  background: var(--branco);
+  color: var(--texto);
+}
+
+input[type="text"],
+input[type="number"],
+select{
+  height: 36px;
+  padding: 0 10px;
+}
+
+textarea{
+  min-height: 90px;
+  resize: vertical;
+  line-height: 1.4;
+}
+
+/* Focus premium */
+input:focus,
+select:focus,
+textarea:focus{
+  border-color: rgba(18,56,168,.45);
+  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+}
+
+/* Botões */
+.btn-add,
+.btn-pdf,
+.btn-remove{
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 12px;
+  color: #fff;
+  transition: transform .08s ease, filter .2s ease;
+  width: auto;
+}
+
+.btn-add{
+  background: var(--ok);
+}
+.btn-add:hover{
+  background: var(--ok-hover);
+  transform: translateY(-1px);
+}
+
+.btn-pdf{
+  background: var(--azul);
+}
+.btn-pdf:hover{
+  background: var(--azul-hover);
+  transform: translateY(-1px);
+}
+
+.btn-remove{
+  background: var(--danger);
+}
+.btn-remove:hover{
+  background: var(--danger-hover);
+  transform: translateY(-1px);
+}
+
+/* Lista de medicamentos (container) */
+.med-list{
+  margin-top: 12px;
+  width: 100%;
+}
+
+/* Se seus scripts montarem itens com botões remover, já fica alinhado */
+.med-item, .med-row, .item-med{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  background: linear-gradient(180deg, var(--branco), var(--bege-card));
+  box-shadow: 0 8px 18px rgba(13,44,130,.06);
+  margin-bottom: 10px;
+}
+
+/* Texto dentro do item */
+.med-item span, .med-row span, .item-med span{
+  color: var(--texto);
+  font-weight: 700;
+}
+
+/* Autocomplete (nome e medicamento) */
+.autocomplete-sugestoes{
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 6px;
+}
+
+.autocomplete-sugestoes .item,
+.autocomplete-sugestoes div{
+  background: var(--branco);
+}
+
+/* Se seu JS injeta DIVs dentro do #sugestoes/#sugestoesMed */
+#sugestoes, #sugestoesMed{
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  background: var(--branco);
+  box-shadow: 0 10px 30px rgba(13,44,130,.10);
+  overflow: hidden;
+}
+
+/* Opções do autocomplete (genérico) */
+#sugestoes > div,
+#sugestoesMed > div{
+  padding: 10px 12px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(231,225,215,.65);
+  font-weight: 700;
+  color: var(--texto);
+}
+
+#sugestoes > div:hover,
+#sugestoesMed > div:hover{
+  background: rgba(18,56,168,.06);
+}
+
+#sugestoes > div:last-child,
+#sugestoesMed > div:last-child{
+  border-bottom: none;
+}
+
+/* Assinatura / carimbo */
+.assinatura-container{
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-align: left;
+  font-size: 12px;
+}
+
+/* Nas receitas você usa só o checkbox sem label. Se quiser texto "Carimbo",
+   é só adicionar o label no HTML. Mesmo assim, já deixo pronto: */
+.assinatura-container label{
+  display: inline;
+  margin: 0;
+  font-weight: 800;
+  cursor: pointer;
+  color: var(--texto);
+}
+
+.assinatura-container input[type="checkbox"],
+.assinatura-container .checkbox{
+  margin: 0;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+}
+
+/* Área de dosagem (deixar “alinhadinho” mesmo com vários campos) */
+label2 > div{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  background: linear-gradient(180deg, var(--branco), var(--bege-card));
+}
+
+/* tirar estilos inline “feios” do textarea (se o inline existir, ele ganha; mas aqui ajuda em outros casos) */
+#observacao{
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+/* Responsivo */
+@media (max-width: 520px){
+  body{ padding: 12px; }
+  .card2{ padding: 14px; }
+
+  .btn-add, .btn-pdf, .btn-remove{
+    width: 100%;
+  }
+
+  label2 > div{
+    gap: 10px;
+  }
+}

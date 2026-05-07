@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Agenda Dra. Cinthia Leone</title>
+  <link rel="stylesheet" href="css/agenda.css">
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+
+<body>
+
+  <h1>Agenda Dra. Cinthia Leone</h1>
+
+  <div>
+    <button id="btn-login">Entrar com Google</button>
+    <button id="btn-logout" style="display:none;">Sair</button>
+  </div>
+
+  <div id="novo-agendamento" style="display:none;">
+    <h2>Novo Agendamento</h2>
+    <div class="campo-paciente-wrapper">
+      <input type="text" id="paciente" placeholder="Nome do paciente" autocomplete="off">
+      <div id="sugestoes-pacientes" class="sugestoes-pacientes"></div>
+    </div>
+    <input type="date" id="data-agendamento">
+    <input type="time" id="hora-inicio">
+    <input type="time" id="hora-fim">
+    <button id="btn-agendar">Agendar</button>
+  </div>
+
+  <div id="controles" style="display:none; margin-top:20px;">
+    <button id="btn-anterior">← Semana Anterior</button>
+    <button id="btn-proxima">Próxima Semana →</button>
+  </div>
+
+  <div id="agenda" class="agenda-grid"></div>
+
+
+  <script src="js/agenda.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Tratamento</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/tratamento.js" defer></script>
+</head>
+
+<body>
+  <div class="container tratamento-container">
+    <h2 id="tituloPaciente">Tratamento</h2>
+
+    <div class="tabela-wrapper">
+      <table class="tabela-tratamento">
+        <thead>
+          <tr>
+            <th class="col-data">Data</th>
+            <th class="col-procedimento">Procedimento</th>
+            <th class="col-dente">Dente</th>
+            <th class="col-status">Status</th>
+            <th class="col-valor">Valor (R$)</th>
+            <th class="col-observacao">Observação</th>
+            <th class="col-acao">Ação</th>
+          </tr>
+        </thead>
+
+        <tbody id="tabelaTratamento"></tbody>
+
+        <tfoot>
+          <tr>
+            <td colspan="4"></td>
+            <td class="total-rodape">
+              <strong>Total: R$ <span id="totalValor">0,00</span></strong>
+            </td>
+            <td colspan="2"></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="acoes-tratamento">
+      <button id="btnNovaLinha" type="button">+ Nova Linha</button>
+      <button id="btnSalvarTratamentos" type="button">Salvar Tratamentos</button>
+    </div>
+  </div>
+
+  <div id="modalVisualizar" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Visualizar Tratamento</h3>
+        <button type="button" class="btn-fechar-modal" id="fecharModal">✖</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="campo-modal">
+          <label>Data</label>
+          <input type="text" id="modalData" readonly>
+        </div>
+
+        <div class="campo-modal">
+          <label>Procedimento</label>
+          <input type="text" id="modalProcedimento" readonly>
+        </div>
+
+        <div class="campo-modal">
+          <label>Dente</label>
+          <input type="text" id="modalDente" readonly>
+        </div>
+
+        <div class="campo-modal">
+          <label>Status</label>
+          <input type="text" id="modalStatus" readonly>
+        </div>
+
+        <div class="campo-modal">
+          <label>Valor</label>
+          <input type="text" id="modalValor" readonly>
+        </div>
+
+        <div class="campo-modal campo-modal-full">
+          <label>Observação</label>
+          <textarea id="modalObservacao" rows="8" readonly></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

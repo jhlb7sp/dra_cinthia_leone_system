@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tela de Faturamento</title>
+  <link rel="stylesheet" href="css/faturamento.css">
+  <script src="js/faturamento.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Tela de Faturamento</h1>
+
+    <div class="filter-group">
+      <div>
+        <label for="filterStart">Data Início</label>
+        <input type="date" id="filterStart" />
+      </div>
+      <div>
+        <label for="filterEnd">Data Fim</label>
+        <input type="date" id="filterEnd" />
+      </div>
+      <div>
+        <label for="filterEnd">Tipo</label>
+        <select id="filterTipo" required>
+          <option value="Todos">Todos</option>
+          <option value="entrada">Entrada</option>
+          <option value="saida">Saída</option>
+          <option value="pendente">Pendente</option>
+        </select>
+      </div>
+      <button id="btnFilter">Filtrar</button>
+    </div>
+
+    <form id="formLancamento">
+      <input type="date" id="data" required />
+
+      <select id="tipo" required>
+        <option value="">Tipo</option>
+        <option value="entrada">Entrada</option>
+        <option value="saida">Saída</option>
+      </select>
+
+      <textarea id="descricao" placeholder="Descrição" required></textarea>
+
+      <div class="valor-parcelas-group">
+        <input type="text" id="valor" name="valor" placeholder="Valor total" inputmode="numeric" required />
+        <input type="number" id="parcelas" placeholder="Parcelas" min="1" value="1" title="Quantidade de parcelas" />
+      </div>
+
+      <div class="pagamento-group">
+        <label>Pagamento:</label>
+        <label><input type="radio" name="pagamento" value="ok" required> Sim</label>
+        <label><input type="radio" name="pagamento" value="pendente" required> Não</label>
+      </div>
+
+      <button type="submit">Adicionar</button>
+    </form>
+
+
+
+    <table>
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Tipo</th>
+          <th>Descrição</th>
+          <th>Valor (R$)</th>
+          <th>Pgto</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody id="lancamentosTbody"></tbody>
+    </table>
+
+
+    <div class="totals">
+      <span id="totalEntradas">Entradas: R$ 0,00</span>
+      <span id="totalSaidas">Saídas: R$ 0,00</span>
+      <span class="saldo" id="saldo">Saldo: R$ 0,00</span>
+    </div>
+  </div>
+</body>
+
+</html>
