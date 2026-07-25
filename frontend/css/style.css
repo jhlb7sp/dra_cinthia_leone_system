@@ -57,7 +57,6 @@ body {
 .motivacional {
   width: 100%;
   padding: 14px 20px;
-  margin-bottom: 14px;
   border: 1px solid #ddd2be;
   border-radius: 16px;
   background: #efe8dc;
@@ -65,6 +64,47 @@ body {
   text-align: center;
   font-size: 15px;
   font-weight: 700;
+}
+
+.lembrete-manutencoes {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 16px;
+  border: 1px solid rgba(176, 137, 46, 0.38);
+  border-left: 4px solid #b0892e;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--azul-royal-escuro);
+  box-shadow: var(--sombra);
+  cursor: pointer;
+  text-align: left;
+  transition: transform 0.08s ease, filter 0.2s ease, border-color 0.2s ease;
+}
+
+.lembrete-manutencoes:hover {
+  border-color: #b0892e;
+  filter: brightness(1.01);
+  transform: translateY(-1px);
+}
+
+.lembrete-manutencoes[hidden] {
+  display: none;
+}
+
+.lembrete-titulo {
+  color: #b0892e;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.lembrete-texto {
+  color: var(--azul-royal-escuro);
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .iframe-container {
@@ -692,6 +732,11 @@ body.pagina-interna .autocomplete-sugestoes {
 @media (max-width: 900px) {
   .motivacional {
     font-size: 14px;
+  }
+
+  .lembrete-manutencoes {
+    align-items: flex-start;
+    flex-direction: column;
   }
 }
 

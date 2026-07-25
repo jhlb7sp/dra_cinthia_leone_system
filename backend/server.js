@@ -23,6 +23,7 @@ const medicamentosRoute = require('./routes/medicamentos');
 const procedimentosRoute = require('./routes/procedimentos');
 const orcamentosRoutes = require('./routes/orcamentos');
 const notasRoutes = require('./routes/notasRoutes');
+const manutencoesRoutes = require('./routes/manutencoes');
 
 app.use('/api/notas', notasRoutes);
 app.use('/uploads', express.static('uploads'));
@@ -46,6 +47,8 @@ app.use('/api', pacientesRouter);
 app.use('/api/medicamentos', medicamentosRoute);
 //Procedimentos
 app.use('/api/procedimentos', procedimentosRoute);
+//Manutenções
+app.use('/api/manutencoes', manutencoesRoutes);
 //Relatorio
 const relatorioRoutes = require('./routes/relatorio');
 app.use('/relatorio', relatorioRoutes);
@@ -475,4 +478,3 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
-

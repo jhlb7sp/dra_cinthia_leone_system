@@ -29,6 +29,7 @@
                 <a href="consultapaciente.html" target="iframePrincipal" class="submenu-link">Consultar</a>
                 <a href="cadastro-paciente.html" target="iframePrincipal" class="submenu-link">Cadastrar</a>
                 <a href="nota-fiscal.html" target="iframePrincipal" class="submenu-link">Gerar Nota Fiscal</a>
+                <a href="retorno-pacientes.html" target="iframePrincipal" class="submenu-link">Controle de Manutenções</a>
             </div>
 
             <a href="orcamento.html" target="iframePrincipal" class="menu-link">
@@ -93,8 +94,12 @@
 
     <div class="main" id="main">
         <div class="motivacional" id="mensagemMotivacional"></div>
+        <button type="button" class="lembrete-manutencoes" id="lembreteManutencoes" hidden>
+            <span class="lembrete-titulo">Controle de Manutenções</span>
+            <span class="lembrete-texto" id="textoLembreteManutencoes"></span>
+        </button>
         <div class="iframe-container">
-            <iframe name="iframePrincipal" src="pagina_inicial.html"></iframe>
+            <iframe id="iframePrincipal" name="iframePrincipal" src="pagina_inicial.html"></iframe>
         </div>
     </div>
 

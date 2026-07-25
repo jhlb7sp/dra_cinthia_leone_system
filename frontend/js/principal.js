@@ -1,6 +1,9 @@
 const sidebar = document.getElementById('sidebar');
 const main = document.getElementById('main');
 const logoToggle = document.getElementById('logoToggle');
+const iframePrincipal = document.getElementById('iframePrincipal') || document.querySelector('iframe[name="iframePrincipal"]');
+const lembreteManutencoes = document.getElementById('lembreteManutencoes');
+const textoLembreteManutencoes = document.getElementById('textoLembreteManutencoes');
 
 function abrirMenu() {
     sidebar.classList.remove('collapsed');
@@ -106,7 +109,50 @@ window.addEventListener('load', () => {
 
 window.addEventListener('DOMContentLoaded', () => {
     verificarAniversariantes();
+    verificarLembretesManutencao();
 });
+
+if (lembreteManutencoes) {
+    lembreteManutencoes.addEventListener('click', () => {
+        if (iframePrincipal) {
+            iframePrincipal.src = 'retorno-pacientes.html?filtro=atencao';
+        }
+
+        fecharMenu();
+    });
+}
+
+if (iframePrincipal) {
+    iframePrincipal.addEventListener('load', () => {
+        verificarLembretesManutencao();
+    });
+}
+
+async function verificarLembretesManutencao() {
+    if (!lembreteManutencoes || !textoLembreteManutencoes) return;
+
+    try {
+        const resposta = await fetch('http://localhost:3000/api/manutencoes/lembretes');
+        if (!resposta.ok) throw new Error('Erro ao buscar lembretes.');
+
+        const dados = await resposta.json();
+        const total = Number(dados.total) || 0;
+
+        if (total <= 0) {
+            lembreteManutencoes.hidden = true;
+            textoLembreteManutencoes.textContent = '';
+            return;
+        }
+
+        lembreteManutencoes.hidden = false;
+        textoLembreteManutencoes.textContent = total === 1
+            ? '1 paciente precisa de contato para manutenção.'
+            : `${total} pacientes precisam de contato para manutenção.`;
+    } catch (error) {
+        console.error('Erro ao verificar manutenções:', error);
+        lembreteManutencoes.hidden = true;
+    }
+}
 
 async function verificarAniversariantes() {
     try {
