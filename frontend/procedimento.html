@@ -9,61 +9,197 @@
 
 <body>
 
-    <h2>Cadastro de Procedimento</h2>
+    <div class="pagina-procedimentos">
 
-    <div class="linha-campos">
+        <div class="cabecalho-pagina">
+            <div>
+                <h2 id="tituloProcedimentos">
+                    Procedimentos
+                </h2>
 
-        <div class="campo">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome">
+                <p id="subtituloProcedimentos">
+                    Cadastre e gerencie os valores dos procedimentos.
+                </p>
+            </div>
         </div>
 
-        <div class="campo">
-            <label for="tipo">Tipo:</label>
-            <select id="tipo">
-                <option value="">-- selecione --</option>
-                <option value="MOD">MOD</option>
-                <option value="OD">OD</option>
-                <option value="MO">MO</option>
-            </select>
+        <div class="card-procedimentos">
+
+            <div class="linha-campos">
+
+                <div class="campo campo-nome">
+                    <label for="nome">Procedimento</label>
+                    <input type="text" id="nome">
+                </div>
+
+                <div class="campo campo-tipo">
+                    <label for="tipo">Tipo</label>
+
+                    <select id="tipo">
+                        <option value="">Selecione</option>
+                        <option value="MOD">MOD</option>
+                        <option value="OD">OD</option>
+                        <option value="MO">MO</option>
+                    </select>
+                </div>
+
+                <div class="campo campo-dente">
+                    <label for="dente">Dente</label>
+                    <input type="text" id="dente">
+                </div>
+
+                <div class="campo campo-valor">
+                    <label for="valorPrincipal">Principal</label>
+                    <input type="text" id="valorPrincipal">
+                </div>
+
+                <div class="campo campo-valor">
+                    <label for="valorDesconto">Desconto</label>
+                    <input type="text" id="valorDesconto">
+                </div>
+
+                <div class="campo campo-valor">
+                    <label for="valorFamilia">Família</label>
+                    <input type="text" id="valorFamilia">
+                </div>
+
+                <!-- BOTÕES -->
+                <div class="campo campo-botao">
+
+                    <label>&nbsp;</label>
+
+                    <div class="grupo-botoes">
+
+                        <button
+                            id="btnSalvar"
+                            type="button"
+                            class="btn-primary"
+                            onclick="adicionarProcedimentos()">
+                            Adicionar
+                        </button>
+
+                        <button
+                            id="btnCancelar"
+                            type="button"
+                            class="btn-secundario"
+                            onclick="limparFormulario()"
+                            style="display:none;">
+                            Cancelar
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn-secundario"
+                            onclick="exportarProcedimentosExcel()">
+                            Exportar Excel
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn-secundario"
+                            onclick="abrirImportacaoExcel()">
+                            Importar preços
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="campo">
-            <label for="dente">Dente:</label>
-            <input type="text" id="dente">
+        <div class="barra-acoes">
+
+            <div class="filtro-box">
+
+                <label for="filtro">
+                    Buscar procedimento
+                </label>
+
+                <input
+                    type="text"
+                    id="filtro"
+                    placeholder="Digite para pesquisar..."
+                    oninput="filtrarProcedimentos()">
+
+            </div>
+
         </div>
 
-        <div class="campo">
-            <label for="valor">Valor:</label>
-            <input type="text" id="valor">
-        </div>
+        <div class="tabela-container">
 
-        <div class="campo campo-botao">
-            <label>&nbsp;</label>
-            <button onclick="adicionarProcedimentos()">Adicionar</button>
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Procedimento</th>
+                        <th>Tipo</th>
+                        <th>Dente</th>
+                        <th>Principal</th>
+                        <th>Desconto</th>
+                        <th>Família</th>
+                        <th class="coluna-acoes">Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="tabelaProcedimentos"></tbody>
+
+            </table>
+
         </div>
 
     </div>
 
 
-    <label for="filtro">Filtrar por procedimento:</label>
-    <input type="text" id="filtro" oninput="filtrarProcedimentos()">
+    <!-- =========================================
+         MODAL HISTÓRICO
+    ========================================== -->
 
-    <table>
-        <thead>
-            <tr>
-                <th>Nome</th>
-                <th>Tipo</th>
-                <th>Dente</th>
-                <th>Valor</th>
-                <th>Ação</th>
-            </tr>
-        </thead>
-        <tbody id="tabelaProcedimentos">
-            <!-- Medicamentos adicionados aparecem aqui -->
-        </tbody>
-    </table>
+    <div id="modalHistorico" class="modal-overlay">
+
+        <div class="modal-historico">
+
+            <div class="modal-cabecalho">
+
+                <div>
+
+                    <h3>Histórico de preços</h3>
+
+                    <span id="historicoNome"></span>
+
+                </div>
+
+                <button
+                    type="button"
+                    class="btn-fechar-modal"
+                    onclick="fecharHistorico()">
+                    ×
+                </button>
+
+            </div>
+
+            <div id="historicoConteudo"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Importação -->
+
+    <input
+        type="file"
+        id="arquivoImportacao"
+        accept=".xlsx,.xls"
+        style="display:none"
+        onchange="importarProcedimentosExcel(event)">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
     <script src="js/procedimentos.js"></script>
+
 </body>
 
 </html>

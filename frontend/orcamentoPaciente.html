@@ -7,27 +7,65 @@
 </head>
 <body>
 
-  <div class="card-orcamentos">
-    <h2>Orçamentos</h2>
-    <p id="cpfPaciente">Carregando CPF...</p>
+  <div class="pagina-orcamentos">
 
-    <div class="tabela-wrap">
-      <table id="tabelaOrcamentos">
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Valor Total</th>
-            <th>Parcelas</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody id="bodyOrcamentos">
-          <tr>
-            <td colspan="4" class="sem-registros">Carregando orçamentos...</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="cabecalho-orcamentos">
+      <div>
+        <h2>Orçamentos</h2>
+        <p id="cpfPaciente">Carregando CPF...</p>
+      </div>
     </div>
+
+    <div class="resumo-orcamentos">
+      <div class="resumo-card">
+        <span class="resumo-label">Orçamentos</span>
+        <strong id="totalOrcamentos">-</strong>
+      </div>
+
+      <div class="resumo-card">
+        <span class="resumo-label">Último orçamento</span>
+        <strong id="ultimoOrcamento">-</strong>
+      </div>
+
+      <div class="resumo-card">
+        <span class="resumo-label">Valor total</span>
+        <strong id="valorTotalOrcamentos">-</strong>
+      </div>
+    </div>
+
+    <div class="card-orcamentos">
+
+      <div class="card-header">
+        <div>
+          <h3>Histórico de orçamentos</h3>
+          <span>Consulte os orçamentos já gerados para este paciente.</span>
+        </div>
+      </div>
+
+      <div class="tabela-wrap">
+        <table id="tabelaOrcamentos">
+          <thead>
+            <tr>
+              <th>Data</th>
+              <th>Valor Total</th>
+              <th>Parcelas</th>
+              <th>Status</th>
+              <th class="coluna-acoes">Ações</th>
+            </tr>
+          </thead>
+
+          <tbody id="bodyOrcamentos">
+            <tr>
+              <td colspan="5" class="sem-registros">
+                Carregando orçamentos...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
   </div>
 
   <script src="js/orcamentoPaciente.js"></script>

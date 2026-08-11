@@ -49,7 +49,7 @@ function abrirAba(nomeAba) {
     dados: `dados.html?cpf=${encodeURIComponent(cpf)}`,
     anamnese: `anamnese.html?cpf=${encodeURIComponent(cpf)}`,
     tratamento: `tratamento.html?cpf=${encodeURIComponent(cpf)}`,
-    historico: `historico.html?cpf=${encodeURIComponent(cpf)}`,
+    historico: `historicoPaciente.html?cpf=${encodeURIComponent(cpf)}`,
     orcamento: `orcamentoPaciente.html?cpf=${encodeURIComponent(cpf)}`,
   };
 

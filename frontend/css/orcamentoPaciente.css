@@ -3,86 +3,234 @@ body {
   background: transparent;
   margin: 0;
   padding: 0;
+  color: #1f2937;
 }
 
-.card-orcamentos {
-  background: #fff;
-  border: 1px solid #d9d1c3;
-  border-radius: 10px;
-  padding: 24px;
+.pagina-orcamentos {
+  width: 100%;
 }
 
-.card-orcamentos h2 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  font-size: 20px;
+/* Cabeçalho */
+.cabecalho-orcamentos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.cabecalho-orcamentos h2 {
+  margin: 0 0 4px 0;
+  font-size: 22px;
+  font-weight: 700;
   color: #0d2f92;
 }
 
 #cpfPaciente {
-  margin-bottom: 20px;
-  font-weight: 500;
-  color: #333;
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
 }
 
+/* Resumo */
+.resumo-orcamentos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.resumo-card {
+  background: #ffffff;
+  border: 1px solid #ddd5c8;
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.resumo-label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #7a746b;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.resumo-card strong {
+  display: block;
+  font-size: 18px;
+  color: #173ea5;
+}
+
+/* Card principal */
+.card-orcamentos {
+  background: #ffffff;
+  border: 1px solid #d9d1c3;
+  border-radius: 10px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e7dfd2;
+  background: #fff;
+}
+
+.card-header h3 {
+  margin: 0 0 3px 0;
+  font-size: 16px;
+  color: #173ea5;
+}
+
+.card-header span {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Tabela */
 .tabela-wrap {
+  width: 100%;
   overflow-x: auto;
 }
 
 #tabelaOrcamentos {
   width: 100%;
   border-collapse: collapse;
-  overflow: hidden;
-  border-radius: 10px;
 }
 
 #tabelaOrcamentos thead {
   background: #173ea5;
-  color: #fff;
+  color: #ffffff;
 }
 
-#tabelaOrcamentos th,
-#tabelaOrcamentos td {
-  padding: 12px 14px;
+#tabelaOrcamentos th {
+  padding: 10px 12px;
   text-align: left;
-  border-bottom: 1px solid #e7dfd2;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+#tabelaOrcamentos td {
+  padding: 10px 12px;
+  text-align: left;
+  font-size: 13px;
+  border-bottom: 1px solid #eee7dc;
+  vertical-align: middle;
+}
+
+#tabelaOrcamentos tbody tr {
+  transition: background 0.15s ease;
 }
 
 #tabelaOrcamentos tbody tr:hover {
   background: #f8f6f2;
 }
 
-.sem-registros {
-  text-align: center;
-  color: #777;
-  padding: 20px;
+#tabelaOrcamentos tbody tr:last-child td {
+  border-bottom: none;
 }
 
+.coluna-acoes {
+  width: 180px;
+}
+
+/* Sem registros */
+.sem-registros {
+  text-align: center !important;
+  color: #8a8379;
+  padding: 24px !important;
+  font-size: 13px;
+}
+
+/* Ações */
 .acoes {
   display: flex;
-  gap: 8px;
+  align-items: center;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .btn-acao {
   border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  font-size: 13px;
-  font-weight: bold;
+  border-radius: 7px;
+  padding: 7px 11px;
+  font-size: 12px;
+  font-weight: 700;
   cursor: pointer;
-  color: #fff;
+  transition: all 0.15s ease;
+}
+
+.btn-acao:hover {
+  transform: translateY(-1px);
+  filter: brightness(0.97);
 }
 
 .btn-ver {
-  background: #3b82f6;
+  background: #2f6fe4;
+  color: #ffffff;
 }
 
 .btn-editar {
-  background: #16a34a;
+  background: #e8f5ec;
+  color: #18743b;
+  border: 1px solid #bde1c8;
 }
 
 .btn-excluir {
-  background: #dc2626;
+  background: #fff1f1;
+  color: #b42318;
+  border: 1px solid #f1c1bd;
+}
+
+/* Status - já preparado para o próximo passo */
+.status-orcamento {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-pendente {
+  background: #fff7d6;
+  color: #8a6700;
+}
+
+.status-aprovado {
+  background: #e8f7ed;
+  color: #17743b;
+}
+
+.status-concluido {
+  background: #e8f0ff;
+  color: #1947a3;
+}
+
+.status-cancelado {
+  background: #fdecec;
+  color: #b42318;
+}
+
+/* Responsivo */
+@media (max-width: 800px) {
+  .resumo-orcamentos {
+    grid-template-columns: 1fr;
+  }
+
+  .cabecalho-orcamentos {
+    align-items: flex-start;
+  }
+
+  #tabelaOrcamentos th,
+  #tabelaOrcamentos td {
+    padding: 9px 10px;
+  }
 }
