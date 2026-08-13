@@ -1,0 +1,373 @@
+/* =========================================
+   FATURAMENTO — PREMIUM (Azul Royal + Bege)
+   Mantém sua estrutura, melhora visual
+========================================= */
+
+:root{
+  --azul:#1238A8;
+  --azul-hover:#1E4BD8;
+  --azul-escuro:#0D2C82;
+
+  --bege:#FAF3E7;
+  --bege-card:#F5E9DA;
+
+  --branco:#FFFFFF;
+  --texto:#1F2937;
+  --texto-fraco:#6B7280;
+  --borda:#E7E1D7;
+
+  --sombra: 0 10px 30px rgba(13,44,130,.10);
+  --radius: 14px;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+/* Base */
+body{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: var(--bege);
+  padding: 16px;
+  color: var(--texto);
+  font-size: 12px;
+}
+
+/* Card principal */
+.container{
+  max-width: 980px;
+  margin: 0 auto;
+  background: var(--branco);
+  border-radius: var(--radius);
+  padding: 16px;
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* Título (padrão do sistema) */
+h1{
+  margin: 0 0 14px 0;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--azul-escuro);
+
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--branco), var(--bege-card));
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+  text-align: center;
+}
+
+/* =========================
+   GRUPO DE FILTROS (CARD)
+========================= */
+.filter-group{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px 12px;
+  margin: 14px 0;
+  align-items: end;
+
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  padding: 12px 14px;
+}
+
+.filter-group > div{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.filter-group label{
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.filter-group input[type="date"],
+.filter-group select{
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 12px;
+  border: 1px solid var(--borda);
+  font-size: 12px;
+  min-width: 160px;
+  outline: none;
+  background: var(--branco);
+}
+
+.filter-group input[type="date"]:focus,
+.filter-group select:focus{
+  border-color: rgba(18,56,168,.45);
+  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+}
+
+/* Botões (padrão do sistema) */
+.filter-group button,
+form button[type="submit"]{
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 12px;
+  font-weight: 900;
+  background: var(--azul);
+  color: #fff;
+  cursor: pointer;
+  transition: transform .08s ease, filter .2s ease;
+  white-space: nowrap;
+}
+
+.filter-group button:hover,
+form button[type="submit"]:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   FORM DE LANÇAMENTO (CARD)
+========================= */
+form{
+  display:grid;
+  grid-template-columns: 120px 90px 1fr 190px 110px;
+  gap: 10px 12px;
+  align-items: end;
+
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  padding: 12px 14px;
+  margin: 14px 0;
+}
+
+form input,
+form select,
+form textarea{
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  font-size: 12px;
+  width: 100%;
+  outline: none;
+  background: var(--branco);
+}
+
+form textarea{
+  height: auto;
+  min-height: 36px;
+  max-height: 72px;
+  padding: 10px 10px;
+  resize: vertical;
+  line-height: 1.4;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus{
+  border-color: rgba(18,56,168,.45);
+  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+}
+
+/* Valor + parcelas */
+.valor-parcelas-group{
+  display:flex;
+  gap: 8px;
+  align-items:center;
+}
+
+.valor-parcelas-group #valor{ flex: 1; }
+.valor-parcelas-group #parcelas{
+  width: 80px;
+  text-align:center;
+}
+
+/* Pagamento */
+.pagamento-group{
+  grid-column: 1 / -1;
+  margin-top: 6px;
+  display:flex;
+  gap: 14px;
+  align-items:center;
+  font-size: 12px;
+  color: var(--texto);
+  flex-wrap: wrap;
+}
+
+.pagamento-group label{
+  font-weight: 700;
+  color: var(--texto);
+}
+
+.pagamento-group input[type="radio"]{
+  appearance: auto;
+  width: auto;
+  height: auto;
+}
+
+/* =========================
+   TABELA (clean premium)
+========================= */
+table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 12px;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--branco);
+}
+
+thead{
+  background: var(--azul);
+  color: #fff;
+}
+
+th, td{
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--borda);
+  border-right: 1px solid var(--borda);
+  text-align: left;
+}
+
+tr > *:last-child{ border-right: none; }
+
+tbody tr:nth-child(even){
+  background: rgba(245,233,218,.28);
+}
+
+tbody tr:hover{
+  background: rgba(18,56,168,.06);
+}
+
+/* =========================
+   BOTÕES AÇÃO
+========================= */
+.btn-delete{
+  height: 32px;
+  padding: 0 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 11px;
+  background: #c62828;
+  color: #fff;
+  transition: transform .08s ease, filter .2s ease;
+}
+
+.btn-delete:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.btn-ok,
+.btn-pendente{
+  border: none;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 900;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.btn-ok{ background: #1f7a3a; }
+.btn-pendente{ background: #b91c1c; }
+
+/* =========================
+   TOTAIS (cards pequenos)
+========================= */
+.totals{
+  margin-top: 14px;
+  display:flex;
+  justify-content:flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-weight: 900;
+  font-size: 12px;
+}
+
+.totals span{
+  background: rgba(245,233,218,.40);
+  border: 1px solid var(--borda);
+  padding: 8px 10px;
+  border-radius: 12px;
+}
+
+.totals .saldo{
+  background: rgba(31,122,58,.12);
+  border-color: rgba(31,122,58,.25);
+  color: #1f7a3a;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 768px){
+  form{
+    grid-template-columns: 1fr;
+  }
+
+  .valor-parcelas-group{
+    width: 100%;
+  }
+
+  .filter-group{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-group > div,
+  .filter-group button{
+    width: 100%;
+  }
+}
+/* ===== FATURAMENTO: tabela compacta (igual medicamentos) ===== */
+
+/* Cabeçalho menor */
+thead th{
+  padding: 8px 10px;     /* antes 10px 12px */
+  font-size: 11px;
+}
+
+/* Linhas menores */
+tbody td{
+  padding: 4px 8px;     /* antes 10px 12px */
+  font-size: 11px;
+  line-height: 1.15;
+}
+
+/* Se tiver td no geral (você usa th, td juntos), garante compacto também */
+th, td{
+  padding: 8px 10px;
+}
+
+/* Botões ação menores (pra não “inflar” a linha) */
+.btn-delete{
+  height: 24px;          /* antes 32px */
+  padding: 0 8px;
+  border-radius: 9px;
+  font-size: 11px;
+}
+
+.btn-ok,
+.btn-pendente{
+  height: 24px;          /* antes 30px */
+  padding: 0 8px;
+  border-radius: 9px;
+  font-size: 11px;
+}
+
+/* (Opcional) borda mais discreta entre colunas */
+th, td{
+  border-right: 1px solid rgba(231,225,215,.7);
+}

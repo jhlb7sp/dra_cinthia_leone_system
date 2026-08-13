@@ -1,0 +1,806 @@
+/* =========================================
+   ORÇAMENTO — PREMIUM COMPACTO
+   Azul Royal + Bege
+========================================= */
+
+:root{
+  --azul:#1238A8;
+  --azul-hover:#1E4BD8;
+  --azul-escuro:#0D2C82;
+
+  --bege:#FAF3E7;
+  --bege-card:#F5E9DA;
+
+  --branco:#FFFFFF;
+  --texto:#1F2937;
+  --texto-fraco:#6B7280;
+  --borda:#E7E1D7;
+
+  --verde:#2E7D32;
+  --amarelo:#F9A825;
+  --vermelho:#C62828;
+
+  --sombra:0 8px 24px rgba(13,44,130,.08);
+  --radius:10px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0 auto;
+  padding:16px;
+
+  max-width:1180px;
+
+  background:var(--bege);
+  color:var(--texto);
+
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:12px;
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.cabecalho-pagina{
+  margin-bottom:12px;
+}
+
+.cabecalho-pagina h2{
+  margin:0;
+
+  padding:10px 14px;
+
+  text-align:center;
+
+  font-size:14px;
+  font-weight:900;
+
+  color:var(--azul-escuro);
+
+  border:1px solid var(--borda);
+  border-radius:var(--radius);
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--branco),
+      var(--bege-card)
+    );
+
+  box-shadow:var(--sombra);
+}
+
+.cabecalho-pagina p{
+  margin:7px 0 0;
+
+  text-align:center;
+
+  font-size:11px;
+  color:var(--texto-fraco);
+}
+
+
+/* =========================================
+   CARDS
+========================================= */
+
+.card-orcamento{
+  margin-bottom:12px;
+
+  padding:12px;
+
+  background:var(--branco);
+
+  border:1px solid var(--borda);
+  border-radius:var(--radius);
+
+  box-shadow:var(--sombra);
+}
+
+.secao-titulo{
+  margin-bottom:9px;
+
+  font-size:11px;
+  font-weight:900;
+
+  color:var(--azul-escuro);
+}
+
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo{
+  display:flex;
+  flex-direction:column;
+
+  min-width:0;
+}
+
+label{
+  margin:0 0 5px 0;
+
+  font-size:11px;
+  font-weight:700;
+
+  color:var(--texto);
+}
+
+.campo-opcional{
+  font-size:10px;
+  font-weight:400;
+  color:var(--texto-fraco);
+}
+
+input[type="text"],
+input[type="number"],
+select{
+  width:100%;
+  height:34px;
+
+  padding:0 9px;
+
+  border:1px solid var(--borda);
+  border-radius:8px;
+
+  background:var(--branco);
+  color:var(--texto);
+
+  outline:none;
+
+  font-size:12px;
+
+  transition:
+    border-color .15s ease,
+    box-shadow .15s ease;
+}
+
+input::placeholder{
+  color:#9CA3AF;
+}
+
+input:focus,
+select:focus{
+  border-color:rgba(18,56,168,.55);
+
+  box-shadow:
+    0 0 0 3px rgba(18,56,168,.10);
+}
+
+
+/* =========================================
+   PACIENTE
+========================================= */
+
+.linha-paciente{
+  display:grid;
+
+  grid-template-columns:
+    minmax(300px, 1fr)
+    220px;
+
+  gap:10px;
+}
+
+.campo-paciente{
+  position:relative;
+}
+
+
+/* =========================================
+   LINHA PROCEDIMENTO
+========================================= */
+
+.linha-orcamento{
+  display:grid;
+
+  grid-template-columns:
+    minmax(260px, 2.5fr)
+    90px
+    80px
+    125px
+    auto;
+
+  gap:8px;
+
+  align-items:end;
+}
+
+
+/* =========================================
+   VALOR + BOLINHA
+========================================= */
+
+.valor-wrapper{
+  display:flex;
+  align-items:center;
+
+  gap:7px;
+}
+
+.valor-wrapper input{
+  flex:1;
+}
+
+.status-valor{
+  width:12px;
+  height:12px;
+
+  flex:0 0 12px;
+
+  border-radius:50%;
+
+  border:1px solid rgba(0,0,0,.10);
+
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,.8);
+}
+
+.status-valor.verde{
+  background:var(--verde);
+}
+
+.status-valor.amarelo{
+  background:var(--amarelo);
+}
+
+.status-valor.vermelho{
+  background:var(--vermelho);
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+button{
+  height:34px;
+
+  padding:0 12px;
+
+  border:none;
+  border-radius:8px;
+
+  font-size:11px;
+  font-weight:700;
+
+  cursor:pointer;
+
+  white-space:nowrap;
+
+  transition:
+    background .15s ease,
+    transform .08s ease;
+}
+
+button:active{
+  transform:translateY(1px);
+}
+
+.btn-primary,
+.btn-pdf{
+  background:var(--azul);
+  color:#fff;
+}
+
+.btn-primary:hover,
+.btn-pdf:hover{
+  background:var(--azul-hover);
+}
+
+.btn-secundario{
+  background:#E5E7EB;
+  color:#374151;
+}
+
+.btn-secundario:hover{
+  background:#D1D5DB;
+}
+
+.btn-alerta{
+  background:var(--vermelho);
+  color:#fff;
+}
+
+.btn-alerta:hover{
+  background:#B71C1C;
+}
+
+.campo-botao button{
+  min-width:100px;
+}
+
+
+/* =========================================
+   AUTOCOMPLETE
+========================================= */
+
+.autocomplete-wrap{
+  position:relative;
+}
+
+.autocomplete-list,
+.autocomplete-sugestoes{
+  position:absolute;
+
+  top:calc(100% + 4px);
+  left:0;
+  right:0;
+
+  z-index:1000;
+
+  max-height:220px;
+  overflow-y:auto;
+
+  background:var(--branco);
+
+  border:1px solid var(--borda);
+  border-radius:8px;
+
+  box-shadow:
+    0 12px 30px rgba(13,44,130,.14);
+}
+
+.autocomplete-list > div,
+.autocomplete-sugestoes > div{
+  padding:8px 10px;
+
+  cursor:pointer;
+
+  font-size:11px;
+
+  border-bottom:
+    1px solid rgba(231,225,215,.75);
+}
+
+.autocomplete-list > div:last-child,
+.autocomplete-sugestoes > div:last-child{
+  border-bottom:none;
+}
+
+.autocomplete-list > div:hover,
+.autocomplete-sugestoes > div:hover{
+  background:
+    rgba(18,56,168,.06);
+}
+
+.autocomplete-sugestoes:empty{
+  display:none;
+}
+
+
+/* =========================================
+   TABELA
+========================================= */
+
+.tabela-container{
+  width:100%;
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+
+  border-collapse:separate;
+  border-spacing:0;
+
+  background:var(--branco);
+
+  border:1px solid var(--borda);
+  border-radius:9px;
+
+  overflow:hidden;
+
+  box-shadow:var(--sombra);
+}
+
+thead th{
+  padding:9px 10px;
+
+  background:var(--azul);
+  color:#fff;
+
+  text-align:left;
+
+  font-size:11px;
+  font-weight:700;
+}
+
+tbody td{
+  padding:8px 10px;
+
+  border-top:1px solid var(--borda);
+
+  font-size:12px;
+}
+
+tbody tr:nth-child(even){
+  background:rgba(245,233,218,.25);
+}
+
+tbody tr:hover{
+  background:rgba(18,56,168,.05);
+}
+
+
+/* =========================================
+   VALOR NA TABELA
+========================================= */
+
+.valor-item{
+  display:flex;
+
+  align-items:center;
+
+  gap:7px;
+}
+
+.valor-item input{
+  width:95px;
+  height:30px;
+
+  padding:0 7px;
+}
+
+
+/* =========================================
+   OBSERVAÇÃO
+========================================= */
+
+.btn-observacao{
+  padding:0;
+
+  height:auto;
+
+  background:transparent;
+
+  color:var(--azul);
+
+  font-size:11px;
+  font-weight:700;
+
+  text-decoration:none;
+}
+
+.btn-observacao:hover{
+  background:transparent;
+  text-decoration:underline;
+}
+
+.btn-observacao.tem-observacao{
+  color:var(--verde);
+}
+
+
+/* =========================================
+   AÇÕES DA TABELA
+========================================= */
+
+.acoes-item{
+  display:flex;
+
+  align-items:center;
+
+  gap:5px;
+}
+
+.btn-remover{
+  width:28px;
+  height:28px;
+
+  padding:0;
+
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  background:
+    rgba(198,40,40,.10);
+
+  color:var(--vermelho);
+
+  font-size:14px;
+}
+
+.btn-remover:hover{
+  background:
+    rgba(198,40,40,.18);
+}
+
+
+/* =========================================
+   RODAPÉ DA TABELA
+========================================= */
+
+tfoot td{
+  padding:7px 10px;
+
+  border-top:1px solid var(--borda);
+
+  background:#fff;
+
+  font-size:11px;
+}
+
+.label-resumo{
+  text-align:right;
+
+  font-weight:700;
+}
+
+.campo-resumo{
+  display:flex;
+
+  align-items:center;
+
+  gap:5px;
+}
+
+.campo-resumo input{
+  width:70px;
+  height:30px;
+}
+
+tfoot input[type="number"]{
+  width:70px;
+  height:30px;
+}
+
+.linha-total td{
+  font-weight:900;
+}
+
+#total{
+  color:var(--azul-escuro);
+
+  font-size:13px;
+  font-weight:900;
+}
+
+.texto-resumo{
+  text-align:right;
+
+  font-weight:700;
+
+  color:var(--azul-escuro);
+}
+
+
+/* =========================================
+   BARRA FINAL
+========================================= */
+
+.barra-final{
+  display:flex;
+
+  justify-content:flex-end;
+
+  margin-top:10px;
+}
+
+.btn-pdf{
+  min-width:190px;
+}
+
+
+/* =========================================
+   MODAIS
+========================================= */
+
+.modal-overlay{
+  position:fixed;
+  inset:0;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:
+    rgba(15,23,42,.40);
+
+  z-index:9999;
+}
+
+.modal-overlay.ativo{
+  display:flex;
+}
+
+.modal-observacao,
+.modal-alerta{
+  width:100%;
+
+  max-width:520px;
+
+  background:var(--branco);
+
+  border-radius:12px;
+
+  box-shadow:
+    0 24px 60px rgba(0,0,0,.20);
+
+  overflow:hidden;
+}
+
+.modal-cabecalho{
+  display:flex;
+
+  align-items:center;
+  justify-content:space-between;
+
+  padding:14px 16px;
+
+  border-bottom:
+    1px solid var(--borda);
+}
+
+.modal-cabecalho h3{
+  margin:0 0 3px;
+
+  font-size:14px;
+
+  color:var(--azul-escuro);
+}
+
+.modal-cabecalho span{
+  font-size:11px;
+
+  color:var(--texto-fraco);
+}
+
+.btn-fechar-modal{
+  width:30px;
+  height:30px;
+
+  padding:0;
+
+  background:transparent;
+
+  color:var(--texto);
+
+  font-size:20px;
+}
+
+.btn-fechar-modal:hover{
+  background:#F3F4F6;
+}
+
+.modal-conteudo{
+  padding:16px;
+}
+
+.modal-conteudo p{
+  margin:0 0 10px;
+}
+
+.modal-conteudo p:last-child{
+  margin-bottom:0;
+}
+
+.modal-conteudo textarea{
+  width:100%;
+
+  min-height:110px;
+
+  padding:10px;
+
+  resize:vertical;
+
+  border:1px solid var(--borda);
+  border-radius:8px;
+
+  outline:none;
+
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:12px;
+}
+
+.modal-conteudo textarea:focus{
+  border-color:
+    rgba(18,56,168,.55);
+
+  box-shadow:
+    0 0 0 3px rgba(18,56,168,.10);
+}
+
+.modal-acoes{
+  display:flex;
+
+  justify-content:flex-end;
+
+  gap:8px;
+
+  padding:12px 16px;
+
+  border-top:
+    1px solid var(--borda);
+
+  background:#FAFAFA;
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width:950px){
+
+  .linha-orcamento{
+    grid-template-columns:
+      2fr
+      90px
+      80px
+      120px;
+  }
+
+  .campo-botao{
+    grid-column:1 / -1;
+  }
+
+  .campo-botao button{
+    width:100%;
+  }
+}
+
+
+@media (max-width:700px){
+
+  .linha-paciente{
+    grid-template-columns:1fr;
+  }
+
+  .linha-orcamento{
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+  .campo-procedimento{
+    grid-column:1 / -1;
+  }
+
+  .campo-botao{
+    grid-column:1 / -1;
+  }
+
+  .btn-pdf{
+    width:100%;
+  }
+
+  .barra-final{
+    display:block;
+  }
+}
+
+
+@media (max-width:500px){
+
+  body{
+    padding:10px;
+  }
+
+  .linha-orcamento{
+    grid-template-columns:1fr;
+  }
+
+  .campo-procedimento,
+  .campo-botao{
+    grid-column:auto;
+  }
+
+  .modal-acoes{
+    flex-direction:column;
+  }
+
+  .modal-acoes button{
+    width:100%;
+  }
+}

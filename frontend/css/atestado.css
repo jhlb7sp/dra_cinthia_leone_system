@@ -1,201 +1,756 @@
 /* =========================================
-   ATESTADO (horas / dias) — PREMIUM
-   Azul Royal + Bege
+   ATESTADO ODONTOLÓGICO
+   CINTHIA LEONE
+   FULL WIDTH / COMPACTO / PREMIUM
 ========================================= */
 
-:root{
-  --azul:#1238A8;
-  --azul-hover:#1E4BD8;
-  --azul-escuro:#0D2C82;
+:root {
 
-  --bege:#FAF3E7;
-  --bege-card:#F5E9DA;
+    --marca: #9A6B3F;
+    --marca-hover: #865B35;
 
-  --branco:#FFFFFF;
-  --texto:#1F2937;
-  --texto-fraco:#6B7280;
-  --borda:#E7E1D7;
+    --grafite: #494641;
+    --grafite-hover: #3D3A36;
 
-  --sombra: 0 10px 30px rgba(13,44,130,.10);
-  --radius: 14px;
+    --texto: #494641;
+    --texto-fraco: #6F6962;
+
+    --fundo: #F6F3EE;
+
+    --card: #FFFFFF;
+    --card-suave: #F4F0EA;
+    --input-bg: #FBFAF8;
+
+    --borda: #DDD8D1;
+    --borda-suave: #EBE7E1;
+
+    --sombra:
+        0 4px 16px rgba(73, 70, 65, .07);
+
+    --radius: 10px;
+    --radius-sm: 7px;
 }
 
-*{ box-sizing: border-box; }
 
-body.pagina-interna{
-  margin: 0;
-  padding: 16px;
-  min-height: 100vh;
-  background: var(--bege);
-  color: var(--texto);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
 }
 
-/* Card central */
-.card2{
-  max-width: 900px;
-  margin: 0 auto;
-  background: var(--branco);
-  border: 1px solid var(--borda);
-  border-radius: var(--radius);
-  box-shadow: var(--sombra);
-  padding: 16px;
+
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-/* Título */
-.card2 h2{
-  margin: 0 0 10px 0;
-  font-size: 14px;
-  font-weight: 900;
-  color: var(--azul-escuro);
 
-  padding: 12px 14px;
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--branco), var(--bege-card));
-  border: 1px solid var(--borda);
-  box-shadow: var(--sombra);
-  text-align: center;
+/* =========================================
+   BODY
+========================================= */
+
+body.pagina-interna {
+
+    width: 100%;
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 10px;
+
+    background: var(--fundo);
+    color: var(--texto);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    overflow-x: hidden;
 }
 
-/* Linha da Dra. */
-.card2 p{
-  margin: 10px 0 14px;
-  color: var(--texto-fraco);
-  font-size: 12px;
+
+/* =========================================
+   PÁGINA
+========================================= */
+
+.pagina-atestado {
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
 }
 
-/* Labels */
-label{
-  display: block;
-  margin: 10px 0 6px;
-  font-weight: 900;
-  color: var(--texto);
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.cabecalho-pagina {
+
+    width: 100%;
+
+    margin-bottom: 8px;
+
+    padding: 9px 12px;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+    border-top: 3px solid var(--marca);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
 }
 
-/* Inputs / Selects (base) */
-input,
-select{
-  display: inline-block;
-  margin-top: 6px;
-  border: 1px solid var(--borda);
-  border-radius: 12px;
-  outline: none;
-  background: var(--branco);
-  font-size: 12px;
-  height: 36px;
-  padding: 0 10px;
+
+.cabecalho-pagina h2 {
+
+    margin: 0;
+
+    color: var(--grafite);
+
+    font-size: 15px;
+    font-weight: 800;
 }
 
-/* Faz os inputs com width inline (style="width:..") ficarem bonitos */
-input[type="text"],
-input[type="date"],
-input[type="time"],
-input[type="number"],
-select{
-  max-width: 100%;
+
+.cabecalho-pagina p {
+
+    margin: 3px 0 0;
+
+    color: var(--texto-fraco);
+
+    font-size: 11px;
 }
 
-/* Foco padrão */
-input:focus,
-select:focus{
-  border-color: rgba(18,56,168,.45);
-  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+
+/* =========================================
+   CARD
+========================================= */
+
+.card-atestado {
+
+    width: 100%;
+
+    padding: 10px 12px;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
 }
 
-/* Select CID um pouco maior e confortável */
-#cid{
-  min-width: 320px;
+
+/* =========================================
+   TIPO DE ATESTADO
+========================================= */
+
+.tipo-atestado {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    min-height: 34px;
+
+    margin-bottom: 10px;
+
+    padding: 7px 10px;
+
+    background: var(--card-suave);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
 }
 
-/* Botão PDF */
-.btn-pdf{
-  margin-top: 14px;
-  height: 36px;
-  padding: 0 14px;
-  border: none;
-  border-radius: 12px;
-  background: var(--azul);
-  color: #fff;
-  font-weight: 900;
-  cursor: pointer;
-  transition: transform .08s ease, filter .2s ease;
-  width: auto;
+
+.titulo-tipo {
+
+    margin: 0;
+
+    color: var(--grafite);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
 }
 
-.btn-pdf:hover{
-  filter: brightness(1.05);
-  transform: translateY(-1px);
+
+.opcoes-atestado {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
 }
 
-.btn-pdf:active{
-  transform: translateY(0);
+
+.opcao-tipo {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    color: var(--texto);
+
+    font-size: 10px;
+
+    font-weight: 600;
 }
 
-/* Assinatura */
-.assinatura-container{
-  margin-top: 12px;
-  font-size: 12px;
-  color: var(--texto);
+
+.opcao-tipo input {
+
+    width: 14px;
+
+    height: 14px;
+
+    margin: 0;
+
+    accent-color: var(--marca);
+
+    cursor: pointer;
 }
 
-.assinatura-container input[type="checkbox"]{
-  width: auto;
-  height: auto;
-  margin-right: 6px;
-  transform: translateY(1px);
+
+/* =========================================
+   GRID
+========================================= */
+
+.grid-atestado {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(12, minmax(0, 1fr));
+
+    gap: 8px 10px;
+
+    align-items: end;
 }
 
-/* Autocomplete */
-.autocomplete-sugestoes{
-  position: absolute;
-  background: var(--branco);
-  border: 1px solid var(--borda);
-  border-radius: 12px;
-  box-shadow: var(--sombra);
-  max-height: 220px;
-  overflow-y: auto;
-  z-index: 9999;
+
+/* =========================================
+   LINHA 1
+========================================= */
+
+.campo-paciente {
+    grid-column: span 8;
 }
 
-/* Cada sugestão (se você cria <div> dentro) */
-.autocomplete-sugestoes div{
-  padding: 10px 12px;
-  cursor: pointer;
-  font-size: 12px;
+
+.campo-cpf {
+    grid-column: span 4;
 }
 
-.autocomplete-sugestoes div:hover{
-  background: rgba(18,56,168,.06);
+
+/* =========================================
+   LINHA 2
+========================================= */
+
+.campo-data {
+    grid-column: span 3;
 }
 
-/* Responsivo */
-@media (max-width: 600px){
-  .card2{ padding: 14px; }
-  #cid{ min-width: 100%; }
-  .btn-pdf{ width: 100%; }
-}
-/* ===== Assinatura (checkbox + texto lado a lado) ===== */
-.assinatura-container{
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  text-align: left;
-  max-width: 900px;
-  font-size: 12px;
+
+.campo-entrada {
+    grid-column: span 3;
 }
 
-.assinatura-container label{
-  display: inline; /* sobrescreve o label global */
-  margin: 0;
-  font-weight: 700;
-  cursor: pointer;
+
+.campo-saida {
+    grid-column: span 3;
 }
 
-.assinatura-container input[type="checkbox"]{
-  margin: 0;
-  width: auto;
-  height: auto;
-  cursor: pointer;
+
+.campo-dias {
+    grid-column: span 3;
+}
+
+
+/* =========================================
+   LINHA 3
+========================================= */
+
+.campo-permissao-cid {
+    grid-column: span 3;
+}
+
+
+.campo-cid {
+    grid-column: span 9;
+}
+
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+/* =========================================
+   LABELS
+========================================= */
+
+.campo > label {
+
+    display: block;
+
+    margin: 0 0 3px;
+
+    color: var(--texto);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1.15;
+}
+
+
+/* =========================================
+   INPUTS / SELECT
+========================================= */
+
+.campo input,
+.campo select {
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 32px;
+
+    margin: 0;
+
+    padding: 0 8px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    background: var(--input-bg);
+
+    color: var(--texto);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 10px;
+
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease,
+        background .15s ease;
+}
+
+
+.campo input::placeholder {
+    color: #918B84;
+}
+
+
+.campo input:hover,
+.campo select:hover {
+
+    border-color: #C9C2B9;
+}
+
+
+.campo input:focus,
+.campo select:focus {
+
+    background: #FFFFFF;
+
+    border-color: var(--marca);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(154, 107, 63, .11);
+}
+
+
+/* =========================================
+   DESABILITADOS
+========================================= */
+
+#diasrepouso:disabled,
+#cid:disabled {
+
+    background: #EEEAE4;
+
+    color: #9A938B;
+
+    cursor: not-allowed;
+
+    opacity: .75;
+}
+
+
+/* =========================================
+   CHECK CID
+========================================= */
+
+.campo-permissao-cid {
+
+    display: flex;
+
+    justify-content: flex-end;
+}
+
+
+.check-cid {
+
+    width: 100%;
+
+    height: 32px;
+
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin: 0 !important;
+
+    padding: 0 8px;
+
+    background: var(--card-suave);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    cursor: pointer;
+}
+
+
+.check-cid input {
+
+    width: 14px;
+
+    height: 14px;
+
+    flex: 0 0 14px;
+
+    margin: 0;
+
+    padding: 0;
+
+    accent-color: var(--marca);
+
+    cursor: pointer;
+}
+
+
+.check-cid span {
+
+    color: var(--texto);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    line-height: 1.2;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   AUTOCOMPLETE
+========================================= */
+
+.autocomplete-wrap {
+
+    position: relative;
+
+    width: 100%;
+}
+
+
+.autocomplete-sugestoes {
+
+    position: absolute;
+
+    top: calc(100% + 4px);
+
+    left: 0;
+
+    right: 0;
+
+    z-index: 9999;
+
+    max-height: 190px;
+
+    overflow-y: auto;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    box-shadow:
+        0 8px 24px
+        rgba(73, 70, 65, .14);
+}
+
+
+.autocomplete-sugestoes:empty {
+    display: none;
+}
+
+
+.autocomplete-sugestoes div {
+
+    padding: 7px 9px;
+
+    cursor: pointer;
+
+    color: var(--texto);
+
+    font-size: 10px;
+
+    border-bottom:
+        1px solid var(--borda-suave);
+}
+
+
+.autocomplete-sugestoes div:last-child {
+    border-bottom: none;
+}
+
+
+.autocomplete-sugestoes div:hover {
+
+    background:
+        rgba(154, 107, 63, .08);
+}
+
+
+/* =========================================
+   AÇÕES
+========================================= */
+
+.acoes-atestado {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================
+   CARIMBO
+========================================= */
+
+.assinatura-container {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.assinatura-container input {
+
+    width: 14px;
+
+    height: 14px;
+
+    margin: 0;
+
+    accent-color: var(--marca);
+
+    cursor: pointer;
+}
+
+
+.assinatura-container label {
+
+    margin: 0;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   BOTÃO
+========================================= */
+
+.btn-pdf {
+
+    height: 32px;
+
+    padding: 0 11px;
+
+    border: 1px solid var(--marca);
+
+    border-radius: var(--radius-sm);
+
+    background: var(--marca);
+
+    color: #FFFFFF;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        transform .08s ease;
+}
+
+
+.btn-pdf:hover {
+
+    background: var(--marca-hover);
+
+    border-color: var(--marca-hover);
+
+    transform: translateY(-1px);
+}
+
+
+.btn-pdf:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+    .campo-paciente {
+        grid-column: span 7;
+    }
+
+
+    .campo-cpf {
+        grid-column: span 5;
+    }
+
+
+    .campo-data,
+    .campo-entrada,
+    .campo-saida,
+    .campo-dias {
+
+        grid-column: span 3;
+    }
+
+
+    .campo-permissao-cid {
+        grid-column: span 4;
+    }
+
+
+    .campo-cid {
+        grid-column: span 8;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    body.pagina-interna {
+        padding: 8px;
+    }
+
+
+    .tipo-atestado {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 7px;
+    }
+
+
+    .opcoes-atestado {
+        flex-wrap: wrap;
+    }
+
+
+    .grid-atestado > * {
+        grid-column: 1 / -1 !important;
+    }
+
+
+    .check-cid span {
+        white-space: normal;
+    }
+
+
+    .acoes-atestado {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .btn-pdf {
+        width: 100%;
+    }
+
 }

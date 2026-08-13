@@ -1,293 +1,963 @@
 /* =========================================
-   receita.css — RECEITUÁRIO (Simples/Controlada)
-   Tema Premium (Azul Royal + Bege)
+   RECEITUÁRIO
+   CINTHIA LEONE
+   FULL WIDTH / COMPACTO / PREMIUM
 ========================================= */
 
-:root{
-  --azul:#1238A8;
-  --azul-hover:#1E4BD8;
-  --azul-escuro:#0D2C82;
+:root {
 
-  --bege:#FAF3E7;
-  --bege-card:#F5E9DA;
+    --marca: #9A6B3F;
+    --marca-hover: #865B35;
 
-  --branco:#FFFFFF;
-  --texto:#1F2937;
-  --texto-fraco:#6B7280;
-  --borda:#E7E1D7;
+    --grafite: #494641;
+    --grafite-hover: #3D3A36;
 
-  --sombra: 0 10px 30px rgba(13,44,130,.10);
-  --radius: 14px;
+    --texto: #494641;
+    --texto-fraco: #6F6962;
 
-  --danger:#c62828;
-  --danger-hover:#b71c1c;
+    --fundo: #F6F3EE;
 
-  --ok:#1f7a3a;
-  --ok-hover:#196a32;
+    --card: #FFFFFF;
+    --card-suave: #F4F0EA;
+    --input-bg: #FBFAF8;
+
+    --borda: #DDD8D1;
+    --borda-suave: #EBE7E1;
+
+    --success: #58705D;
+
+    --danger: #A5524B;
+    --danger-hover: #91463F;
+
+    --sombra:
+        0 4px 16px rgba(73, 70, 65, .07);
+
+    --radius: 10px;
+    --radius-sm: 7px;
 }
 
-/* Reset básico */
-*{ box-sizing: border-box; }
 
-/* Base (página interna sem sidebar/flex) */
-body{
-  margin: 0;
-  padding: 16px;
-  font-family: Arial, sans-serif;
-  background: var(--bege);
-  color: var(--texto);
-  font-size: 12px;
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
 }
 
-/* Card central */
-.card2{
-  background: var(--branco);
-  padding: 16px;
-  border-radius: var(--radius);
-  max-width: 900px;
-  margin: 0 auto;
-  border: 1px solid var(--borda);
-  box-shadow: var(--sombra);
+
+html,
+body {
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
 }
 
-/* Título */
-h2{
-  text-align: center;
-  color: var(--azul-escuro);
-  font-size: 14px;
-  font-weight: 900;
-  margin: 0 0 14px 0;
 
-  padding: 12px 14px;
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--branco), var(--bege-card));
-  border: 1px solid var(--borda);
-  box-shadow: var(--sombra);
+/* =========================================
+   BODY
+========================================= */
+
+body {
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    padding: 10px !important;
+
+    background: var(--fundo);
+
+    color: var(--texto);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    overflow-x: hidden;
 }
 
-/* Texto do cabeçalho (Dra + CRO) */
-p{
-  margin: 0 0 12px 0;
-  color: var(--texto);
+
+/* =========================================
+   PÁGINA
+========================================= */
+
+.pagina-receita {
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
 }
 
-/* Labels padrão */
-label{
-  display: block;
-  margin: 10px 0 6px;
-  font-weight: 900;
-  text-align: left;
-  color: var(--texto);
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.cabecalho-receita {
+
+    width: 100%;
+
+    margin-bottom: 8px;
+
+    padding: 9px 12px;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-top:
+        3px solid var(--marca);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--sombra);
 }
 
-/* Seu <label2> existe no HTML (não é tag padrão, mas o browser aceita).
-   Vamos tratar como container pra dosagem. */
-label2{
-  display: block;
-  margin: 0;
+
+.cabecalho-receita h2 {
+
+    margin: 0;
+
+    padding: 0;
+
+    color: var(--grafite);
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    text-align: left;
 }
 
-/* Inputs / selects / textarea */
+
+.cabecalho-receita p {
+
+    margin: 3px 0 0;
+
+    color: var(--texto-fraco);
+
+    font-size: 11px;
+}
+
+
+.cabecalho-receita p span {
+
+    margin: 0 4px;
+
+    color: var(--marca);
+}
+
+
+/* =========================================
+   CARD PRINCIPAL
+========================================= */
+
+.card2 {
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    padding: 10px 12px;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
+}
+
+
+/* =========================================
+   TIPO DE RECEITA
+========================================= */
+
+.tipo-receita {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    min-height: 34px;
+
+    margin-bottom: 10px;
+
+    padding: 7px 10px;
+
+    background: var(--card-suave);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+}
+
+
+.titulo-tipo {
+
+    margin: 0;
+
+    color: var(--grafite);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+.opcoes-receita {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+}
+
+
+.opcao-tipo {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    color: var(--texto);
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.opcao-tipo input {
+
+    width: 14px;
+
+    height: 14px;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    accent-color: var(--marca);
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.grid-receita {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(12, minmax(0, 1fr));
+
+    gap: 8px 10px;
+
+    align-items: end;
+}
+
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    position: relative;
+}
+
+
+/* LINHA 1 */
+
+.campo-paciente {
+    grid-column: span 4;
+}
+
+
+.campo-cpf {
+    grid-column: span 2;
+}
+
+
+.campo-endereco {
+    grid-column: span 6;
+}
+
+
+/* LINHA 2 */
+
+.campo-medicamento {
+    grid-column: span 4;
+}
+
+
+.campo-dosagem {
+    grid-column: span 8;
+}
+
+
+/* LINHA 3 */
+
+.campo-observacao {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================
+   LABELS
+========================================= */
+
+label {
+
+    display: block;
+
+    margin: 0 0 3px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    color: var(--texto);
+
+    line-height: 1.15;
+}
+
+
+.campo-obrigatorio {
+
+    color: var(--danger);
+
+    font-weight: 800;
+}
+
+
+/* =========================================
+   INPUTS
+========================================= */
+
 input[type="text"],
 input[type="number"],
 select,
-textarea{
-  width: 100%;
-  border: 1px solid var(--borda);
-  border-radius: 12px;
-  padding: 10px 12px;
-  outline: none;
-  font-size: 12px;
-  background: var(--branco);
-  color: var(--texto);
+textarea {
+
+    width: 100%;
+
+    min-width: 0;
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    background: var(--input-bg);
+
+    color: var(--texto);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease,
+        background .15s ease;
 }
+
 
 input[type="text"],
 input[type="number"],
-select{
-  height: 36px;
-  padding: 0 10px;
+select {
+
+    height: 32px;
+
+    padding: 0 8px;
 }
 
-textarea{
-  min-height: 90px;
-  resize: vertical;
-  line-height: 1.4;
+
+textarea {
+
+    min-height: 48px;
+
+    max-height: 90px;
+
+    padding: 7px 8px;
+
+    resize: vertical;
+
+    line-height: 1.3;
 }
 
-/* Focus premium */
+
+input:hover,
+select:hover,
+textarea:hover {
+
+    border-color: #C9C2B9;
+}
+
+
 input:focus,
 select:focus,
-textarea:focus{
-  border-color: rgba(18,56,168,.45);
-  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+textarea:focus {
+
+    background: #FFFFFF;
+
+    border-color: var(--marca);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(154, 107, 63, .11);
 }
 
-/* Botões */
+
+/* =========================================
+   DOSAGEM
+========================================= */
+
+.dosagem-linha {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    flex-wrap: nowrap;
+
+    min-height: 32px;
+
+    white-space: nowrap;
+}
+
+
+.dosagem-linha select,
+.dosagem-linha input {
+
+    flex-shrink: 0;
+}
+
+
+.dosagem-linha span {
+
+    font-size: 10px;
+
+    color: var(--texto);
+
+    white-space: nowrap;
+}
+
+
+#tomardar {
+    width: 72px;
+}
+
+
+#quantidade {
+    width: 62px;
+}
+
+
+#unidade {
+    width: 128px;
+}
+
+
+#intervalo {
+    width: 62px;
+}
+
+
+#horas {
+    width: 62px;
+}
+
+
+#dias {
+    width: 62px;
+}
+
+
+#obs {
+    width: 90px;
+}
+
+
+/* =========================================
+   AUTOCOMPLETE
+========================================= */
+
+.autocomplete-sugestoes {
+
+    position: absolute;
+
+    top: calc(100% + 4px);
+
+    left: 0;
+
+    right: 0;
+
+    z-index: 1000;
+
+    max-height: 180px;
+
+    overflow-y: auto;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    box-shadow:
+        0 8px 24px
+        rgba(73, 70, 65, .14);
+}
+
+
+.autocomplete-sugestoes:empty {
+
+    display: none;
+}
+
+
+.autocomplete-sugestoes > div {
+
+    padding: 7px 9px;
+
+    border-bottom:
+        1px solid var(--borda-suave);
+
+    cursor: pointer;
+
+    font-size: 10px;
+}
+
+
+.autocomplete-sugestoes > div:last-child {
+
+    border-bottom: none;
+}
+
+
+.autocomplete-sugestoes > div:hover {
+
+    background:
+        rgba(154, 107, 63, .08);
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
 .btn-add,
 .btn-pdf,
-.btn-remove{
-  height: 36px;
-  padding: 0 14px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 900;
-  font-size: 12px;
-  color: #fff;
-  transition: transform .08s ease, filter .2s ease;
-  width: auto;
+.btn-remove {
+
+    height: 32px;
+
+    padding: 0 10px;
+
+    border-radius: var(--radius-sm);
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        transform .08s ease;
 }
 
-.btn-add{
-  background: var(--ok);
-}
-.btn-add:hover{
-  background: var(--ok-hover);
-  transform: translateY(-1px);
+
+.btn-add {
+
+    background: var(--marca);
+
+    color: #FFFFFF;
+
+    border:
+        1px solid var(--marca);
 }
 
-.btn-pdf{
-  background: var(--azul);
-}
-.btn-pdf:hover{
-  background: var(--azul-hover);
-  transform: translateY(-1px);
+
+.btn-add:hover {
+
+    background:
+        var(--marca-hover);
+
+    border-color:
+        var(--marca-hover);
+
+    transform:
+        translateY(-1px);
 }
 
-.btn-remove{
-  background: var(--danger);
-}
-.btn-remove:hover{
-  background: var(--danger-hover);
-  transform: translateY(-1px);
-}
 
-/* Lista de medicamentos (container) */
-.med-list{
-  margin-top: 12px;
-  width: 100%;
-}
+.btn-pdf {
 
-/* Se seus scripts montarem itens com botões remover, já fica alinhado */
-.med-item, .med-row, .item-med{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px 12px;
-  border: 1px solid var(--borda);
-  border-radius: 12px;
-  background: linear-gradient(180deg, var(--branco), var(--bege-card));
-  box-shadow: 0 8px 18px rgba(13,44,130,.06);
-  margin-bottom: 10px;
+    background:
+        var(--grafite);
+
+    color:
+        #FFFFFF;
+
+    border:
+        1px solid var(--grafite);
 }
 
-/* Texto dentro do item */
-.med-item span, .med-row span, .item-med span{
-  color: var(--texto);
-  font-weight: 700;
+
+.btn-pdf:hover {
+
+    background:
+        var(--grafite-hover);
+
+    border-color:
+        var(--grafite-hover);
+
+    transform:
+        translateY(-1px);
 }
 
-/* Autocomplete (nome e medicamento) */
-.autocomplete-sugestoes{
-  position: relative;
-  width: 100%;
-  max-width: 100%;
-  margin-top: 6px;
+
+.btn-remove {
+
+    background:
+        var(--danger);
+
+    color:
+        #FFFFFF;
+
+    border:
+        1px solid var(--danger);
 }
 
-.autocomplete-sugestoes .item,
-.autocomplete-sugestoes div{
-  background: var(--branco);
+
+.btn-remove:hover {
+
+    background:
+        var(--danger-hover);
+
+    border-color:
+        var(--danger-hover);
 }
 
-/* Se seu JS injeta DIVs dentro do #sugestoes/#sugestoesMed */
-#sugestoes, #sugestoesMed{
-  border: 1px solid var(--borda);
-  border-radius: 12px;
-  background: var(--branco);
-  box-shadow: 0 10px 30px rgba(13,44,130,.10);
-  overflow: hidden;
+
+/* =========================================
+   AÇÕES
+========================================= */
+
+.acoes-receita {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        flex-start;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    margin-top: 8px;
 }
 
-/* Opções do autocomplete (genérico) */
-#sugestoes > div,
-#sugestoesMed > div{
-  padding: 10px 12px;
-  cursor: pointer;
-  border-bottom: 1px solid rgba(231,225,215,.65);
-  font-weight: 700;
-  color: var(--texto);
+
+/* =========================================
+   CARIMBO
+========================================= */
+
+.assinatura-container {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin:
+        0 8px 0 0;
+
+    font-size: 10px;
 }
 
-#sugestoes > div:hover,
-#sugestoesMed > div:hover{
-  background: rgba(18,56,168,.06);
+
+.assinatura-container label {
+
+    display: inline;
+
+    margin: 0;
+
+    font-weight: 600;
+
+    cursor: pointer;
 }
 
-#sugestoes > div:last-child,
-#sugestoesMed > div:last-child{
-  border-bottom: none;
+
+.assinatura-container
+input[type="checkbox"] {
+
+    width: 14px;
+
+    height: 14px;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    accent-color: var(--marca);
 }
 
-/* Assinatura / carimbo */
-.assinatura-container{
-  margin-top: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-align: left;
-  font-size: 12px;
+
+/* =========================================
+   AVISO CONTROLADA
+========================================= */
+
+.aviso-controlada {
+
+    width: fit-content;
+
+    margin-top: 8px;
+
+    padding: 6px 9px;
+
+    background:
+        rgba(154, 107, 63, .08);
+
+    border:
+        1px solid
+        rgba(154, 107, 63, .18);
+
+    border-radius:
+        var(--radius-sm);
+
+    color:
+        var(--texto-fraco);
+
+    font-size:
+        10px;
 }
 
-/* Nas receitas você usa só o checkbox sem label. Se quiser texto "Carimbo",
-   é só adicionar o label no HTML. Mesmo assim, já deixo pronto: */
-.assinatura-container label{
-  display: inline;
-  margin: 0;
-  font-weight: 800;
-  cursor: pointer;
-  color: var(--texto);
+
+.aviso-controlada strong {
+
+    color: var(--marca);
 }
 
-.assinatura-container input[type="checkbox"],
-.assinatura-container .checkbox{
-  margin: 0;
-  width: auto;
-  height: auto;
-  cursor: pointer;
-}
 
-/* Área de dosagem (deixar “alinhadinho” mesmo com vários campos) */
-label2 > div{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  border: 1px solid var(--borda);
-  border-radius: 12px;
-  background: linear-gradient(180deg, var(--branco), var(--bege-card));
-}
+/* =========================================
+   LISTA MEDICAMENTOS
+========================================= */
 
-/* tirar estilos inline “feios” do textarea (se o inline existir, ele ganha; mas aqui ajuda em outros casos) */
-#observacao{
-  border: 1px solid var(--borda);
-  border-radius: 12px;
-  padding: 10px 12px;
-}
+.med-list {
 
-/* Responsivo */
-@media (max-width: 520px){
-  body{ padding: 12px; }
-  .card2{ padding: 14px; }
-
-  .btn-add, .btn-pdf, .btn-remove{
     width: 100%;
-  }
 
-  label2 > div{
-    gap: 10px;
-  }
+    margin-top: 8px;
+}
+
+
+.med-item,
+.med-row,
+.item-med {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    gap: 6px;
+
+    margin-bottom: 6px;
+
+    padding: 6px 8px;
+
+    background:
+        var(--card-suave);
+
+    border:
+        1px solid var(--borda);
+
+    border-radius:
+        var(--radius-sm);
+}
+
+
+.med-item span,
+.med-row span,
+.item-med span {
+
+    color: var(--texto);
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 760px) {
+
+    .tipo-receita {
+
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap: 7px;
+    }
+
+
+    .grid-receita > * {
+
+        grid-column:
+            span 6;
+    }
+
+
+    .campo-paciente,
+    .campo-endereco,
+    .campo-dosagem,
+    .campo-observacao {
+
+        grid-column:
+            1 / -1;
+    }
+
+
+    .dosagem-linha {
+
+        flex-wrap:
+            wrap;
+    }
+
+}
+
+
+@media (max-width: 520px) {
+
+    body {
+
+        padding:
+            8px !important;
+    }
+
+
+    .opcoes-receita {
+
+        flex-direction:
+            column;
+
+        align-items:
+            flex-start;
+
+        gap: 7px;
+    }
+
+
+    .grid-receita > * {
+
+        grid-column:
+            1 / -1;
+    }
+
+
+    .dosagem-linha {
+
+        align-items:
+            stretch;
+    }
+
+
+    .dosagem-linha select,
+    .dosagem-linha input {
+
+        width:
+            100% !important;
+    }
+
+
+    .dosagem-linha span {
+
+        display:
+            none;
+    }
+
+
+    .acoes-receita {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+
+    .assinatura-container {
+
+        margin-bottom:
+            4px;
+    }
+
+
+    .btn-add,
+    .btn-pdf {
+
+        width:
+            100%;
+    }
+
 }

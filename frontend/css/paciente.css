@@ -1,65 +1,249 @@
-body {
-  font-family: Arial, sans-serif;
-  padding: 20px;
+/* =========================================
+   ÁREA DO PACIENTE
+   IDENTIDADE CINTHIA LEONE
+   Compacto / Premium / Sistema SaaS
+========================================= */
+
+:root {
+    /* IDENTIDADE */
+    --marca: #9A6B3F;
+    --marca-hover: #865B35;
+
+    --grafite: #494641;
+    --grafite-hover: #3D3A36;
+
+    --cinza: #6F6962;
+
+    /* SUPERFÍCIES */
+    --fundo: #F6F3EE;
+    --card: #FFFFFF;
+    --card-suave: #F4F0EA;
+
+    /* TEXTO */
+    --texto: #494641;
+    --texto-fraco: #6F6962;
+
+    /* BORDAS */
+    --borda: #DDD8D1;
+    --borda-suave: #EBE7E1;
+
+    /* SOMBRA */
+    --sombra: 0 4px 16px rgba(73, 70, 65, 0.07);
+
+    /* FORMAS */
+    --radius: 10px;
+    --radius-sm: 7px;
 }
+
+
+/* =========================================
+   BASE
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+    margin: 0;
+
+    padding: 14px;
+
+    background: var(--fundo);
+
+    color: var(--texto);
+
+    font-size: 12px;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
 
 .container {
-  max-width: 1000px;
-  margin: 0 auto;
+    max-width: 1000px;
+
+    margin: 0 auto;
 }
 
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+header h1,
 h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
+    margin: 0 0 12px;
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    color: var(--grafite);
 }
+
+
+/* =========================================
+   BOTÕES GENÉRICOS
+========================================= */
 
 .botoes {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 12px;
+
+    flex-wrap: wrap;
 }
+
 
 .botoes button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #2196f3;
-  color: white;
-  cursor: pointer;
-  border-radius: 5px;
+    height: 34px;
+
+    padding: 0 12px;
+
+    border: 1px solid var(--marca);
+
+    background: var(--marca);
+
+    color: #FFFFFF;
+
+    cursor: pointer;
+
+    border-radius: var(--radius-sm);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition:
+        background .18s ease,
+        border-color .18s ease,
+        transform .08s ease,
+        box-shadow .18s ease;
 }
+
 
 .botoes button:hover {
-  background-color: #1976d2;
+    background: var(--marca-hover);
+
+    border-color: var(--marca-hover);
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 3px 8px rgba(154, 107, 63, 0.18);
 }
 
-iframe {
-  width: 100%;
-  height: 600px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-header h1 {
-  margin-bottom: 16px;
-}
+
+/* =========================================
+   MENU DO PACIENTE
+========================================= */
 
 .menu-paciente {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 14px;
-  flex-wrap: wrap;
+    display: flex;
+
+    gap: 6px;
+
+    margin-bottom: 10px;
+
+    flex-wrap: wrap;
 }
+
+
+/* Aba normal */
 
 .btn-aba {
-  background: #2f8de4;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 18px;
-  font-weight: 600;
-  cursor: pointer;
+    height: 32px;
+
+    padding: 0 11px;
+
+    background: #FFFFFF;
+
+    color: var(--grafite);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background .18s ease,
+        border-color .18s ease,
+        color .18s ease,
+        transform .08s ease;
 }
+
+
+.btn-aba:hover {
+    background: var(--card-suave);
+
+    border-color: #CFC8BF;
+
+    transform: translateY(-1px);
+}
+
+
+/* Aba ativa */
 
 .btn-aba.ativo {
-  background: #1c4ea3;
+    background: var(--marca);
+
+    border-color: var(--marca);
+
+    color: #FFFFFF;
 }
 
+
+/* =========================================
+   IFRAME
+========================================= */
+
+iframe {
+    width: 100%;
+
+    height: 600px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius);
+
+    background: var(--card);
+
+    box-shadow: var(--sombra);
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 12px;
+    }
+
+    .menu-paciente {
+        gap: 5px;
+    }
+
+    .btn-aba {
+        flex: 1;
+
+        min-width: 120px;
+    }
+
+    iframe {
+        height: 520px;
+    }
+
+}

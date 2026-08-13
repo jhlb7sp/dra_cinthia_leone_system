@@ -2,181 +2,564 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Controle de Manutenções</title>
-  <link rel="stylesheet" href="css/retorno-pacientes.css">
-  <script src="js/retorno-pacientes.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Controle de Manutenções</title>
+
+    <link rel="stylesheet" href="css/retorno-pacientes.css">
+
+    <script src="js/retorno-pacientes.js" defer></script>
 </head>
 
 <body>
-  <main class="container">
-    <header class="topo-pagina">
-      <div>
-        <h1>Controle de Manutenções</h1>
-        <p>Acompanhamento de retornos periódicos dos pacientes.</p>
-      </div>
-      <button type="button" id="btnAbrirFormulario">Nova Manutenção</button>
-    </header>
 
-    <section class="painel-formulario" id="painelFormulario" hidden>
-      <form id="formManutencao" autocomplete="off">
-        <input type="hidden" id="manutencaoId">
-        <input type="hidden" id="pacienteId">
-        <input type="hidden" id="pacienteCpf">
-        <input type="hidden" id="pacienteTelefone">
+    <main class="container">
 
-        <div class="campo campo-paciente">
-          <label for="pacienteBusca">Paciente *</label>
-          <div class="autocomplete-wrap">
-            <input type="text" id="pacienteBusca" placeholder="Digite o nome do paciente" required>
-            <div id="listaPacientes" class="autocomplete-list" hidden></div>
-          </div>
+        <!-- =========================================
+             CABEÇALHO
+        ========================================== -->
+
+        <header class="topo-pagina">
+
+            <div>
+                <h1>Controle de Manutenções</h1>
+
+                <p>
+                    Acompanhamento de retornos periódicos dos pacientes.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                id="btnAbrirFormulario"
+            >
+                Nova Manutenção
+            </button>
+
+        </header>
+
+
+        <!-- =========================================
+             FORMULÁRIO
+        ========================================== -->
+
+        <section
+            class="painel-formulario"
+            id="painelFormulario"
+            hidden
+        >
+
+            <form
+                id="formManutencao"
+                autocomplete="off"
+            >
+
+                <input
+                    type="hidden"
+                    id="manutencaoId"
+                >
+
+                <input
+                    type="hidden"
+                    id="pacienteId"
+                >
+
+                <input
+                    type="hidden"
+                    id="pacienteCpf"
+                >
+
+                <input
+                    type="hidden"
+                    id="pacienteTelefone"
+                >
+
+
+                <!-- PACIENTE -->
+
+                <div class="campo campo-paciente">
+
+                    <label for="pacienteBusca">
+                        Paciente *
+                    </label>
+
+                    <div class="autocomplete-wrap">
+
+                        <input
+                            type="text"
+                            id="pacienteBusca"
+                            placeholder="Digite o nome do paciente"
+                            required
+                        >
+
+                        <div
+                            id="listaPacientes"
+                            class="autocomplete-list"
+                            hidden
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TIPO -->
+
+                <div class="campo campo-tipo">
+
+                    <label for="tipoManutencao">
+                        Tipo *
+                    </label>
+
+                    <select
+                        id="tipoManutencao"
+                        required
+                    >
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option value="Facetas em resina">
+                            Facetas em resina
+                        </option>
+
+                        <option value="Ortodontia">
+                            Ortodontia
+                        </option>
+
+                        <option value="Limpeza">
+                            Limpeza
+                        </option>
+                    </select>
+
+                </div>
+
+
+                <!-- ÚLTIMO ATENDIMENTO -->
+
+                <div class="campo campo-ultimo">
+
+                    <label for="dataUltimoAtendimento">
+                        Último atendimento
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataUltimoAtendimento"
+                    >
+
+                </div>
+
+
+                <!-- PRÓXIMA -->
+
+                <div class="campo campo-proxima">
+
+                    <label for="dataProximaManutencao">
+                        Próxima manutenção *
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataProximaManutencao"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- OBSERVAÇÕES -->
+
+                <div class="campo campo-observacoes">
+
+                    <label for="observacoes">
+                        Observações
+                    </label>
+
+                    <textarea
+                        id="observacoes"
+                        rows="2"
+                        placeholder="Detalhes importantes para o contato"
+                    ></textarea>
+
+                </div>
+
+
+                <!-- AÇÕES -->
+
+                <div class="acoes-formulario">
+
+                    <button
+                        type="submit"
+                        id="btnSalvar"
+                    >
+                        Salvar
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-secundario"
+                        id="btnCancelar"
+                    >
+                        Cancelar
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- =========================================
+             FILTROS
+        ========================================== -->
+
+        <section class="filtros">
+
+            <div class="campo campo-filtro-busca">
+
+                <label for="filtroTermo">
+                    Buscar
+                </label>
+
+                <input
+                    type="text"
+                    id="filtroTermo"
+                    placeholder="Paciente, CPF ou telefone"
+                >
+
+            </div>
+
+
+            <div class="campo campo-filtro-tipo">
+
+                <label for="filtroTipo">
+                    Tipo
+                </label>
+
+                <select id="filtroTipo">
+
+                    <option value="">
+                        Todos
+                    </option>
+
+                    <option value="Facetas em resina">
+                        Facetas em resina
+                    </option>
+
+                    <option value="Ortodontia">
+                        Ortodontia
+                    </option>
+
+                    <option value="Limpeza">
+                        Limpeza
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="campo campo-filtro-situacao">
+
+                <label for="filtroSituacao">
+                    Situação
+                </label>
+
+                <select id="filtroSituacao">
+
+                    <option value="">
+                        Todas
+                    </option>
+
+                    <option value="pendente">
+                        Pendente
+                    </option>
+
+                    <option value="agendado">
+                        Agendado
+                    </option>
+
+                    <option value="concluido">
+                        Concluído
+                    </option>
+
+                    <option value="cancelado">
+                        Cancelado
+                    </option>
+
+                    <option value="arquivado">
+                        Arquivado
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <label class="checkbox-filtro">
+
+                <input
+                    type="checkbox"
+                    id="filtroAtencao"
+                >
+
+                <span>
+                    Vencendo ou vencidos
+                </span>
+
+            </label>
+
+
+            <div class="acoes-filtros">
+
+                <button
+                    type="button"
+                    id="btnFiltrar"
+                >
+                    Filtrar
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-secundario"
+                    id="btnLimparFiltros"
+                >
+                    Limpar
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             RESUMO
+        ========================================== -->
+
+        <section class="resumo">
+
+            <div>
+
+                <strong id="totalManutencoes">
+                    0
+                </strong>
+
+                <span>
+                    manutenções encontradas
+                </span>
+
+            </div>
+
+
+            <div
+                id="mensagemLista"
+                class="mensagem-lista"
+            ></div>
+
+        </section>
+
+
+        <!-- =========================================
+             TABELA
+        ========================================== -->
+
+        <section class="tabela-card">
+
+            <div class="tabela-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Paciente</th>
+
+                            <th>Tipo</th>
+
+                            <th>Último atendimento</th>
+
+                            <th>Próxima</th>
+
+                            <th>Prazo</th>
+
+                            <th>Situação</th>
+
+                            <th>Ações</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="tabelaManutencoes">
+
+                        <tr>
+
+                            <td colspan="7">
+                                Carregando manutenções...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             MODAL CONCLUSÃO
+        ========================================== -->
+
+        <div
+            id="modalConclusao"
+            class="modal"
+            hidden
+        >
+
+            <div class="modal-content modal-menor">
+
+                <div class="modal-header">
+
+                    <div>
+
+                        <h2>
+                            Concluir Manutenção
+                        </h2>
+
+                        <p id="subtituloConclusao"></p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn-fechar-modal"
+                        id="btnFecharConclusao"
+                    >
+                        Fechar
+                    </button>
+
+                </div>
+
+
+                <div class="modal-body">
+
+                    <div class="campo">
+
+                        <label for="dataRealizacao">
+                            Data de realização *
+                        </label>
+
+                        <input
+                            type="date"
+                            id="dataRealizacao"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="campo">
+
+                        <label for="observacaoConclusao">
+                            Observação da manutenção
+                        </label>
+
+                        <textarea
+                            id="observacaoConclusao"
+                            rows="3"
+                            placeholder="Ex: fio utilizado, ativação, conduta realizada..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <div class="acoes-formulario modal-acoes">
+
+                        <button
+                            type="button"
+                            class="btn-concluir"
+                            id="btnConfirmarConclusao"
+                        >
+                            Concluir e Gerar Próxima
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn-secundario"
+                            id="btnCancelarConclusao"
+                        >
+                            Cancelar
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="campo">
-          <label for="tipoManutencao">Tipo *</label>
-          <select id="tipoManutencao" required>
-            <option value="">Selecione</option>
-            <option value="Facetas em resina">Facetas em resina</option>
-            <option value="Ortodontia">Ortodontia</option>
-            <option value="Limpeza">Limpeza</option>
-          </select>
+
+        <!-- =========================================
+             MODAL HISTÓRICO
+        ========================================== -->
+
+        <div
+            id="modalHistorico"
+            class="modal"
+            hidden
+        >
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+
+                    <div>
+
+                        <h2 id="tituloHistorico">
+                            Histórico
+                        </h2>
+
+                        <p id="subtituloHistorico"></p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="btn-fechar-modal"
+                        id="btnFecharHistorico"
+                    >
+                        Fechar
+                    </button>
+
+                </div>
+
+
+                <div class="modal-body">
+
+                    <div
+                        id="listaHistorico"
+                        class="lista-historico"
+                    ></div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="campo">
-          <label for="dataUltimoAtendimento">Último atendimento</label>
-          <input type="date" id="dataUltimoAtendimento">
-        </div>
+    </main>
 
-        <div class="campo">
-          <label for="dataProximaManutencao">Próxima manutenção *</label>
-          <input type="date" id="dataProximaManutencao" required>
-        </div>
-
-        <div class="campo campo-observacoes">
-          <label for="observacoes">Observações</label>
-          <textarea id="observacoes" rows="3" placeholder="Detalhes importantes para o contato"></textarea>
-        </div>
-
-        <div class="acoes-formulario">
-          <button type="submit" id="btnSalvar">Salvar</button>
-          <button type="button" class="btn-secundario" id="btnCancelar">Cancelar</button>
-        </div>
-      </form>
-    </section>
-
-    <section class="filtros">
-      <div class="campo">
-        <label for="filtroTermo">Buscar</label>
-        <input type="text" id="filtroTermo" placeholder="Paciente, CPF ou telefone">
-      </div>
-
-      <div class="campo">
-        <label for="filtroTipo">Tipo</label>
-        <select id="filtroTipo">
-          <option value="">Todos</option>
-          <option value="Facetas em resina">Facetas em resina</option>
-          <option value="Ortodontia">Ortodontia</option>
-          <option value="Limpeza">Limpeza</option>
-        </select>
-      </div>
-
-      <div class="campo">
-        <label for="filtroSituacao">Situação</label>
-        <select id="filtroSituacao">
-          <option value="">Todas</option>
-          <option value="pendente">Pendente</option>
-          <option value="agendado">Agendado</option>
-          <option value="concluido">Concluído</option>
-          <option value="cancelado">Cancelado</option>
-          <option value="arquivado">Arquivado</option>
-        </select>
-      </div>
-
-      <label class="checkbox-filtro">
-        <input type="checkbox" id="filtroAtencao">
-        <span>Vencendo ou vencidos</span>
-      </label>
-
-      <div class="acoes-filtros">
-        <button type="button" id="btnFiltrar">Filtrar</button>
-        <button type="button" class="btn-secundario" id="btnLimparFiltros">Limpar</button>
-      </div>
-    </section>
-
-    <section class="resumo">
-      <div>
-        <strong id="totalManutencoes">0</strong>
-        <span>manutenções encontradas</span>
-      </div>
-      <div id="mensagemLista" class="mensagem-lista"></div>
-    </section>
-
-    <section class="tabela-card">
-      <div class="tabela-wrapper">
-        <table>
-          <thead>
-            <tr>
-              <th>Paciente</th>
-              <th>Tipo</th>
-              <th>Último atendimento</th>
-              <th>Próxima</th>
-              <th>Prazo</th>
-              <th>Situação</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody id="tabelaManutencoes">
-            <tr>
-              <td colspan="7">Carregando manutenções...</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <div id="modalConclusao" class="modal" hidden>
-      <div class="modal-content modal-menor">
-        <div class="modal-header">
-          <div>
-            <h2>Concluir Manutenção</h2>
-            <p id="subtituloConclusao"></p>
-          </div>
-          <button type="button" class="btn-fechar-modal" id="btnFecharConclusao">Fechar</button>
-        </div>
-        <div class="modal-body">
-          <div class="campo">
-            <label for="dataRealizacao">Data de realização *</label>
-            <input type="date" id="dataRealizacao" required>
-          </div>
-          <div class="campo">
-            <label for="observacaoConclusao">Observação da manutenção</label>
-            <textarea id="observacaoConclusao" rows="4" placeholder="Ex: fio utilizado, ativação, conduta realizada..."></textarea>
-          </div>
-          <div class="acoes-formulario modal-acoes">
-            <button type="button" class="btn-concluir" id="btnConfirmarConclusao">Concluir e Gerar Próxima</button>
-            <button type="button" class="btn-secundario" id="btnCancelarConclusao">Cancelar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div id="modalHistorico" class="modal" hidden>
-      <div class="modal-content">
-        <div class="modal-header">
-          <div>
-            <h2 id="tituloHistorico">Histórico</h2>
-            <p id="subtituloHistorico"></p>
-          </div>
-          <button type="button" class="btn-fechar-modal" id="btnFecharHistorico">Fechar</button>
-        </div>
-        <div class="modal-body">
-          <div id="listaHistorico" class="lista-historico"></div>
-        </div>
-      </div>
-    </div>
-  </main>
 </body>
 
 </html>

@@ -1,0 +1,1044 @@
+/* =========================================
+   PEDIDO ODONTOLÓGICO
+   CINTHIA LEONE
+   FULL WIDTH / COMPACTO / PREMIUM
+========================================= */
+
+:root {
+
+    --marca: #9A6B3F;
+    --marca-hover: #865B35;
+
+    --grafite: #494641;
+    --grafite-hover: #3D3A36;
+
+    --texto: #494641;
+    --texto-fraco: #6F6962;
+
+    --fundo: #F6F3EE;
+
+    --card: #FFFFFF;
+    --card-suave: #F4F0EA;
+    --input-bg: #FBFAF8;
+
+    --borda: #DDD8D1;
+    --borda-suave: #EBE7E1;
+
+    --success: #58705D;
+
+    --warning: #B48745;
+
+    --danger: #A5524B;
+    --danger-hover: #91463F;
+
+    --sombra:
+        0 4px 16px rgba(73, 70, 65, .07);
+
+    --radius: 10px;
+    --radius-sm: 7px;
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+
+    width: 100%;
+    min-height: 100vh;
+
+    margin: 0;
+    padding: 10px;
+
+    background: var(--fundo);
+
+    color: var(--texto);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PÁGINA
+========================================= */
+
+.pagina-pedido {
+
+    width: 100%;
+
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.cabecalho-pagina {
+
+    width: 100%;
+
+    margin-bottom: 8px;
+
+    padding: 9px 12px;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+    border-top: 3px solid var(--marca);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
+}
+
+
+.cabecalho-pagina h2 {
+
+    margin: 0;
+
+    color: var(--grafite);
+
+    font-size: 15px;
+
+    font-weight: 800;
+}
+
+
+.cabecalho-pagina p {
+
+    margin: 3px 0 0;
+
+    color: var(--texto-fraco);
+
+    font-size: 11px;
+}
+
+
+/* =========================================
+   CARD PRINCIPAL
+========================================= */
+
+.card-pedido {
+
+    width: 100%;
+
+    padding: 10px 12px;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
+}
+
+
+/* =========================================
+   TIPO DE PEDIDO
+========================================= */
+
+.tipo-pedido {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    min-height: 36px;
+
+    margin-bottom: 10px;
+
+    padding: 6px 8px;
+
+    background: var(--card-suave);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+}
+
+
+.titulo-tipo {
+
+    margin: 0;
+
+    color: var(--grafite);
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   OPÇÕES DO PEDIDO
+========================================= */
+
+.opcoes-pedido {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    flex-wrap: wrap;
+}
+
+
+/* transforma radio em botão */
+
+.opcao-pedido {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    margin: 0;
+
+    cursor: pointer;
+}
+
+
+.opcao-pedido input {
+
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.opcao-pedido span {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 28px;
+
+    padding: 0 10px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 6px;
+
+    background: #FFFFFF;
+
+    color: var(--grafite);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        color .15s ease,
+        transform .08s ease;
+}
+
+
+.opcao-pedido:hover span {
+
+    border-color: #C9C2B9;
+
+    background: #FAF8F5;
+}
+
+
+/* selecionado */
+
+.opcao-pedido input:checked + span {
+
+    background: var(--grafite);
+
+    border-color: var(--grafite);
+
+    color: #FFFFFF;
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.grid-pedido {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(12, minmax(0, 1fr));
+
+    gap: 8px 10px;
+
+    align-items: end;
+
+    width: 100%;
+}
+
+
+/* =========================================
+   PACIENTE
+========================================= */
+
+.campo-paciente {
+
+    grid-column: span 8;
+}
+
+
+/* =========================================
+   DOCUMENTAÇÃO
+========================================= */
+
+.campo-documentacao {
+
+    grid-column: span 4;
+}
+
+
+/* =========================================
+   DENTE
+========================================= */
+
+.campo-dente {
+
+    grid-column: span 2;
+}
+
+
+/* =========================================
+   REGIÃO
+========================================= */
+
+.campo-regiao {
+
+    grid-column: span 3;
+}
+
+
+/* =========================================
+   ADICIONAR
+========================================= */
+
+.campo-adicionar {
+
+    grid-column: span 2;
+}
+
+
+/* =========================================
+   SOLICITAÇÃO
+========================================= */
+
+.campo-solicitacao {
+
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================
+   HIDDEN
+========================================= */
+
+[hidden] {
+
+    display: none !important;
+}
+
+
+/* =========================================
+   CAMPO BASE
+========================================= */
+
+.campo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+
+    position: relative;
+}
+
+
+/* =========================================
+   LABELS
+========================================= */
+
+.campo > label {
+
+    display: block;
+
+    margin: 0 0 3px;
+
+    color: var(--texto);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1.15;
+}
+
+
+/* =========================================
+   INPUT / SELECT / TEXTAREA
+========================================= */
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+
+    width: 100%;
+
+    min-width: 0;
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    background: var(--input-bg);
+
+    color: var(--texto);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease,
+        background .15s ease;
+}
+
+
+input[type="text"],
+input[type="number"],
+select {
+
+    height: 32px;
+
+    padding: 0 8px;
+}
+
+
+textarea {
+
+    min-height: 72px;
+
+    max-height: 150px;
+
+    padding: 7px 8px;
+
+    resize: vertical;
+
+    line-height: 1.35;
+}
+
+
+input::placeholder,
+textarea::placeholder {
+
+    color: #918B84;
+}
+
+
+input:hover,
+select:hover,
+textarea:hover {
+
+    border-color: #C9C2B9;
+}
+
+
+input:focus,
+select:focus,
+textarea:focus {
+
+    background: #FFFFFF;
+
+    border-color: var(--marca);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(154, 107, 63, .11);
+}
+
+
+/* =========================================
+   AUTOCOMPLETE
+========================================= */
+
+.autocomplete-wrap {
+
+    position: relative;
+
+    width: 100%;
+}
+
+
+.autocomplete-sugestoes {
+
+    position: absolute;
+
+    top: calc(100% + 4px);
+
+    left: 0;
+    right: 0;
+
+    z-index: 9999;
+
+    max-height: 190px;
+
+    overflow-y: auto;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    box-shadow:
+        0 8px 24px
+        rgba(73, 70, 65, .14);
+}
+
+
+.autocomplete-sugestoes:empty {
+
+    display: none;
+}
+
+
+.autocomplete-sugestoes > div {
+
+    padding: 7px 9px;
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    color: var(--texto);
+
+    border-bottom:
+        1px solid var(--borda-suave);
+}
+
+
+.autocomplete-sugestoes > div:last-child {
+
+    border-bottom: none;
+}
+
+
+.autocomplete-sugestoes > div:hover {
+
+    background:
+        rgba(154, 107, 63, .08);
+}
+
+
+/* =========================================
+   DOCUMENTAÇÃO SIMPLES / COMPLETA
+========================================= */
+
+.opcoes-documentacao {
+
+    height: 32px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 0 8px;
+
+    background: var(--card-suave);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+}
+
+
+.opcoes-documentacao label {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    margin: 0;
+
+    cursor: pointer;
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.opcoes-documentacao input {
+
+    width: 14px;
+
+    height: 14px;
+
+    margin: 0;
+
+    accent-color: var(--marca);
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+.btn-add,
+.btn-pdf {
+
+    height: 32px;
+
+    padding: 0 10px;
+
+    border-radius: var(--radius-sm);
+
+    cursor: pointer;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        transform .08s ease;
+}
+
+
+/* ADICIONAR */
+
+.btn-add {
+
+    width: 100%;
+
+    background: var(--marca);
+
+    border: 1px solid var(--marca);
+
+    color: #FFFFFF;
+}
+
+
+.btn-add:hover {
+
+    background: var(--marca-hover);
+
+    border-color: var(--marca-hover);
+
+    transform: translateY(-1px);
+}
+
+
+/* PDF */
+
+.btn-pdf {
+
+    background: var(--grafite);
+
+    border: 1px solid var(--grafite);
+
+    color: #FFFFFF;
+}
+
+
+.btn-pdf:hover {
+
+    background: var(--grafite-hover);
+
+    border-color: var(--grafite-hover);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   ÁREA DE ITENS
+========================================= */
+
+.itens-pedido {
+
+    width: 100%;
+
+    margin-top: 8px;
+
+    padding: 8px 10px;
+
+    background: var(--card-suave);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+}
+
+
+.itens-pedido-titulo {
+
+    margin-bottom: 6px;
+}
+
+
+.itens-pedido-titulo span {
+
+    color: var(--grafite);
+
+    font-size: 10px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================
+   LISTA DE ITENS
+========================================= */
+
+.lista-itens-pedido {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    flex-wrap: wrap;
+}
+
+
+/* item criado pelo JS */
+
+.item-pedido {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    min-height: 26px;
+
+    padding: 3px 5px 3px 8px;
+
+    background: #FFFFFF;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 999px;
+
+    color: var(--texto);
+
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================
+   REMOVER ITEM
+========================================= */
+
+.btn-remover-item,
+.btn-removerdente {
+
+    width: 20px;
+
+    height: 20px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 0;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        rgba(165, 82, 75, .10);
+
+    color: var(--danger);
+
+    cursor: pointer;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    transition:
+        background .15s ease,
+        color .15s ease;
+}
+
+
+.btn-remover-item:hover,
+.btn-removerdente:hover {
+
+    background: var(--danger);
+
+    color: #FFFFFF;
+}
+
+
+/* =========================================
+   AÇÕES FINAIS
+========================================= */
+
+.acoes-pedido {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 10px;
+}
+
+
+/* =========================================
+   CARIMBO
+========================================= */
+
+.assinatura-container {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+
+.assinatura-container input {
+
+    width: 14px;
+
+    height: 14px;
+
+    margin: 0;
+
+    accent-color: var(--marca);
+
+    cursor: pointer;
+}
+
+
+.assinatura-container label {
+
+    margin: 0;
+
+    color: var(--texto);
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .campo-paciente {
+
+        grid-column: span 7;
+    }
+
+
+    .campo-documentacao {
+
+        grid-column: span 5;
+    }
+
+
+    .campo-regiao {
+
+        grid-column: span 4;
+    }
+
+
+    .campo-dente {
+
+        grid-column: span 3;
+    }
+
+
+    .campo-adicionar {
+
+        grid-column: span 3;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+    body {
+
+        padding: 8px;
+    }
+
+
+    .tipo-pedido {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 7px;
+    }
+
+
+    .opcoes-pedido {
+
+        width: 100%;
+    }
+
+
+    .opcao-pedido {
+
+        flex: 1 1 auto;
+    }
+
+
+    .opcao-pedido span {
+
+        width: 100%;
+    }
+
+
+    .grid-pedido > * {
+
+        grid-column:
+            1 / -1 !important;
+    }
+
+
+    .acoes-pedido {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .btn-pdf {
+
+        width: 100%;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE PEQUENO
+========================================= */
+
+@media (max-width: 420px) {
+
+    .opcoes-pedido {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+
+    .opcao-pedido:last-child {
+
+        grid-column:
+            1 / -1;
+    }
+
+
+    .opcoes-documentacao {
+
+        height: auto;
+
+        min-height: 32px;
+
+        flex-wrap: wrap;
+
+        padding: 6px 8px;
+    }
+
+}

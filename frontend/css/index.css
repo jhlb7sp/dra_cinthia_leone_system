@@ -1,140 +1,289 @@
 /* =========================================
-   LOGIN (index) — PREMIUM Azul Royal + Bege
+   LOGIN — IDENTIDADE CINTHIA LEONE
+   Compacto / Premium / Elegante
 ========================================= */
 
-:root{
-  --azul:#1238A8;
-  --azul-hover:#1E4BD8;
-  --azul-escuro:#0D2C82;
+:root {
+    /* IDENTIDADE */
+    --marca: #9A6B3F;
+    --marca-hover: #865B35;
 
-  --bege:#FAF3E7;
-  --bege-card:#F5E9DA;
+    --grafite: #494641;
+    --grafite-hover: #3D3A36;
 
-  --branco:#FFFFFF;
-  --texto:#1F2937;
-  --texto-fraco:#6B7280;
-  --borda:#E7E1D7;
+    --cinza: #6F6962;
+    --cinza-claro: #918B84;
 
-  --sombra: 0 18px 50px rgba(13,44,130,.14);
-  --radius: 18px;
+    /* SUPERFÍCIES */
+    --fundo: #F6F3EE;
+    --card: #FFFFFF;
+    --card-suave: #F4F0EA;
+    --input-bg: #FBFAF8;
+
+    /* TEXTO */
+    --texto: #494641;
+    --texto-fraco: #6F6962;
+
+    /* BORDAS */
+    --borda: #DDD8D1;
+    --borda-suave: #EBE7E1;
+
+    /* SOMBRAS */
+    --sombra: 0 18px 45px rgba(73, 70, 65, 0.12);
+
+    /* FORMAS */
+    --radius: 14px;
+    --radius-sm: 7px;
 }
 
-/* base */
-html, body{
-  height: 100%;
+
+/* =========================================
+   BASE
+========================================= */
+
+html,
+body {
+    height: 100%;
 }
 
-body.login{
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 18px;
-  font-family: Arial, sans-serif;
-  color: var(--texto);
 
-  /* fundo premium */
-  background:
-    radial-gradient(900px 420px at 15% 15%, rgba(18,56,168,.12), transparent 55%),
-    radial-gradient(900px 420px at 85% 75%, rgba(176,137,46,.12), transparent 55%),
-    var(--bege);
+body.login {
+    margin: 0;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 18px;
+
+    font-family: Arial, sans-serif;
+
+    color: var(--texto);
+
+    background:
+        radial-gradient(
+            800px 380px at 15% 15%,
+            rgba(154, 107, 63, 0.10),
+            transparent 55%
+        ),
+        radial-gradient(
+            800px 380px at 85% 80%,
+            rgba(73, 70, 65, 0.08),
+            transparent 55%
+        ),
+        var(--fundo);
 }
 
-/* Se existir .login no HTML, mantém sem interferir */
-.login{ padding: 0 !important; }
 
-/* Card */
-.card{
-  background: var(--branco);
-  width: 100%;
-  max-width: 480px;
-  text-align: center;
+/* Evita conflito com a classe login */
 
-  padding: 34px 30px 28px;
-  border-radius: var(--radius);
-  border: 1px solid var(--borda);
-  box-shadow: var(--sombra);
+.login {
+    padding: 0 !important;
 }
 
-/* Logo */
-.logo{
-  width: 360px;
-  max-width: 100%;
-  margin: 0 auto 16px;
-  display: block;
+
+/* =========================================
+   CARD
+========================================= */
+
+.card {
+    width: 100%;
+
+    max-width: 430px;
+
+    background: var(--card);
+
+    text-align: center;
+
+    padding: 28px 26px 24px;
+
+    border-radius: var(--radius);
+
+    border: 1px solid var(--borda);
+
+    box-shadow: var(--sombra);
 }
 
-/* Inputs */
-.card input{
-  width: 100%;
-  height: 42px;
-  padding: 0 12px;
-  margin-bottom: 12px;
 
-  border-radius: 12px;
-  border: 1px solid var(--borda);
-  box-sizing: border-box;
-  outline: none;
-  font-size: 12px;
-  background: var(--branco);
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+    width: 310px;
+
+    max-width: 100%;
+
+    margin: 0 auto 18px;
+
+    display: block;
 }
 
-.card input:focus{
-  border-color: rgba(18,56,168,.45);
-  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.card input {
+    width: 100%;
+
+    height: 40px;
+
+    padding: 0 12px;
+
+    margin-bottom: 10px;
+
+    border-radius: var(--radius-sm);
+
+    border: 1px solid var(--borda);
+
+    box-sizing: border-box;
+
+    outline: none;
+
+    font-size: 12px;
+
+    background: var(--input-bg);
+
+    color: var(--texto);
+
+    transition:
+        border-color .18s ease,
+        box-shadow .18s ease,
+        background .18s ease;
 }
 
-.card input::placeholder{
-  color: #9CA3AF;
+
+.card input:hover {
+    border-color: #C9C2B9;
 }
 
-/* Botão login */
-.btn-login{
-  width: 100%;
-  height: 42px;
-  border-radius: 12px;
-  border: none;
 
-  background: var(--azul);
-  color: #fff;
-  font-weight: 900;
-  cursor: pointer;
-  transition: transform .08s ease, filter .2s ease;
-  letter-spacing: .2px;
+.card input:focus {
+    background: #FFFFFF;
+
+    border-color: var(--marca);
+
+    box-shadow: 0 0 0 3px rgba(154, 107, 63, 0.12);
 }
 
-.btn-login:hover{
-  filter: brightness(1.05);
-  transform: translateY(-1px);
+
+.card input::placeholder {
+    color: var(--cinza-claro);
 }
 
-.btn-login:active{
-  transform: translateY(0);
+
+/* =========================================
+   BOTÃO LOGIN
+========================================= */
+
+.btn-login {
+    width: 100%;
+
+    height: 40px;
+
+    border-radius: var(--radius-sm);
+
+    border: 1px solid var(--marca);
+
+    background: var(--marca);
+
+    color: #FFFFFF;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    letter-spacing: .15px;
+
+    transition:
+        background .18s ease,
+        border-color .18s ease,
+        transform .08s ease,
+        box-shadow .18s ease;
 }
 
-/* Senha com "olho" */
-.senha-container{
-  position: relative;
-  width: 100%;
+
+.btn-login:hover {
+    background: var(--marca-hover);
+
+    border-color: var(--marca-hover);
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 4px 10px rgba(154, 107, 63, 0.20);
 }
 
-.senha-container input{
-  width: 100%;
-  padding-right: 40px;
+
+.btn-login:active {
+    transform: translateY(0);
+
+    box-shadow: none;
 }
 
-.toggle-senha{
-  position: absolute;
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  color: var(--texto-fraco);
-  font-size: 16px;
-  transition: color 0.2s ease;
+
+/* =========================================
+   SENHA / OLHO
+========================================= */
+
+.senha-container {
+    position: relative;
+
+    width: 100%;
 }
 
-.toggle-senha:hover{
-  color: var(--azul);
+
+.senha-container input {
+    width: 100%;
+
+    padding-right: 40px;
+}
+
+
+.toggle-senha {
+    position: absolute;
+
+    right: 13px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    cursor: pointer;
+
+    color: var(--texto-fraco);
+
+    font-size: 15px;
+
+    transition: color .18s ease;
+}
+
+
+.toggle-senha:hover {
+    color: var(--marca);
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 520px) {
+
+    body.login {
+        padding: 14px;
+    }
+
+    .card {
+        padding: 24px 20px 20px;
+    }
+
+    .logo {
+        width: 270px;
+    }
+
 }

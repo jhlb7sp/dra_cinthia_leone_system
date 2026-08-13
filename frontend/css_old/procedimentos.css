@@ -1,0 +1,719 @@
+/* =========================================
+   PROCEDIMENTOS — PREMIUM COMPACTO
+   Azul Royal + Bege
+========================================= */
+
+:root {
+  --azul: #1238A8;
+  --azul-hover: #1E4BD8;
+  --azul-escuro: #0D2C82;
+
+  --bege: #FAF3E7;
+  --bege-card: #F5E9DA;
+
+  --branco: #FFFFFF;
+  --texto: #1F2937;
+  --texto-fraco: #6B7280;
+  --borda: #E7E1D7;
+
+  --sombra: 0 8px 24px rgba(13, 44, 130, .08);
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  padding: 16px;
+
+  background: var(--bege);
+  color: var(--texto);
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+
+  /*
+    Aumentamos um pouco a área útil.
+    A tela anterior estava muito apertada.
+  */
+  max-width: 1180px;
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+h2 {
+  margin: 0 0 12px 0;
+  padding: 10px 14px;
+
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--azul-escuro);
+
+  text-align: center;
+
+  border-radius: var(--radius);
+  background: linear-gradient(
+    180deg,
+    var(--branco),
+    var(--bege-card)
+  );
+
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+
+/* =========================================
+   ÁREA DE CADASTRO
+========================================= */
+
+.linha-campos {
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+
+  padding: 12px;
+
+  margin-bottom: 12px;
+
+  display: grid;
+
+  /*
+     PROCEDIMENTO
+     TIPO
+     DENTE
+     PRINCIPAL
+     DESCONTO
+     FAMÍLIA
+     ADICIONAR
+     EXPORTAR
+     IMPORTAR
+  */
+
+  grid-template-columns:
+    minmax(180px, 2fr)
+    110px
+    85px
+    100px
+    100px
+    100px
+    auto
+    auto
+    auto;
+
+  gap: 8px;
+
+  align-items: end;
+}
+
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+label {
+  display: block;
+
+  margin: 0 0 5px 0;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  color: var(--texto);
+}
+
+
+/* =========================================
+   INPUTS / SELECT
+========================================= */
+
+input[type="text"],
+select {
+  width: 100%;
+
+  height: 34px;
+
+  padding: 0 9px;
+
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+
+  outline: none;
+
+  background: var(--branco);
+
+  font-size: 12px;
+
+  transition:
+    border-color .15s ease,
+    box-shadow .15s ease;
+}
+
+input[type="text"]::placeholder {
+  color: #9CA3AF;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: rgba(18, 56, 168, .55);
+
+  box-shadow:
+    0 0 0 3px rgba(18, 56, 168, .10);
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+button {
+  height: 34px;
+
+  padding: 0 12px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: var(--azul);
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition:
+    background .15s ease,
+    transform .08s ease;
+}
+
+button:hover {
+  background: var(--azul-hover);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+
+/* Botão adicionar */
+
+.campo-botao {
+  min-width: 0;
+}
+
+.campo-botao button {
+  min-width: 90px;
+}
+
+
+/*
+   Exportar / Importar
+   Os dois ficam alinhados com Adicionar
+*/
+
+.acoes-exportar,
+.acoes-importar {
+  display: flex;
+  align-items: flex-end;
+}
+
+.acoes-exportar button,
+.acoes-importar button {
+  min-width: 82px;
+}
+
+
+/* =========================================
+   FILTRO
+========================================= */
+
+label[for="filtro"] {
+  margin-top: 6px;
+  margin-bottom: 5px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+#filtro {
+  width: 100%;
+  height: 34px;
+
+  padding: 0 10px;
+
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+
+  outline: none;
+
+  background: var(--branco);
+
+  margin-bottom: 10px;
+
+  box-shadow: none;
+}
+
+#filtro:focus {
+  border-color: rgba(18, 56, 168, .55);
+
+  box-shadow:
+    0 0 0 3px rgba(18, 56, 168, .10);
+}
+
+
+/* =========================================
+   TABELA
+========================================= */
+
+table {
+  width: 100%;
+
+  border-collapse: separate;
+  border-spacing: 0;
+
+  border: 1px solid var(--borda);
+  border-radius: 9px;
+
+  overflow: hidden;
+
+  background: var(--branco);
+
+  box-shadow: var(--sombra);
+}
+
+thead th {
+  background: var(--azul);
+  color: #fff;
+
+  text-align: left;
+
+  padding: 9px 10px;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+tbody td {
+  padding: 9px 10px;
+
+  border-top: 1px solid var(--borda);
+
+  font-size: 12px;
+
+  color: var(--texto);
+}
+
+tbody tr:nth-child(even) {
+  background: rgba(245, 233, 218, .25);
+}
+
+tbody tr:hover {
+  background: rgba(18, 56, 168, .05);
+}
+
+
+/* =========================================
+   COLUNA AÇÕES
+========================================= */
+
+tbody td:last-child {
+  width: 80px;
+}
+
+
+/* =========================================
+   EXCLUIR
+========================================= */
+
+.btn-excluir {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  border-radius: 8px;
+
+  background: #c62828;
+
+  color: #fff;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  transition:
+    transform .08s ease,
+    filter .15s ease;
+}
+
+.btn-excluir:hover {
+  filter: brightness(1.08);
+}
+
+.btn-excluir:active {
+  transform: translateY(1px);
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 1100px) {
+
+.linha-campos{
+
+grid-template-columns:
+
+2.6fr
+90px
+80px
+90px
+90px
+90px
+auto;
+
+gap:8px;
+}
+
+  button {
+    padding: 0 9px;
+  }
+
+}
+
+
+@media (max-width: 900px) {
+
+  .linha-campos {
+    grid-template-columns:
+      2fr
+      1fr
+      1fr;
+  }
+
+  .campo-botao,
+  .acoes-exportar,
+  .acoes-importar {
+    width: 100%;
+  }
+
+  .campo-botao button,
+  .acoes-exportar button,
+  .acoes-importar button {
+    width: 100%;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 10px;
+  }
+
+  .linha-campos {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* =========================================
+   AÇÕES DA TABELA
+========================================= */
+
+.acoes-tabela {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn-acao {
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 7px;
+
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn-editar {
+  background: rgba(18, 56, 168, .10);
+  color: var(--azul);
+}
+
+.btn-editar:hover {
+  background: rgba(18, 56, 168, .18);
+}
+
+.btn-historico {
+  background: rgba(107, 114, 128, .10);
+  color: #4B5563;
+}
+
+.btn-historico:hover {
+  background: rgba(107, 114, 128, .20);
+}
+
+.btn-excluir {
+  background: rgba(198, 40, 40, .10);
+  color: #c62828;
+}
+
+.btn-excluir:hover {
+  background: rgba(198, 40, 40, .18);
+}
+
+
+/* =========================================
+   MODAL HISTÓRICO
+========================================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: rgba(15, 23, 42, .40);
+
+  z-index: 9999;
+}
+
+.modal-overlay.ativo {
+  display: flex;
+}
+
+.modal-historico {
+  width: 100%;
+  max-width: 620px;
+  max-height: 80vh;
+
+  overflow-y: auto;
+
+  background: var(--branco);
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, .20);
+}
+
+.modal-cabecalho {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 18px;
+
+  border-bottom: 1px solid var(--borda);
+}
+
+.modal-cabecalho h3 {
+  margin: 0 0 3px;
+
+  font-size: 15px;
+
+  color: var(--azul-escuro);
+}
+
+.modal-cabecalho span {
+  color: var(--texto-fraco);
+
+  font-size: 12px;
+}
+
+.btn-fechar-modal {
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  background: transparent;
+  color: var(--texto);
+
+  font-size: 22px;
+}
+
+.btn-fechar-modal:hover {
+  background: #F3F4F6;
+}
+
+
+#historicoConteudo {
+  padding: 16px 18px;
+}
+
+
+/* valores atuais */
+
+.historico-atual {
+  padding: 14px;
+
+  border-radius: 10px;
+
+  background: rgba(18, 56, 168, .06);
+
+  border: 1px solid rgba(18, 56, 168, .12);
+
+  margin-bottom: 18px;
+}
+
+.historico-titulo-atual {
+  margin-bottom: 10px;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  color: var(--azul);
+}
+
+
+/* valores */
+
+.historico-valores {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 10px;
+}
+
+.historico-valores div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.historico-valores span {
+  font-size: 10px;
+
+  color: var(--texto-fraco);
+}
+
+.historico-valores strong {
+  font-size: 13px;
+
+  color: var(--texto);
+}
+
+
+/* histórico */
+
+.historico-item {
+  padding: 13px 0;
+
+  border-top:
+    1px solid var(--borda);
+}
+
+.historico-data {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-bottom: 10px;
+}
+
+.historico-data strong {
+  font-size: 11px;
+}
+
+.historico-data span,
+.historico-data small {
+  color: var(--texto-fraco);
+
+  font-size: 10px;
+}
+
+.historico-vazio {
+  text-align: center;
+
+  padding: 25px;
+
+  color: var(--texto-fraco);
+}
+
+.grupo-botoes{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    flex-wrap:nowrap;
+}
+
+.grupo-botoes button{
+
+    height:36px;
+
+    min-width:96px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:0 18px;
+
+    white-space:nowrap;
+
+    margin:0;
+}
+
+#btnCancelar{
+    background:#6B7280;
+    color:#fff;
+}
+
+#btnCancelar:hover{
+    background:#4B5563;
+}
+
+#btnSalvar{
+    width:120px;
+}
+
+#btnCancelar{
+    width:120px;
+}

@@ -4,107 +4,433 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Dra. Cinthia Leone</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <div class="sidebar collapsed" id="sidebar">
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <div
+        class="sidebar collapsed"
+        id="sidebar"
+    >
+
+        <!-- LOGO -->
+
         <div class="topo-sidebar">
-            <img src="img/logoM2.gif" alt="Dra. Cinthia Leone" class="logo2" id="logoToggle">
+
+            <img
+                src="img/CL.png"
+                alt="Dra. Cinthia Leone"
+                class="logo2"
+                id="logoToggle"
+            >
+
         </div>
+
+
+        <!-- =========================================
+             MENU
+        ========================================== -->
 
         <nav class="menu-links">
-            <a href="pagina_inicial.html" target="iframePrincipal" class="menu-link">
-                <img src="img/icon-agenda.gif" class="icon-menu">
-                <span class="texto-menu">Agenda</span>
+
+
+            <!-- AGENDA -->
+
+            <a
+                href="pagina_inicial.html"
+                target="iframePrincipal"
+                class="menu-link"
+                data-tooltip="Agenda"
+            >
+
+                <img
+                    src="img/icon/agenda.png"
+                    class="icon-menu"
+                    alt=""
+                >
+
+                <span class="texto-menu">
+                    Agenda
+                </span>
+
             </a>
 
-            <a href="#" class="menu-link" onclick="toggleSubmenu(event, 'menu1')">
-                <img src="img/icon-cadastro.gif" class="icon-menu">
-                <span class="texto-menu">Pacientes</span>
+
+            <!-- PACIENTES -->
+
+            <a
+                href="#"
+                class="menu-link"
+                data-tooltip="Pacientes"
+                onclick="toggleSubmenu(event, 'menu1')"
+            >
+
+                <img
+                    src="img/icon/pacientes.png"
+                    class="icon-menu"
+                    alt=""
+                >
+
+                <span class="texto-menu">
+                    Pacientes
+                </span>
+
             </a>
-            <div id="menu1" class="submenu">
-                <a href="consultapaciente.html" target="iframePrincipal" class="submenu-link">Consultar</a>
-                <a href="cadastro-paciente.html" target="iframePrincipal" class="submenu-link">Cadastrar</a>
-                <a href="nota-fiscal.html" target="iframePrincipal" class="submenu-link">Gerar Nota Fiscal</a>
-                <a href="retorno-pacientes.html" target="iframePrincipal" class="submenu-link">Controle de Manutenções</a>
+
+
+            <div
+                id="menu1"
+                class="submenu"
+            >
+
+                <a
+                    href="consultapaciente.html"
+                    target="iframePrincipal"
+                    class="submenu-link"
+                >
+                    Consultar
+                </a>
+
+
+                <a
+                    href="cadastro-paciente.html"
+                    target="iframePrincipal"
+                    class="submenu-link"
+                >
+                    Cadastrar
+                </a>
+
+
+                <a
+                    href="nota-fiscal.html"
+                    target="iframePrincipal"
+                    class="submenu-link"
+                >
+                    Gerar Nota Fiscal
+                </a>
+
+
+                <a
+                    href="retorno-pacientes.html"
+                    target="iframePrincipal"
+                    class="submenu-link"
+                >
+                    Controle de Manutenções
+                </a>
+
             </div>
 
-            <a href="orcamento.html" target="iframePrincipal" class="menu-link">
-                <img src="img/icon-orcamento.gif" class="icon-menu">
-                <span class="texto-menu">Orçamento</span>
+
+            <!-- ORÇAMENTO -->
+
+            <a
+                href="orcamento.html"
+                target="iframePrincipal"
+                class="menu-link"
+                data-tooltip="Orçamento"
+            >
+
+                <img
+                    src="img/icon/orcamento.png"
+                    class="icon-menu"
+                    alt=""
+                >
+
+                <span class="texto-menu">
+                    Orçamento
+                </span>
+
             </a>
 
-            <a href="#" class="menu-link" onclick="toggleSubmenu(event, 'menu2')">
-                <img src="img/icon-pedido.gif" class="icon-menu">
-                <span class="texto-menu">Pedidos</span>
+
+            <!-- PEDIDOS -->
+
+            <a
+                href="pedido.html"
+                target="iframePrincipal"
+                class="menu-link"
+                data-tooltip="Pedidos"
+            >
+
+                <img
+                    src="img/icon/pedidos.png"
+                    class="icon-menu"
+                    alt=""
+                >
+
+                <span class="texto-menu">
+                    Pedidos
+                </span>
+
             </a>
-            <div id="menu2" class="submenu">
-                <a href="panoramica.html" target="iframePrincipal" class="submenu-link">Panorâmica</a>
-                <a href="documentacao.html" target="iframePrincipal" class="submenu-link">Documentação</a>
-                <a href="tomografia.html" target="iframePrincipal" class="submenu-link">Tomografia</a>
-                <a href="periapical.html" target="iframePrincipal" class="submenu-link">Periapical</a>
-                <a href="solicitacao.html" target="iframePrincipal" class="submenu-link">Solicitação</a>
+
+
+            <!-- RECEITUÁRIOS -->
+
+            <a
+                href="#"
+                class="menu-link"
+                data-tooltip="Receituários"
+                onclick="toggleSubmenu(event, 'menu3')"
+            >
+
+                <img
+                    src="img/icon/receituarios.png"
+                    class="icon-menu"
+                    alt=""
+                >
+
+                <span class="texto-menu">
+                    Receituários
+                </span>
+
+            </a>
+
+
+            <div
+                id="menu3"
+                class="submenu"
+            >
+
+                <a
+                    href="receita.html"
+                    target="iframePrincipal"
+                    class="submenu-link"
+                >
+                    Receita
+                </a>
+
+
+                <a
+                    href="medicamentos.html"
+                    target="iframePrincipal"
+                    class="submenu-link"
+                >
+                    Medicamentos
+                </a>
+
             </div>
 
-            <a href="#" class="menu-link" onclick="toggleSubmenu(event, 'menu3')">
-                <img src="img/icon-receituario.gif" class="icon-menu">
-                <span class="texto-menu">Receituários</span>
+
+            <!-- ATESTADO -->
+
+            <a
+                href="atestado.html"
+                target="iframePrincipal"
+                class="menu-link"
+                data-tooltip="Atestado"
+            >
+
+                <img
+                    src="img/icon/atestado.png"
+                    class="icon-menu"
+                    alt=""
+                >
+
+                <span class="texto-menu">
+                    Atestado
+                </span>
+
             </a>
-            <div id="menu3" class="submenu">
-                <a href="controlada.html" target="iframePrincipal" class="submenu-link">Controlado</a>
-                <a href="simples.html" target="iframePrincipal" class="submenu-link">Simples</a>
-                <a href="medicamentos.html" target="iframePrincipal" class="submenu-link">Medicamentos</a>
+
+
+            <!-- GESTÃO -->
+
+            <a
+                href="#"
+                class="menu-link"
+                data-tooltip="Gestão"
+                onclick="toggleSubmenu(event, 'menu5')"
+            >
+
+                <img
+                    src="img/icon/gestao.png"
+                    class="icon-menu"
+                    alt=""
+                >
+
+                <span class="texto-menu">
+                    Gestão
+                </span>
+
+            </a>
+
+
+            <div
+                id="menu5"
+                class="submenu"
+            >
+
+                <a
+                    href="faturamento.html"
+                    target="iframePrincipal"
+                    class="submenu-link"
+                >
+                    Faturamento
+                </a>
+
+
+                <a
+                    href="relatorio.html"
+                    target="iframePrincipal"
+                    class="submenu-link"
+                >
+                    Relatório
+                </a>
+
+
+                <a
+                    href="materiais.html"
+                    target="iframePrincipal"
+                    class="submenu-link"
+                >
+                    Materiais
+                </a>
+
+
+                <a
+                    href="autoclave.html"
+                    target="iframePrincipal"
+                    class="submenu-link"
+                >
+                    Autoclave
+                </a>
+
+
+                <a
+                    href="procedimento.html"
+                    target="iframePrincipal"
+                    class="submenu-link"
+                >
+                    Procedimentos
+                </a>
+
             </div>
 
-            <a href="#" class="menu-link" onclick="toggleSubmenu(event, 'menu4')">
-                <img src="img/icon-atestado.gif" class="icon-menu">
-                <span class="texto-menu">Atestado</span>
-            </a>
-            <div id="menu4" class="submenu">
-                <a href="horas.html" target="iframePrincipal" class="submenu-link">Horas</a>
-                <a href="dias.html" target="iframePrincipal" class="submenu-link">Dias</a>
-            </div>
 
-            <a href="#" class="menu-link" onclick="toggleSubmenu(event, 'menu5')">
-                <img src="img/icon-gestao.gif" class="icon-menu">
-                <span class="texto-menu">Gestão</span>
-            </a>
-            <div id="menu5" class="submenu">
-                <a href="faturamento.html" target="iframePrincipal" class="submenu-link">Faturamento</a>
-                <a href="relatorio.html" target="iframePrincipal" class="submenu-link">Relatório</a>
-                <a href="materiais.html" target="iframePrincipal" class="submenu-link">Materiais</a>
-                <a href="autoclave.html" target="iframePrincipal" class="submenu-link">Autoclave</a>
-                <a href="procedimento.html" target="iframePrincipal" class="submenu-link">Procedimentos</a>
-            </div>
+            <!-- SOBRE -->
 
-            <a href="sobre.html" target="iframePrincipal" class="menu-link">
-                <img src="img/icon-sobre.gif" class="icon-menu">
-                <span class="texto-menu">Sobre</span>
+            <a
+                href="sobre.html"
+                target="iframePrincipal"
+                class="menu-link"
+                data-tooltip="Sobre"
+            >
+
+                <img
+                    src="img/icon/sobre.png"
+                    class="icon-menu"
+                    alt=""
+                >
+
+                <span class="texto-menu">
+                    Sobre
+                </span>
+
             </a>
 
-            <a href="#" onclick="sair(); return false;" class="menu-link">
-                <span class="icon-menu icon-texto">⎋</span>
-                <span class="texto-menu">Sair</span>
+
+            <!-- SAIR -->
+
+            <a
+                href="#"
+                class="menu-link"
+                data-tooltip="Sair"
+                onclick="sair(); return false;"
+            >
+                
+
+                <span class="icon-menu icon-texto">
+                    <img
+                    src="img/icon/sair.png"
+                    class="icon-menu"
+                    alt=""
+                >
+                </span>
+
+                <span class="texto-menu">
+                    Sair
+                </span>
+
             </a>
+
+
         </nav>
+
     </div>
 
-    <div class="main" id="main">
-        <div class="motivacional" id="mensagemMotivacional"></div>
-        <button type="button" class="lembrete-manutencoes" id="lembreteManutencoes" hidden>
-            <span class="lembrete-titulo">Controle de Manutenções</span>
-            <span class="lembrete-texto" id="textoLembreteManutencoes"></span>
+
+    <!-- =========================================
+         CONTEÚDO
+    ========================================== -->
+
+    <div
+        class="main"
+        id="main"
+    >
+
+
+        <!-- MENSAGEM MOTIVACIONAL -->
+
+        <div
+            class="motivacional"
+            id="mensagemMotivacional"
+        ></div>
+
+
+        <!-- LEMBRETE MANUTENÇÕES -->
+
+        <button
+            type="button"
+            class="lembrete-manutencoes"
+            id="lembreteManutencoes"
+            hidden
+        >
+
+            <span class="lembrete-titulo">
+                Controle de Manutenções
+            </span>
+
+            <span
+                class="lembrete-texto"
+                id="textoLembreteManutencoes"
+            ></span>
+
         </button>
+
+
+        <!-- IFRAME -->
+
         <div class="iframe-container">
-            <iframe id="iframePrincipal" name="iframePrincipal" src="pagina_inicial.html"></iframe>
+
+            <iframe
+                id="iframePrincipal"
+                name="iframePrincipal"
+                src="pagina_inicial.html"
+            ></iframe>
+
         </div>
+
+
     </div>
+
+
+    <!-- =========================================
+         SCRIPTS
+    ========================================== -->
 
     <script src="libs/jspdf.umd.min.js"></script>
+
     <script src="js/principal.js"></script>
+
 </body>
 
 </html>

@@ -3,55 +3,115 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Consulta de Paciente</title>
+
     <link rel="stylesheet" href="css/consulta.css">
 </head>
 
 <body>
 
-    <header>
-        <h2>Consulta de Paciente</h2>
-    </header>
+    <main class="container">
 
-    <section class="filtro">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" placeholder="Digite o nome">
+        <!-- CABEÇALHO -->
+        <header class="topo-consulta">
+            <div>
+                <h2>Consulta de Paciente</h2>
+                <p>Localize pacientes por nome, CPF ou status.</p>
+            </div>
+        </header>
 
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" placeholder="Digite o CPF">
 
-        <label for="filtroStatus">Status:</label>
-        <select id="filtroStatus">
-            <option value="">Todos</option>
-            <option value="Ativo">Ativo</option>
-            <option value="Inativo">Inativo</option>
-        </select>
+        <!-- FILTROS -->
+        <section class="card-filtros">
 
-        <div class="filtro-botoes">
-            <button id="consultar">Consulta</button>
-            <button id="limpar">Limpar</button>
-        </div>
-    </section>
+            <div class="grid-filtros">
 
-    <section class="resultado">
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Data de Nascimento</th>
-                    <th>Ação</th>
-                    <th>Status</th>
-                </tr>
-            </thead>
-            <tbody id="tabelaPacientes">
-                <!-- Linhas adicionadas via JS -->
-            </tbody>
-        </table>
-        <p id="quantidadeResultados"></p>
-    </section>
+                <div class="campo campo-nome">
+                    <label for="nome">Nome</label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Digite o nome"
+                    >
+                </div>
+
+
+                <div class="campo campo-cpf">
+                    <label for="cpf">CPF</label>
+
+                    <input
+                        type="text"
+                        id="cpf"
+                        placeholder="Digite o CPF"
+                    >
+                </div>
+
+
+                <div class="campo campo-status">
+                    <label for="filtroStatus">Status</label>
+
+                    <select id="filtroStatus">
+                        <option value="">Todos</option>
+                        <option value="Ativo">Ativo</option>
+                        <option value="Inativo">Inativo</option>
+                    </select>
+                </div>
+
+
+                <div class="filtro-botoes">
+
+                    <button id="consultar">
+                        Consultar
+                    </button>
+
+                    <button id="limpar">
+                        Limpar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULTADOS -->
+        <section class="resultado">
+
+            <div class="tabela-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Data de Nascimento</th>
+                            <th>Ação</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tabelaPacientes">
+                        <!-- Linhas adicionadas via JS -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p id="quantidadeResultados"></p>
+
+        </section>
+
+    </main>
+
 
     <script src="js/consulta.js"></script>
+
 </body>
 
 </html>

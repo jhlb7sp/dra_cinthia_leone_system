@@ -1,0 +1,274 @@
+/* =========================================
+   styleDoc.css — DOCUMENTOS (PDF / Solicitações)
+   Tema Premium (Azul Royal + Bege)
+========================================= */
+
+:root{
+  --azul:#1238A8;
+  --azul-hover:#1E4BD8;
+  --azul-escuro:#0D2C82;
+
+  --bege:#FAF3E7;
+  --bege-card:#F5E9DA;
+
+  --branco:#FFFFFF;
+  --texto:#1F2937;
+  --texto-fraco:#6B7280;
+  --borda:#E7E1D7;
+
+  --sombra: 0 10px 30px rgba(13,44,130,.10);
+  --radius: 14px;
+
+  --danger:#c62828;
+  --danger-hover:#b71c1c;
+
+  --ok:#1f7a3a;
+  --ok-hover:#196a32;
+}
+
+*{ box-sizing: border-box; }
+
+/* Base (sem quebrar layout das páginas) */
+body{
+  margin: 0;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+  background: var(--bege);
+  color: var(--texto);
+  font-size: 12px;
+}
+
+/* Card central usado em docs */
+.card2{
+  background: var(--branco);
+  padding: 16px;
+  border-radius: var(--radius);
+  max-width: 900px;
+  margin: 0 auto;
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* Título */
+h2{
+  text-align: center;
+  color: var(--azul-escuro);
+  font-size: 14px;
+  font-weight: 900;
+  margin: 0 0 14px 0;
+
+  padding: 12px 14px;
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--branco), var(--bege-card));
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* Labels */
+label{
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 900;
+  text-align: left;
+  color: var(--texto);
+}
+
+/* Inputs / selects / textarea */
+input[type="text"],
+input[type="number"],
+select,
+textarea{
+  width: 100%;
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 10px 12px;
+  outline: none;
+  font-size: 12px;
+  background: var(--branco);
+}
+
+input[type="text"],
+input[type="number"],
+select{
+  height: 36px;
+  padding: 0 10px;
+}
+
+textarea{
+  min-height: 110px;
+  resize: vertical;
+  line-height: 1.4;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+  border-color: rgba(18,56,168,.45);
+  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+}
+
+/* Textarea específico (se existir no HTML) */
+#solicitacao{
+  width: 100%;
+  height: 120px;
+}
+
+/* ===== Botões padrão docs ===== */
+/* importante: não usar width:100% em tudo, senão fica gigante */
+.btn-add,
+.btn-pdf,
+.btn-remove{
+  height: 36px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 12px;
+  color: #fff;
+  transition: transform .08s ease, filter .2s ease;
+  width: auto;
+}
+
+.btn-add{
+  background: var(--ok);
+}
+.btn-add:hover{
+  background: var(--ok-hover);
+  transform: translateY(-1px);
+}
+
+.btn-pdf{
+  background: var(--azul);
+}
+.btn-pdf:hover{
+  background: var(--azul-hover);
+  transform: translateY(-1px);
+}
+
+.btn-remove{
+  background: var(--danger);
+}
+.btn-remove:hover{
+  background: var(--danger-hover);
+  transform: translateY(-1px);
+}
+
+/* Botão pequeno remover dente */
+.btn-removerdente{
+  background: var(--danger);
+  color: #fff;
+  padding: 0 10px;
+  border: none;
+  height: 26px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 11px;
+  transition: transform .08s ease, filter .2s ease;
+}
+.btn-removerdente:hover{
+  background: var(--danger-hover);
+  transform: translateY(-1px);
+}
+
+/* Assinatura */
+.assinatura-container{
+  margin-top: 12px;
+  text-align: left;
+  max-width: 900px;
+  font-size: 12px;
+}
+
+.assinatura-container input[type="checkbox"]{
+  margin-right: 6px;
+  width: auto;
+  height: auto;
+}
+
+/* Radios (simples/completa) */
+.simples-completa{
+  margin-top: 10px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+
+.simples-completa input[type="radio"]{
+  appearance: auto;
+  width: auto;
+  height: auto;
+}
+
+/* Responsivo */
+@media (max-width: 520px){
+  body{ padding: 12px; }
+  .card2{ padding: 14px; }
+  .btn-add, .btn-pdf, .btn-remove{
+    width: 100%;
+  }
+}
+
+/* ===== Assinatura (checkbox + texto lado a lado) ===== */
+.assinatura-container{
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-align: left;
+  max-width: 900px;
+  font-size: 12px;
+}
+
+.assinatura-container label{
+  display: inline; /* sobrescreve o label global */
+  margin: 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.assinatura-container input[type="checkbox"]{
+  margin: 0;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+}
+
+/* ===== Ações (botões lado a lado) ===== */
+.acoes-doc{
+  margin-top: 10px;
+  width: 100%;
+}
+
+.acoes-row{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap; /* se faltar espaço, quebra */
+}
+
+.acoes-row .btn-add,
+.acoes-row .btn-pdf{
+  flex: 0 0 auto; /* mantém tamanho natural */
+}
+
+/* Lista sempre abaixo e ocupando tudo */
+.acoes-doc .med-list{
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* No mobile, deixa os botões um abaixo do outro (premium e confortável) */
+@media (max-width: 520px){
+  .acoes-row{
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .acoes-row .btn-add,
+  .acoes-row .btn-pdf{
+    width: 100%;
+  }
+}

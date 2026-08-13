@@ -1,265 +1,521 @@
 /* =========================================
-   AGENDA — PREMIUM (Azul Royal + Bege)
-   Grid / tabela estilo sistema (clean)
+   AGENDA — IDENTIDADE CINTHIA LEONE
+   Compacto / Premium / Sistema SaaS
 ========================================= */
 
-:root{
-  --azul:#1238A8;
-  --azul-hover:#1E4BD8;
-  --azul-escuro:#0D2C82;
+:root {
+    /* IDENTIDADE */
+    --marca: #9A6B3F;
+    --marca-hover: #865B35;
 
-  --bege:#FAF3E7;
-  --bege-card:#F5E9DA;
+    --grafite: #494641;
+    --grafite-hover: #3D3A36;
 
-  --branco:#FFFFFF;
-  --texto:#1F2937;
-  --texto-fraco:#6B7280;
-  --borda:#E7E1D7;
+    --cinza: #6F6962;
+    --cinza-claro: #918B84;
 
-  --sombra: 0 10px 30px rgba(13,44,130,.10);
-  --radius: 14px;
+    /* SUPERFÍCIES */
+    --fundo: #F6F3EE;
+    --card: #FFFFFF;
+    --card-suave: #F4F0EA;
+    --input-bg: #FBFAF8;
+
+    /* TEXTO */
+    --texto: #494641;
+    --texto-fraco: #6F6962;
+
+    /* BORDAS */
+    --borda: #DDD8D1;
+    --borda-suave: #EBE7E1;
+
+    /* ESTADOS */
+    --danger: #A5524B;
+    --danger-bg: rgba(165, 82, 75, 0.10);
+
+    --success: #58705D;
+    --warning: #B48745;
+
+    /* SOMBRAS */
+    --sombra: 0 4px 16px rgba(73, 70, 65, 0.07);
+    --sombra-hover: 0 6px 18px rgba(73, 70, 65, 0.10);
+
+    /* FORMAS */
+    --radius: 10px;
+    --radius-sm: 7px;
 }
 
-*{ box-sizing:border-box; }
 
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  background: var(--bege);
-  color: var(--texto);
-  font-size: 12px;
-  padding: 16px;
+/* =========================================
+   BASE
+========================================= */
+
+* {
+    box-sizing: border-box;
 }
 
-/* Títulos */
-h1, h2{
-  margin: 0 0 10px 0;
-  color: var(--azul-escuro);
-  font-weight: 900;
-  font-size: 14px;
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--fundo);
+    color: var(--texto);
+    font-size: 12px;
+    padding: 16px;
 }
 
-/* Botões padrão do sistema */
-button{
-  height: 36px;
-  padding: 0 14px;
-  background: var(--azul);
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 900;
-  font-size: 12px;
-  transition: transform .08s ease, filter .2s ease;
-  margin: 0;
+
+/* =========================================
+   TÍTULOS
+========================================= */
+
+h1,
+h2 {
+    margin: 0 0 10px 0;
+    color: var(--grafite);
+    font-weight: 800;
+    font-size: 14px;
 }
 
-button:hover{
-  filter: brightness(1.05);
-  transform: translateY(-1px);
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+button {
+    height: 36px;
+    padding: 0 14px;
+
+    background: var(--grafite);
+    color: #FFFFFF;
+
+    border: 1px solid var(--grafite);
+    border-radius: var(--radius-sm);
+
+    cursor: pointer;
+
+    font-weight: 700;
+    font-size: 12px;
+
+    transition:
+        background-color .18s ease,
+        border-color .18s ease,
+        transform .08s ease,
+        box-shadow .18s ease;
+
+    margin: 0;
 }
 
-/* Botões menores (se precisar em células/tabela) */
-.btn-sm{
-  height: 30px;
-  padding: 0 10px;
-  border-radius: 10px;
-  font-size: 11px;
+button:hover {
+    background: var(--grafite-hover);
+    border-color: var(--grafite-hover);
+
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(73, 70, 65, 0.14);
 }
 
-/* Barra superior (se seus botões ficarem em volta do h1/h2) */
-.topbar{
-  background: linear-gradient(180deg, var(--branco), var(--bege-card));
-  border: 1px solid var(--borda);
-  box-shadow: var(--sombra);
-  border-radius: var(--radius);
-  padding: 12px 14px;
-  margin-bottom: 12px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
+button:active {
+    transform: translateY(0);
+    box-shadow: none;
 }
 
-.topbar .acoes{
-  display:flex;
-  gap: 10px;
-  flex-wrap: wrap;
+
+/* Botões menores */
+
+.btn-sm {
+    height: 30px;
+    padding: 0 10px;
+
+    border-radius: 6px;
+
+    font-size: 11px;
 }
 
-/* Container principal da agenda (CARD) */
+
+/* =========================================
+   TOPBAR
+========================================= */
+
+.topbar {
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    box-shadow: var(--sombra);
+
+    border-radius: var(--radius);
+
+    padding: 10px 12px;
+    margin-bottom: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.topbar .acoes {
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+}
+
+
+/* =========================================
+   CONTAINER PRINCIPAL
+========================================= */
+
 #agenda,
-.agenda-grid{
-  background: var(--branco);
-  border: 1px solid var(--borda);
-  border-radius: var(--radius);
-  box-shadow: var(--sombra);
-  overflow: auto;
-  padding: 10px;
-  height: calc(100vh - 220px);
+.agenda-grid {
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
+
+    overflow: auto;
+
+    padding: 10px;
+
+    height: calc(100vh - 220px);
 }
 
-/* Form novo agendamento (CARD menor) */
-#novo-agendamento{
-  margin: 12px 0;
-  background: var(--branco);
-  border: 1px solid var(--borda);
-  border-radius: var(--radius);
-  box-shadow: var(--sombra);
-  padding: 12px 14px;
 
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: end;
+/* =========================================
+   NOVO AGENDAMENTO
+========================================= */
+
+#novo-agendamento {
+    margin: 12px 0;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
+
+    padding: 10px 12px;
+
+    display: flex;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    align-items: end;
 }
 
-#novo-agendamento input{
-  height: 36px;
-  padding: 0 10px;
-  border: 1px solid var(--borda);
-  border-radius: 12px;
-  outline: none;
-  font-size: 12px;
-  background: var(--branco);
+
+#novo-agendamento input {
+    height: 36px;
+
+    padding: 0 10px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    font-size: 12px;
+
+    color: var(--texto);
+
+    background: var(--input-bg);
+
+    transition:
+        border-color .18s ease,
+        box-shadow .18s ease,
+        background .18s ease;
 }
 
-#novo-agendamento input:focus{
-  border-color: rgba(18,56,168,.45);
-  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+
+#novo-agendamento input:hover {
+    border-color: #C9C2B9;
 }
 
-#novo-agendamento button{
-  height: 36px;
+
+#novo-agendamento input:focus {
+    background: #FFFFFF;
+
+    border-color: var(--marca);
+
+    box-shadow: 0 0 0 3px rgba(154, 107, 63, 0.12);
 }
 
-/* ========= TABELA AGENDA ========= */
-.agenda-table{
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  table-layout: fixed;
-  font-size: 11px;
-  border: 1px solid var(--borda);
-  border-radius: 12px;
-  overflow: hidden;
+
+#novo-agendamento button {
+    height: 36px;
+
+    background: var(--marca);
+
+    border-color: var(--marca);
 }
 
-/* Cabeçalho sticky premium */
-.agenda-table thead th{
-  background: var(--azul);
-  color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 2;
-  font-weight: 900;
-  font-size: 11px;
-  padding: 8px 6px;
-  border-bottom: 1px solid rgba(255,255,255,.18);
+
+#novo-agendamento button:hover {
+    background: var(--marca-hover);
+
+    border-color: var(--marca-hover);
 }
+
+
+/* =========================================
+   TABELA AGENDA
+========================================= */
+
+.agenda-table {
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    table-layout: fixed;
+
+    font-size: 11px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    overflow: hidden;
+}
+
+
+/* Cabeçalho */
+
+.agenda-table thead th {
+    background: var(--grafite);
+
+    color: #FFFFFF;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 2;
+
+    font-weight: 700;
+
+    font-size: 11px;
+
+    padding: 8px 6px;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
 
 /* Células */
+
 .agenda-table th,
-.agenda-table td{
-  border-right: 1px solid var(--borda);
-  border-bottom: 1px solid var(--borda);
-  padding: 6px 6px;
-  text-align: center;
-  min-width: 70px;
-  max-width: 90px;
-  word-wrap: break-word;
-  background: #fff;
+.agenda-table td {
+    border-right: 1px solid var(--borda-suave);
+
+    border-bottom: 1px solid var(--borda-suave);
+
+    padding: 6px;
+
+    text-align: center;
+
+    min-width: 70px;
+
+    max-width: 90px;
+
+    word-wrap: break-word;
+
+    background: #FFFFFF;
 }
+
 
 /* Remove última borda direita */
-.agenda-table tr > *:last-child{
-  border-right: none;
+
+.agenda-table tr > *:last-child {
+    border-right: none;
 }
 
-/* Altura das linhas */
-.agenda-table td{
-  height: 28px; /* mais confortável que 10px */
+
+/* Altura */
+
+.agenda-table td {
+    height: 28px;
 }
 
-/* Efeito zebra leve */
-.agenda-table tbody tr:nth-child(even) td{
-  background: rgba(245,233,218,.28);
+
+/* Zebra */
+
+.agenda-table tbody tr:nth-child(even) td {
+    background: #FAF8F5;
 }
 
-/* Hover célula */
-.agenda-table tbody td:hover{
-  background: rgba(18,56,168,.06);
+
+/* Hover */
+
+.agenda-table tbody td:hover {
+    background: rgba(154, 107, 63, 0.07);
 }
 
-/* Evento ocupado */
-.agenda-table .ocupado{
-  background: rgba(198,40,40,.12) !important;
-  color: #8b1d1d;
-  font-weight: 900;
+
+/* =========================================
+   EVENTO OCUPADO
+========================================= */
+
+.agenda-table .ocupado {
+    background: var(--danger-bg) !important;
+
+    color: #87423D;
+
+    font-weight: 700;
 }
 
-/* Botão excluir (se for um span) */
-.btn-excluir{
-  margin-left: 6px;
-  color: #c62828;
-  cursor: pointer;
-  font-weight: 900;
-}
-.btn-excluir:hover{
-  text-decoration: underline;
+
+/* =========================================
+   EXCLUIR
+========================================= */
+
+.btn-excluir {
+    margin-left: 6px;
+
+    color: var(--danger);
+
+    cursor: pointer;
+
+    font-weight: 700;
 }
 
-/* Botões específicos (mantendo seus ids, se usar) */
-#btn-login, #btn-logout, #btn-anterior, #btn-proxima{
-  font-size: 12px;
+
+.btn-excluir:hover {
+    text-decoration: underline;
 }
 
-/* Responsivo */
-@media (max-width: 980px){
-  body{ padding: 12px; }
-  #agenda, .agenda-grid{ height: calc(100vh - 250px); }
-  .agenda-table th, .agenda-table td{
-    min-width: 85px;
-  }
-  #novo-agendamento{
-    align-items: stretch;
-  }
-  #novo-agendamento input,
-  #novo-agendamento button{
-    width: 100%;
-  }
+
+/* =========================================
+   BOTÕES ESPECÍFICOS
+========================================= */
+
+#btn-login,
+#btn-logout,
+#btn-anterior,
+#btn-proxima {
+    font-size: 12px;
 }
+
+
+/* Navegação da agenda */
+
+#btn-anterior,
+#btn-proxima {
+    background: var(--grafite);
+    border-color: var(--grafite);
+}
+
+
+#btn-anterior:hover,
+#btn-proxima:hover {
+    background: var(--grafite-hover);
+    border-color: var(--grafite-hover);
+}
+
+
+/* =========================================
+   AUTOCOMPLETE PACIENTE
+========================================= */
 
 .campo-paciente-wrapper {
-  position: relative;
-  display: inline-block;
+    position: relative;
+
+    display: inline-block;
 }
+
 
 .sugestoes-pacientes {
-  display: none;
-  position: absolute;
-  top: 42px;
-  left: 0;
-  background: #1f1f1f;
-  color: #fff;
-  width: 280px;
-  border-radius: 8px;
-  z-index: 9999;
-  overflow: hidden;
+    display: none;
+
+    position: absolute;
+
+    top: 40px;
+    left: 0;
+
+    width: 280px;
+
+    background: #FFFFFF;
+
+    color: var(--texto);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    box-shadow: 0 8px 24px rgba(73, 70, 65, 0.16);
+
+    z-index: 9999;
+
+    overflow: hidden;
 }
+
 
 .sugestao-paciente {
-  padding: 12px 14px;
-  cursor: pointer;
-  font-size: 13px;
+    padding: 9px 11px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    border-bottom: 1px solid var(--borda-suave);
+
+    transition: background .15s ease;
 }
+
+
+.sugestao-paciente:last-child {
+    border-bottom: none;
+}
+
 
 .sugestao-paciente:hover {
-  background: #333;
+    background: rgba(154, 107, 63, 0.09);
 }
 
+
 .nome-agendamento {
-  cursor: pointer;
+    cursor: pointer;
+}
+
+
+/* =========================================
+   RESPONSIVO
+========================================= */
+
+@media (max-width: 980px) {
+
+    body {
+        padding: 12px;
+    }
+
+    #agenda,
+    .agenda-grid {
+        height: calc(100vh - 250px);
+    }
+
+    .agenda-table th,
+    .agenda-table td {
+        min-width: 85px;
+    }
+
+    #novo-agendamento {
+        align-items: stretch;
+    }
+
+    #novo-agendamento input,
+    #novo-agendamento button {
+        width: 100%;
+    }
+
 }

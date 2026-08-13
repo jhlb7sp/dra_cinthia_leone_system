@@ -1,223 +1,784 @@
 /* =========================================
-   CONSULTA DE PACIENTE — PREMIUM (Azul/Bege)
-   CSS LIMPO E PREVISÍVEL
+   CONSULTA DE PACIENTE
+   CINTHIA LEONE
+   FULL WIDTH / COMPACTO / PREMIUM
 ========================================= */
 
-:root{
-  --azul: #1238A8;
-  --azul-hover:#1E4BD8;
-  --azul-escuro:#0D2C82;
+:root {
 
-  --bege:#FAF3E7;
-  --bege-card:#F5E9DA;
+    --marca: #9A6B3F;
+    --marca-hover: #865B35;
 
-  --branco:#FFFFFF;
-  --texto:#1F2937;
-  --texto-fraco:#6B7280;
-  --borda:#E7E1D7;
+    --grafite: #494641;
+    --grafite-hover: #3D3A36;
 
-  --sombra: 0 10px 30px rgba(13,44,130,.10);
-  --radius: 14px;
+    --texto: #494641;
+    --texto-fraco: #6F6962;
+
+    --fundo: #F6F3EE;
+
+    --card: #FFFFFF;
+    --card-suave: #F4F0EA;
+    --input-bg: #FBFAF8;
+
+    --borda: #DDD8D1;
+    --borda-suave: #EBE7E1;
+
+    --success: #58705D;
+    --danger: #A5524B;
+
+    --sombra:
+        0 4px 16px rgba(73, 70, 65, .07);
+
+    --radius: 10px;
+    --radius-sm: 7px;
 }
 
-/* Reset básico */
-*{ box-sizing:border-box; }
-body{
-  margin:0;
-  padding:16px;
-  font-family: Arial, sans-serif;
-  font-size:12px;
-  background: var(--bege);
-  color: var(--texto);
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
 }
 
-/* Cabeçalho */
-header{ margin-bottom:12px; }
-header h2{
-  margin:0;
-  padding:12px 14px;
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--branco), var(--bege-card));
-  border: 1px solid var(--borda);
-  box-shadow: var(--sombra);
-  color: var(--azul-escuro);
-  font-size:14px;
-  font-weight:800;
+
+html,
+body {
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
 }
 
-/* CARD FILTRO */
-.filtro{
-  grid-column: 1 / -1;   /* 🔥 ISSO FORÇA IR PARA LINHA DE BAIXO */
-  background: var(--branco);
-  border: 1px solid var(--borda);
-  border-radius: var(--radius);
-  box-shadow: var(--sombra);
-  padding: 14px;
-  justify-content: flex-end;
 
-  display:flex;
-  grid-template-columns: 70px 260px 50px 260px 60px 260px auto;
-  gap: 10px;
-   margin-top: 6px;
-  align-items:center;
-}
+/* =========================================
+   BODY
+========================================= */
 
-.filtro label{
-  font-weight:800;
-  color: var(--texto);
-}
+body {
 
-/* Inputs */
-.filtro input[type="text"],
-.filtro select{
-  height: 36px;
-  padding: 0 10px;
-  border: 1px solid var(--borda);
-  border-radius: 12px;
-  outline:none;
-  background: var(--branco);
-  font-size:12px;
-  width: 100%;
+    width: 100% !important;
+
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    padding: 10px !important;
+
+    background: var(--fundo);
+
+    color: var(--texto);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    overflow-x: hidden;
 }
 
-.filtro input[type="text"]::placeholder{ color:#9CA3AF; }
 
-.filtro input[type="text"]:focus,
-.filtro select:focus{
-  border-color: rgba(18,56,168,.45);
-  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
-}
+/* =========================================
+   CONTAINER
+========================================= */
 
-/* Área dos botões (pequenos, no canto direito) */
-.filtro-botoes{
-  display:flex;
-  justify-content:flex-end;
-  gap: 10px;
-}
+body .container {
 
-/* Botões padrão */
-.filtro-botoes button,
-#consultar,
-#limpar{
-  width: auto;              /* <- NÃO fica gigante */
-  height: 36px;
-  padding: 0 16px;
-  border: none;
-  border-radius: 12px;
-  font-weight: 900;
-  cursor:pointer;
-  font-size:12px;
-  transition: transform .08s ease, filter .2s ease;
-  min-width: 120px;         /* tamanho mínimo elegante */
+    width: 100% !important;
+
+    max-width: none !important;
+
+    min-width: 0 !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
 }
 
-#consultar{
-  background: var(--azul);
-  color:#fff;
-}
-#consultar:hover{
-  filter:brightness(1.05);
-  transform: translateY(-1px);
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.topo-consulta {
+
+    width: 100%;
+
+    margin: 0 0 8px;
+
+    padding: 9px 12px;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-top: 3px solid var(--marca);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
 }
 
-#limpar{
-  background:#c62828;
-  color:#fff;
-}
-#limpar:hover{
-  filter:brightness(1.05);
-  transform: translateY(-1px);
+
+.topo-consulta h2 {
+
+    margin: 0;
+
+    padding: 0;
+
+    color: var(--grafite);
+
+    font-size: 15px;
+
+    font-weight: 800;
 }
 
-/* RESULTADO */
-.resultado{
-  margin-top: 14px;
-  background: var(--branco);
-  border: 1px solid var(--borda);
-  border-radius: var(--radius);
-  box-shadow: var(--sombra);
-  overflow:hidden;
+
+.topo-consulta p {
+
+    margin: 3px 0 0;
+
+    color: var(--texto-fraco);
+
+    font-size: 11px;
 }
 
-.resultado table{
-  width:100%;
-  border-collapse:collapse;
+
+/* =========================================
+   CARD FILTROS
+========================================= */
+
+.card-filtros {
+
+    width: 100%;
+
+    margin: 0 0 8px;
+
+    padding: 10px 12px;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
 }
 
-.resultado thead{
-  background: var(--azul);
-  color:#fff;
+
+/* =========================================
+   GRID FILTROS
+========================================= */
+
+.grid-filtros {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(12, minmax(0, 1fr));
+
+    gap: 8px 10px;
+
+    align-items: end;
+
+    width: 100%;
 }
 
-.resultado th,
-.resultado td{
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--borda);
-  text-align:left;
-  font-size:12px;
+
+/* Nome */
+
+.campo-nome {
+    grid-column: span 4;
 }
 
-.resultado th{
-  font-weight:900;
+
+/* CPF */
+
+.campo-cpf {
+    grid-column: span 3;
 }
 
-.resultado tbody tr:nth-child(even){
-  background: rgba(245,233,218,.35);
-}
-.resultado tbody tr:hover{
-  background: rgba(18,56,168,.06);
+
+/* Status */
+
+.campo-status {
+    grid-column: span 2;
 }
 
-/* Ações */
-.acoes{
-  display:flex;
-  gap:6px;
-  flex-wrap:wrap;
+
+/* Botões */
+
+.filtro-botoes {
+
+    grid-column: span 3;
+
+    display: flex;
+
+    align-items: end;
+
+    justify-content: flex-end;
+
+    gap: 6px;
 }
+
+
+/* =========================================
+   CAMPOS
+========================================= */
+
+.campo {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+/* =========================================
+   LABELS
+========================================= */
+
+label {
+
+    display: block;
+
+    margin: 0 0 3px;
+
+    color: var(--texto);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1.15;
+}
+
+
+/* =========================================
+   INPUTS / SELECT
+========================================= */
+
+input[type="text"],
+select {
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 32px;
+
+    padding: 0 8px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    background: var(--input-bg);
+
+    color: var(--texto);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease,
+        background .15s ease;
+}
+
+
+input::placeholder {
+
+    color: #918B84;
+}
+
+
+input:hover,
+select:hover {
+
+    border-color: #C9C2B9;
+}
+
+
+input:focus,
+select:focus {
+
+    background: #FFFFFF;
+
+    border-color: var(--marca);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(154, 107, 63, .11);
+}
+
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+button {
+
+    height: 32px;
+
+    padding: 0 11px;
+
+    border-radius: var(--radius-sm);
+
+    cursor: pointer;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        transform .08s ease;
+}
+
+
+/* Consultar */
+
+#consultar {
+
+    min-width: 100px;
+
+    border: 1px solid var(--marca);
+
+    background: var(--marca);
+
+    color: #FFFFFF;
+}
+
+
+#consultar:hover {
+
+    background: var(--marca-hover);
+
+    border-color: var(--marca-hover);
+
+    transform: translateY(-1px);
+}
+
+
+/* Limpar */
+
+#limpar {
+
+    min-width: 90px;
+
+    background: #FFFFFF;
+
+    color: var(--grafite);
+
+    border: 1px solid var(--borda);
+}
+
+
+#limpar:hover {
+
+    background: var(--card-suave);
+
+    border-color: #CFC8BF;
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   RESULTADO
+========================================= */
+
+.resultado {
+
+    width: 100%;
+
+    margin: 0;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
+
+    overflow: hidden;
+}
+
+
+/* =========================================
+   TABELA WRAPPER
+========================================= */
+
+.tabela-wrapper {
+
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+/* =========================================
+   TABELA
+========================================= */
+
+.resultado table {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+}
+
+
+.resultado thead {
+
+    background: var(--grafite);
+
+    color: #FFFFFF;
+}
+
+
+.resultado th {
+
+    padding: 6px 8px;
+
+    text-align: left;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    border-bottom:
+        1px solid rgba(255, 255, 255, .08);
+}
+
+
+.resultado td {
+
+    padding: 5px 8px;
+
+    text-align: left;
+
+    font-size: 11px;
+
+    line-height: 1.15;
+
+    vertical-align: middle;
+
+    border-bottom:
+        1px solid var(--borda-suave);
+}
+
+
+.resultado tbody tr:last-child td {
+
+    border-bottom: none;
+}
+
+
+.resultado tbody tr:nth-child(even) {
+
+    background: #FAF8F5;
+}
+
+
+.resultado tbody tr:hover {
+
+    background:
+        rgba(154, 107, 63, .06);
+}
+
+
+/* =========================================
+   LARGURA DAS COLUNAS
+========================================= */
+
+.resultado th:nth-child(1),
+.resultado td:nth-child(1) {
+    width: 31%;
+}
+
+
+.resultado th:nth-child(2),
+.resultado td:nth-child(2) {
+    width: 18%;
+}
+
+
+.resultado th:nth-child(3),
+.resultado td:nth-child(3) {
+    width: 18%;
+}
+
+
+.resultado th:nth-child(4),
+.resultado td:nth-child(4) {
+    width: 21%;
+}
+
+
+.resultado th:nth-child(5),
+.resultado td:nth-child(5) {
+    width: 12%;
+}
+
+
+/* =========================================
+   AÇÕES
+========================================= */
+
+.acoes {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    flex-wrap: wrap;
+}
+
 
 button.alterar,
-button.visualizar{
-  height: 34px;
-  padding: 0 12px;
-  border:none;
-  border-radius: 12px;
-  font-weight:900;
-  cursor:pointer;
-  transition: transform .08s ease, filter .2s ease;
+button.visualizar {
+
+    height: 26px;
+
+    padding: 0 8px;
+
+    border-radius: 6px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    cursor: pointer;
 }
 
-button.alterar{
-  background: var(--azul);
-  color:#fff;
-}
-button.visualizar{
-  background:#b0892e;
-  color:#fff;
+
+/* Alterar */
+
+button.alterar {
+
+    background: var(--marca);
+
+    color: #FFFFFF;
+
+    border: 1px solid var(--marca);
 }
 
-button.alterar:hover,
-button.visualizar:hover{
-  filter:brightness(1.05);
-  transform: translateY(-1px);
+
+button.alterar:hover {
+
+    background: var(--marca-hover);
+
+    border-color: var(--marca-hover);
 }
 
-/* Rodapé quantidade */
-#quantidadeResultados{
-  padding: 10px 12px;
-  color: var(--texto-fraco);
+
+/* Visualizar */
+
+button.visualizar {
+
+    background: #FFFFFF;
+
+    color: var(--grafite);
+
+    border: 1px solid var(--borda);
 }
 
-/* Responsivo */
-@media (max-width: 980px){
-  .filtro{
-    grid-template-columns: 60px 1fr;
-  }
-  .filtro-botoes{
-    grid-column: 1 / -1;
-    justify-content: stretch;
-  }
-  .filtro-botoes button{
-    flex: 1;               /* no mobile pode ocupar a linha toda */
-    min-width: 0;
-  }
+
+button.visualizar:hover {
+
+    background: var(--card-suave);
+
+    border-color: #CFC8BF;
+}
+
+
+/* =========================================
+   QUANTIDADE
+========================================= */
+
+#quantidadeResultados {
+
+    margin: 0;
+
+    padding: 6px 8px;
+
+    color: var(--texto-fraco);
+
+    font-size: 10px;
+
+    border-top:
+        1px solid var(--borda-suave);
+}
+
+
+/* =========================================
+   NOTEBOOK
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .campo-nome {
+        grid-column: span 4;
+    }
+
+
+    .campo-cpf {
+        grid-column: span 3;
+    }
+
+
+    .campo-status {
+        grid-column: span 2;
+    }
+
+
+    .filtro-botoes {
+        grid-column: span 3;
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 720px) {
+
+    .campo-nome,
+    .campo-cpf,
+    .campo-status {
+
+        grid-column: span 4;
+    }
+
+
+    .filtro-botoes {
+
+        grid-column: 1 / -1;
+
+        justify-content: flex-end;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 520px) {
+
+    body {
+
+        padding: 8px !important;
+    }
+
+
+    .grid-filtros > * {
+
+        grid-column:
+            1 / -1;
+    }
+
+
+    .filtro-botoes {
+
+        width: 100%;
+
+        flex-direction: column;
+    }
+
+
+    .filtro-botoes button {
+
+        width: 100%;
+    }
+
+
+    .resultado table {
+
+        min-width: 680px;
+
+        table-layout: auto;
+    }
+
+}
+/* =========================================
+   BOTÃO VER — TABELA DE PACIENTES
+========================================= */
+
+#tabelaPacientes td:nth-child(4) button {
+
+    height: 26px;
+    min-width: 54px;
+
+    padding: 0 10px;
+
+    border: 1px solid rgba(154, 107, 63, .30);
+    border-radius: 6px;
+
+    background: rgba(154, 107, 63, .09);
+
+    color: #865B35;
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: none;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        color .15s ease,
+        transform .08s ease;
+}
+
+
+#tabelaPacientes td:nth-child(4) button:hover {
+
+    background: #9A6B3F;
+
+    border-color: #9A6B3F;
+
+    color: #FFFFFF;
+
+    transform: translateY(-1px);
+}
+
+
+#tabelaPacientes td:nth-child(4) button:active {
+
+    transform: translateY(0);
 }

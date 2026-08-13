@@ -1,0 +1,146 @@
+/* =========================================
+   VER / VISUALIZAÇÃO — PREMIUM COMPACTO
+   Azul Royal + Bege
+========================================= */
+
+:root{
+  --azul:#1238A8;
+  --azul-hover:#1E4BD8;
+  --azul-escuro:#0D2C82;
+
+  --bege:#FAF3E7;
+  --bege-card:#F5E9DA;
+
+  --branco:#FFFFFF;
+  --texto:#1F2937;
+  --texto-fraco:#6B7280;
+  --borda:#E7E1D7;
+
+  --sombra: 0 10px 30px rgba(13,44,130,.10);
+  --radius: 14px;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  font-family: Arial, sans-serif;
+  font-size: 11px; /* compacto mas legível */
+  margin: 0;
+  padding: 14px;
+  background: var(--bege);
+  color: var(--texto);
+}
+
+/* Container principal */
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  background: var(--branco);
+  border: 1px solid var(--borda);
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  padding: 14px;
+}
+
+/* Títulos */
+h2, h3, h4{
+  margin: 14px 0 8px;
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--azul-escuro);
+}
+
+/* Labels */
+label{
+  display: block;
+  margin: 6px 0 3px;
+  font-weight: 700;
+  color: var(--texto);
+}
+
+/* Inputs compactos */
+input[type="text"]{
+  font-size: 11px;
+  padding: 6px 8px;
+  width: 160px;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  background: var(--branco);
+  outline: none;
+}
+
+input[type="text"]:focus,
+textarea:focus{
+  border-color: rgba(18,56,168,.45);
+  box-shadow: 0 0 0 3px rgba(18,56,168,.12);
+}
+
+/* Textarea */
+textarea{
+  width: 100%;
+  min-height: 70px;
+  resize: vertical;
+  font-size: 11px;
+  padding: 8px 10px;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  background: var(--branco);
+}
+
+/* ===== Layout de linhas ===== */
+/* IMPORTANTE: não usar mais div global */
+
+.linha{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+/* Campos dentro das linhas */
+.linha > label,
+.linha > input[type="text"],
+.linha > textarea{
+  flex: 0 0 auto;
+}
+
+/* Campo enfermidades */
+#enfermidades{
+  width: 420px;
+  min-height: 60px;
+  overflow-y: auto;
+}
+
+/* Botões */
+button{
+  margin: 10px 6px 0 0;
+  padding: 6px 12px;
+  font-size: 11px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  background: var(--azul);
+  color: #fff;
+  font-weight: 900;
+  transition: transform .08s ease, filter .2s ease;
+}
+
+button:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* Responsivo */
+@media (max-width: 600px){
+  .linha{
+    flex-direction: column;
+  }
+
+  input[type="text"]{
+    width: 100%;
+  }
+
+  #enfermidades{
+    width: 100%;
+  }
+}

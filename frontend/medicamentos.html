@@ -2,46 +2,146 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Cadastro de Medicamentos</title>
-  <link rel="stylesheet" href="css/medicamentos.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Medicamentos</title>
+
+    <link rel="stylesheet" href="css/medicamentos.css">
 </head>
 
 <body>
 
-  <h2>Cadastro de Medicamentos</h2>
+    <main class="container">
 
-  <div class="linha-campos">
+        <!-- =========================================
+             CABEÇALHO
+        ========================================== -->
 
-    <div class="campo">
-      <label for="nome">Nome:</label>
-      <input type="text" id="nome">
-    </div>
-    <div class="campo">
-      <label for="mg">MG:</label>
-      <input type="text" id="mg">
-    </div>
-    <div class="campo campo-botao">
-      <button onclick="adicionarMedicamento()">Adicionar</button>
-    </div>
-  </div>
+        <header class="topo-pagina">
 
-  <label for="filtro">Filtrar por Nome:</label>
-  <input type="text" id="filtro" oninput="filtrarMedicamentos()">
+            <div>
+                <h2>Cadastro de Medicamentos</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>MG</th>
-        <th>Ação</th>
-      </tr>
-    </thead>
-    <tbody id="tabelaMedicamentos">
-      <!-- Medicamentos adicionados aparecem aqui -->
-    </tbody>
-  </table>
-  <script src="js/medicamentos.js"></script>
+                <p>
+                    Cadastre e gerencie os medicamentos utilizados nos receituários.
+                </p>
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             CADASTRO
+        ========================================== -->
+
+        <section class="linha-campos">
+
+            <div class="campo campo-nome">
+
+                <label for="nome">
+                    Nome
+                </label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Nome do medicamento"
+                >
+
+            </div>
+
+
+            <div class="campo campo-mg">
+
+                <label for="mg">
+                    MG
+                </label>
+
+                <input
+                    type="text"
+                    id="mg"
+                    placeholder="Ex: 500mg"
+                >
+
+            </div>
+
+
+            <div class="campo campo-botao">
+
+                <label>&nbsp;</label>
+
+                <button
+                    type="button"
+                    onclick="adicionarMedicamento()"
+                >
+                    Adicionar
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             FILTRO
+        ========================================== -->
+
+        <section class="filtro-card">
+
+            <div class="campo">
+
+                <label for="filtro">
+                    Filtrar por Nome
+                </label>
+
+                <input
+                    type="text"
+                    id="filtro"
+                    placeholder="Digite para pesquisar..."
+                    oninput="filtrarMedicamentos()"
+                >
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             TABELA
+        ========================================== -->
+
+        <section class="tabela-card">
+
+            <div class="tabela-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Nome</th>
+                            <th>MG</th>
+                            <th>Ação</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tabelaMedicamentos">
+                        <!-- Medicamentos adicionados aparecem aqui -->
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="js/medicamentos.js"></script>
+
 </body>
 
 </html>

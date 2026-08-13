@@ -2,159 +2,487 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Controle de Autoclave</title>
-  <link rel="stylesheet" href="css/autoclave.css">
-  <script src="js/autoclave.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Controle de Autoclave</title>
+
+    <link rel="stylesheet" href="css/autoclave.css">
+
+    <script src="js/autoclave.js" defer></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 </head>
 
 <body>
-  <div class="container">
-    <h2>Controle de Autoclave</h2>
 
-    <div class="tabs">
-      <button class="tablink active" onclick="openTab(event, 'fisico')">Controle Físico</button>
-      <button class="tablink" onclick="openTab(event, 'biologico')">Controle Biológico</button>
-    </div>
+    <main class="container">
 
-    <div id="fisico" class="tabcontent active">
-      <h3>Controle Físico</h3>
-      <!-- Formulário Físico -->
-      <div class="formulario">
-        <div class="field">
-          <label>Data:</label>
-          <input type="date" id="dataFisico">
+        <!-- =========================================
+             CABEÇALHO
+        ========================================== -->
+
+        <header class="topo-pagina">
+
+            <div>
+                <h2>Controle de Autoclave</h2>
+
+                <p>
+                    Registro dos controles físicos e biológicos da esterilização.
+                </p>
+            </div>
+
+        </header>
+
+
+        <!-- =========================================
+             ABAS
+        ========================================== -->
+
+        <div class="tabs">
+
+            <button
+                class="tablink active"
+                onclick="openTab(event, 'fisico')"
+            >
+                Controle Físico
+            </button>
+
+            <button
+                class="tablink"
+                onclick="openTab(event, 'biologico')"
+            >
+                Controle Biológico
+            </button>
+
         </div>
 
-        <div class="field">
-          <label>Horário:</label>
-          <input type="time" id="horarioFisico">
-        </div>
 
-        <div class="field">
-          <label>Operador:</label>
-          <input type="text" id="operadorFisico">
-        </div>
+        <!-- =========================================
+             CONTROLE FÍSICO
+        ========================================== -->
 
-        <div class="field">
-          <label>Temperatura (°C):</label>
-          <input type="number" id="temperaturaFisico">
-        </div>
+        <section
+            id="fisico"
+            class="tabcontent active"
+        >
 
-        <div class="field">
-          <label>Pressão (kgf/cm²):</label>
-          <input type="number" step="0.1" id="pressaoFisico">
-        </div>
+            <div class="titulo-secao">
+                <h3>Controle Físico</h3>
+            </div>
 
-        <div class="field">
-          <label>Tempo (min):</label>
-          <input type="number" id="tempoFisico">
-        </div>
 
-        <div class="field">
-          <label>Fita Indicadora:</label>
-          <input type="text" id="fitaIndicadoraFisico">
-        </div>
+            <!-- FORMULÁRIO -->
 
-        <div class="actions">
-          <button onclick="adicionarControleFisico()">Adicionar</button>
-        </div>
-      </div>
+            <div class="formulario">
 
-      <br>
-      <div class="filtros">
-        <label>Data Início:</label>
-        <input type="date" id="dataInicioFisico">
-        <label>Data Fim:</label>
-        <input type="date" id="dataFimFisico">
-        <button onclick="filtrarControleFisico()">Filtrar</button>
-        <button onclick="exportarControleFisicoPDF()">Exportar PDF</button>
-      </div>
+                <div class="field campo-data">
 
-      <table id="tabelaFisico">
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Horário</th>
-            <th>Operador</th>
-            <th>Temperatura</th>
-            <th>Pressão</th>
-            <th>Tempo</th>
-            <th>Fita Indicadora</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
+                    <label for="dataFisico">
+                        Data
+                    </label>
 
-    <div id="biologico" class="tabcontent">
-      <h3>Controle Biológico</h3>
-      <!-- Formulário Biológico -->
-      <div class="formulario">
-        <div class="field">
-          <label>Data:</label>
-          <input type="date" id="dataBiologico">
-        </div>
+                    <input
+                        type="date"
+                        id="dataFisico"
+                    >
 
-        <div class="field">
-          <label>Lote:</label>
-          <input type="text" id="loteBiologico">
-        </div>
+                </div>
 
-        <div class="field">
-          <label>Resultado:</label>
-          <input type="text" id="resultadoBiologico">
-        </div>
 
-        <div class="field">
-          <label>Data Leitura:</label>
-          <input type="date" id="dataLeituraBiologico">
-        </div>
+                <div class="field campo-horario">
 
-        <div class="field">
-          <label>Responsável:</label>
-          <input type="text" id="responsavelLeituraBiologico">
-        </div>
+                    <label for="horarioFisico">
+                        Horário
+                    </label>
 
-        <div class="field">
-          <label>Observações:</label>
-          <input type="text" id="observacoesBiologico">
-        </div>
+                    <input
+                        type="time"
+                        id="horarioFisico"
+                    >
 
-        <div class="actions">
-          <button onclick="adicionarControleBiologico()">Adicionar</button>
-        </div>
-      </div>
-      <br>
-      <div class="filtros">
-        <label>Data Início:</label>
-        <input type="date" id="dataInicioBiologico">
-        <label>Data Fim:</label>
-        <input type="date" id="dataFimBiologico">
-        <button onclick="filtrarControleBiologico()">Filtrar</button>
-        <button onclick="exportarControleBiologicoPDF()">Exportar PDF</button>
-      </div>
+                </div>
 
-      <table id="tabelaBiologico">
-        <thead>
-          <tr>
-            <th>Data</th>
-            <th>Lote</th>
-            <th>Resultado</th>
-            <th>Data Leitura</th>
-            <th>Responsável</th>
-            <th>Observações</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-    </div>
 
-  </div>
+                <div class="field campo-operador">
+
+                    <label for="operadorFisico">
+                        Operador
+                    </label>
+
+                    <input
+                        type="text"
+                        id="operadorFisico"
+                    >
+
+                </div>
+
+
+                <div class="field campo-temperatura">
+
+                    <label for="temperaturaFisico">
+                        Temperatura (°C)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="temperaturaFisico"
+                    >
+
+                </div>
+
+
+                <div class="field campo-pressao">
+
+                    <label for="pressaoFisico">
+                        Pressão (kgf/cm²)
+                    </label>
+
+                    <input
+                        type="number"
+                        step="0.1"
+                        id="pressaoFisico"
+                    >
+
+                </div>
+
+
+                <div class="field campo-tempo">
+
+                    <label for="tempoFisico">
+                        Tempo (min)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="tempoFisico"
+                    >
+
+                </div>
+
+
+                <div class="field campo-fita">
+
+                    <label for="fitaIndicadoraFisico">
+                        Fita Indicadora
+                    </label>
+
+                    <input
+                        type="text"
+                        id="fitaIndicadoraFisico"
+                    >
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        type="button"
+                        onclick="adicionarControleFisico()"
+                    >
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTROS -->
+
+            <div class="filtros">
+
+                <div class="field">
+
+                    <label for="dataInicioFisico">
+                        Data Início
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataInicioFisico"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="dataFimFisico">
+                        Data Fim
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataFimFisico"
+                    >
+
+                </div>
+
+
+                <div class="acoes-filtros">
+
+                    <button
+                        type="button"
+                        onclick="filtrarControleFisico()"
+                    >
+                        Filtrar
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-secundario"
+                        onclick="exportarControleFisicoPDF()"
+                    >
+                        Exportar PDF
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- TABELA -->
+
+            <div class="tabela-card">
+
+                <div class="tabela-wrapper">
+
+                    <table id="tabelaFisico">
+
+                        <thead>
+
+                            <tr>
+                                <th>Data</th>
+                                <th>Horário</th>
+                                <th>Operador</th>
+                                <th>Temperatura</th>
+                                <th>Pressão</th>
+                                <th>Tempo</th>
+                                <th>Fita Indicadora</th>
+                                <th>Ações</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             CONTROLE BIOLÓGICO
+        ========================================== -->
+
+        <section
+            id="biologico"
+            class="tabcontent"
+        >
+
+            <div class="titulo-secao">
+                <h3>Controle Biológico</h3>
+            </div>
+
+
+            <!-- FORMULÁRIO -->
+
+            <div class="formulario formulario-biologico">
+
+                <div class="field campo-data-biologico">
+
+                    <label for="dataBiologico">
+                        Data
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataBiologico"
+                    >
+
+                </div>
+
+
+                <div class="field campo-lote">
+
+                    <label for="loteBiologico">
+                        Lote
+                    </label>
+
+                    <input
+                        type="text"
+                        id="loteBiologico"
+                    >
+
+                </div>
+
+
+                <div class="field campo-resultado">
+
+                    <label for="resultadoBiologico">
+                        Resultado
+                    </label>
+
+                    <input
+                        type="text"
+                        id="resultadoBiologico"
+                    >
+
+                </div>
+
+
+                <div class="field campo-leitura">
+
+                    <label for="dataLeituraBiologico">
+                        Data Leitura
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataLeituraBiologico"
+                    >
+
+                </div>
+
+
+                <div class="field campo-responsavel">
+
+                    <label for="responsavelLeituraBiologico">
+                        Responsável
+                    </label>
+
+                    <input
+                        type="text"
+                        id="responsavelLeituraBiologico"
+                    >
+
+                </div>
+
+
+                <div class="field campo-observacoes">
+
+                    <label for="observacoesBiologico">
+                        Observações
+                    </label>
+
+                    <input
+                        type="text"
+                        id="observacoesBiologico"
+                    >
+
+                </div>
+
+
+                <div class="actions">
+
+                    <button
+                        type="button"
+                        onclick="adicionarControleBiologico()"
+                    >
+                        Adicionar
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- FILTROS -->
+
+            <div class="filtros">
+
+                <div class="field">
+
+                    <label for="dataInicioBiologico">
+                        Data Início
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataInicioBiologico"
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label for="dataFimBiologico">
+                        Data Fim
+                    </label>
+
+                    <input
+                        type="date"
+                        id="dataFimBiologico"
+                    >
+
+                </div>
+
+
+                <div class="acoes-filtros">
+
+                    <button
+                        type="button"
+                        onclick="filtrarControleBiologico()"
+                    >
+                        Filtrar
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn-secundario"
+                        onclick="exportarControleBiologicoPDF()"
+                    >
+                        Exportar PDF
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- TABELA -->
+
+            <div class="tabela-card">
+
+                <div class="tabela-wrapper">
+
+                    <table id="tabelaBiologico">
+
+                        <thead>
+
+                            <tr>
+                                <th>Data</th>
+                                <th>Lote</th>
+                                <th>Resultado</th>
+                                <th>Data Leitura</th>
+                                <th>Responsável</th>
+                                <th>Observações</th>
+                                <th>Ações</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
 </body>
 
 </html>

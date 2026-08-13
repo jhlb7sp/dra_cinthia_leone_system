@@ -1,427 +1,887 @@
 /* =========================================
-   RELATÓRIOS — PREMIUM (Azul Royal + Bege)
-   Compatível com relatorio.html atual
+   RELATÓRIOS
+   CINTHIA LEONE
+   FULL WIDTH / COMPACTO / PREMIUM
 ========================================= */
 
-:root{
-  --azul:#1238A8;
-  --azul-hover:#1E4BD8;
-  --azul-escuro:#0D2C82;
+:root {
 
-  --bege:#FAF3E7;
-  --bege-card:#F5E9DA;
+    --marca: #9A6B3F;
+    --marca-hover: #865B35;
 
-  --branco:#FFFFFF;
-  --texto:#1F2937;
-  --texto-fraco:#6B7280;
-  --borda:#E7E1D7;
+    --grafite: #494641;
+    --grafite-hover: #3D3A36;
 
-  --sombra: 0 10px 30px rgba(13,44,130,.10);
-  --radius: 14px;
+    --texto: #494641;
+    --texto-fraco: #6F6962;
 
-  --ok-bg: rgba(31,122,58,.12);
-  --ok-bd: rgba(31,122,58,.25);
-  --ok-tx: #1f7a3a;
+    --fundo: #F6F3EE;
 
-  --warn-bg: rgba(176,137,46,.14);
-  --warn-bd: rgba(176,137,46,.25);
+    --card: #FFFFFF;
+    --card-suave: #F4F0EA;
+    --input-bg: #FBFAF8;
 
-  --danger-bg: rgba(198,40,40,.12);
-  --danger-bd: rgba(198,40,40,.25);
-  --danger-tx: #8b1d1d;
+    --borda: #DDD8D1;
+    --borda-suave: #EBE7E1;
+
+    --success: #58705D;
+    --success-bg: rgba(88, 112, 93, .10);
+    --success-bd: rgba(88, 112, 93, .24);
+
+    --warning: #B48745;
+    --warning-bg: rgba(180, 135, 69, .12);
+    --warning-bd: rgba(180, 135, 69, .24);
+
+    --danger: #A5524B;
+    --danger-bg: rgba(165, 82, 75, .10);
+    --danger-bd: rgba(165, 82, 75, .23);
+
+    --sombra:
+        0 4px 16px rgba(73, 70, 65, .07);
+
+    --radius: 10px;
+    --radius-sm: 7px;
 }
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: var(--bege);
-  color: var(--texto);
-  min-height: 100vh;
-  padding: 16px;
+
+html,
+body {
+    width: 100%;
 }
 
-/* Container */
-.container{
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 10px !important;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background: var(--fundo);
+
+    color: var(--texto);
+
+    font-size: 12px;
+
+    overflow-x: hidden;
 }
 
-/* Título da página */
-h1{
-  margin: 0 0 14px 0;
-  font-size: 14px;
-  font-weight: 900;
-  color: var(--azul-escuro);
 
-  padding: 12px 14px;
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--branco), var(--bege-card));
-  border: 1px solid var(--borda);
-  box-shadow: var(--sombra);
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container {
+
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* =========================
-   Grid do dashboard
-========================= */
-.dashboard-grid{
-  display: grid;
-  grid-template-columns: 2fr 1.3fr;
-  gap: 16px;
-  align-items: stretch;
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+h1 {
+
+    width: 100%;
+
+    margin: 0 0 8px;
+
+    padding: 9px 12px;
+
+    color: var(--grafite);
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-top: 3px solid var(--marca);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
 }
 
-/* =========================
-   Card base
-========================= */
-.card{
-  background: var(--branco);
-  border-radius: var(--radius);
-  border: 1px solid var(--borda);
-  box-shadow: var(--sombra);
-  overflow: hidden;
+
+/* =========================================
+   GRID PRINCIPAL
+========================================= */
+
+.dashboard-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.8fr)
+        minmax(360px, .9fr);
+
+    gap: 8px;
+
+    align-items: stretch;
 }
 
-.card-header{
-  padding: 14px;
-  border-bottom: 1px solid var(--borda);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+
+/* =========================================
+   CARD BASE
+========================================= */
+
+.card {
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
+
+    overflow: hidden;
 }
 
-.card-body{
-  padding: 14px;
+
+/* =========================================
+   HEADER CARD
+========================================= */
+
+.card-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 8px;
+
+    min-height: 48px;
+
+    padding: 7px 10px;
+
+    background: var(--card-suave);
+
+    border-bottom: 1px solid var(--borda);
 }
 
-/* H2 dentro de card */
-.card h2{
-  font-size: 13px;
-  font-weight: 900;
-  color: var(--azul-escuro);
-  margin: 0;
+
+.card-body {
+
+    padding: 10px;
 }
 
-/* Subtitulo */
-.subtitulo{
-  font-size: 12px;
-  color: var(--texto-fraco);
+
+/* =========================================
+   TÍTULOS INTERNOS
+========================================= */
+
+.card h2 {
+
+    margin: 0;
+
+    color: var(--grafite);
+
+    font-size: 12px;
+
+    font-weight: 800;
 }
 
-/* =========================
-   Filtros (mês)
-========================= */
+
+.subtitulo {
+
+    margin-top: 2px;
+
+    color: var(--texto-fraco);
+
+    font-size: 10px;
+}
+
+
+/* =========================================
+   FILTROS
+========================================= */
+
 .filtros-faturamento,
-.filtros-detalhamento{
-  display: flex;
-  align-items: flex-end;
-  gap: 10px;
-  flex-wrap: wrap;
+.filtros-detalhamento {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 6px;
+
+    flex-wrap: nowrap;
 }
 
-.filtro-item{
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 12px;
+
+.filtro-item {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+
+    min-width: 0;
 }
 
-.filtro-item label{
-  color: var(--texto);
-  font-weight: 900;
+
+.filtro-item label {
+
+    color: var(--texto);
+
+    font-size: 10px;
+
+    font-weight: 700;
 }
 
-.filtro-item input[type="month"]{
-  height: 36px;
-  padding: 0 10px;
-  border-radius: 12px;
-  border: 1px solid var(--borda);
-  font-size: 12px;
-  color: var(--texto);
-  background: var(--branco);
-  outline: none;
+
+.filtro-item input[type="month"] {
+
+    height: 32px;
+
+    min-width: 130px;
+
+    padding: 0 8px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
+
+    outline: none;
+
+    background: var(--input-bg);
+
+    color: var(--texto);
+
+    font-size: 10px;
+
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease,
+        background .15s ease;
 }
 
-.filtro-item input[type="month"]:focus{
-  border-color: rgba(18,56,168,.45);
-  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+
+.filtro-item input[type="month"]:hover {
+
+    border-color: #C9C2B9;
 }
 
-/* =========================
-   Faturamento (pizza + resumo)
-========================= */
-.corpo-faturamento{
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+
+.filtro-item input[type="month"]:focus {
+
+    background: #FFFFFF;
+
+    border-color: var(--marca);
+
+    box-shadow:
+        0 0 0 3px rgba(154, 107, 63, .11);
 }
 
-.linha-faturamento-superior{
-  display: grid;
-  grid-template-columns: 1.25fr 1fr;
-  gap: 16px;
-  align-items: center;
+
+/* =========================================
+   FATURAMENTO
+========================================= */
+
+.corpo-faturamento {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
 }
 
-/* Gráfico */
-.bloco-grafico{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+
+.linha-faturamento-superior {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(280px, 1.25fr)
+        minmax(180px, .75fr);
+
+    gap: 10px;
+
+    align-items: center;
 }
 
-#graficoFaturamentoPizza{
-  max-width: 260px;
-  max-height: 260px;
+
+/* =========================================
+   GRÁFICO
+========================================= */
+
+.bloco-grafico {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 6px;
+
+    min-height: 240px;
 }
 
-/* Legenda */
-.legenda-grafico{
-  display:flex;
-  gap: 16px;
-  font-size: 12px;
-  color: var(--texto-fraco);
+
+#graficoFaturamentoPizza {
+
+    width: 210px !important;
+    height: 210px !important;
+
+    max-width: 210px;
+    max-height: 210px;
 }
 
-.legenda-grafico span{
-  display:inline-flex;
-  align-items: center;
-  gap: 6px;
+
+/* =========================================
+   LEGENDA
+========================================= */
+
+.legenda-grafico {
+
+    display: flex;
+
+    gap: 10px;
+
+    color: var(--texto-fraco);
+
+    font-size: 10px;
 }
 
-.legenda-grafico .cor{
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
+
+.legenda-grafico span {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 4px;
 }
 
-/* mantém cores sem depender do Chart.js */
-.legenda-grafico .cor.entrada{ background: #1f7a3a; }
-.legenda-grafico .cor.saida{ background: #c62828; }
 
-/* Resumo */
-.bloco-resumo{
-  display:flex;
-  flex-direction: column;
-  gap: 10px;
+.legenda-grafico .cor {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 999px;
 }
 
-.resumo-item{
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(245,233,218,.40);
-  border: 1px solid var(--borda);
-  display:flex;
-  flex-direction: column;
-  gap: 2px;
+
+.legenda-grafico .cor.entrada {
+
+    background: var(--success);
 }
 
-.resumo-item span{
-  font-size: 12px;
-  color: var(--texto-fraco);
-  font-weight: 700;
+
+.legenda-grafico .cor.saida {
+
+    background: var(--danger);
 }
 
-.resumo-item strong{
-  font-size: 14px;
-  color: var(--texto);
-  font-weight: 900;
+
+/* =========================================
+   RESUMO
+========================================= */
+
+.bloco-resumo {
+
+    display: grid;
+
+    gap: 6px;
 }
 
-.resumo-item.saldo{
-  background: var(--ok-bg);
-  border-color: var(--ok-bd);
+
+.resumo-item {
+
+    min-height: 54px;
+
+    padding: 7px 9px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 2px;
+
+    background: var(--card-suave);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius-sm);
 }
 
-/* =========================
-   Pendentes
-========================= */
-.card-pendentes{
-  padding: 12px;
-  border-radius: 12px;
-  background: var(--danger-bg);
-  border: 1px solid var(--danger-bd);
+
+.resumo-item span {
+
+    color: var(--texto-fraco);
+
+    font-size: 10px;
+
+    font-weight: 600;
 }
 
-.card-pendentes h3{
-  font-size: 13px;
-  margin: 0 0 6px 0;
-  color: var(--danger-tx);
-  font-weight: 900;
+
+.resumo-item strong {
+
+    color: var(--grafite);
+
+    font-size: 13px;
+
+    font-weight: 800;
 }
 
-.descricao-pendentes{
-  font-size: 12px;
-  color: var(--danger-tx);
-  margin-bottom: 10px;
+
+.resumo-item.saldo {
+
+    background: var(--success-bg);
+
+    border-color: var(--success-bd);
 }
 
-#listaPendentes{
-  list-style: none;
-  display:flex;
-  flex-direction: column;
-  gap: 8px;
+
+.resumo-item.saldo strong {
+
+    color: var(--success);
 }
 
-.item-pendente{
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(255,255,255,.65);
-  border: 1px solid var(--danger-bd);
-  font-size: 12px;
+
+/* =========================================
+   PENDENTES
+========================================= */
+
+.card-pendentes {
+
+    padding: 8px 9px;
+
+    background: var(--danger-bg);
+
+    border: 1px solid var(--danger-bd);
+
+    border-radius: var(--radius-sm);
 }
+
+
+.card-pendentes h3 {
+
+    margin: 0 0 3px;
+
+    color: var(--danger);
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+
+.descricao-pendentes {
+
+    margin-bottom: 6px;
+
+    color: var(--danger);
+
+    font-size: 10px;
+}
+
+
+#listaPendentes {
+
+    list-style: none;
+
+    display: grid;
+
+    gap: 5px;
+}
+
+
+.item-pendente {
+
+    padding: 6px 8px;
+
+    background: rgba(255, 255, 255, .72);
+
+    border: 1px solid var(--danger-bd);
+
+    border-radius: var(--radius-sm);
+
+    font-size: 10px;
+}
+
 
 .pendente-linha-superior,
-.pendente-linha-inferior{
-  display:flex;
-  justify-content: space-between;
-  gap: 8px;
+.pendente-linha-inferior {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 6px;
 }
 
-.pendente-paciente{
-  font-weight: 900;
-  color: var(--danger-tx);
+
+.pendente-paciente,
+.pendente-valor {
+
+    color: var(--danger);
+
+    font-weight: 800;
 }
 
-.pendente-valor{
-  font-weight: 900;
-  color: var(--danger-tx);
+
+.pendente-descricao,
+.pendente-vencimento {
+
+    color: var(--danger);
 }
 
-.pendente-descricao{
-  color: var(--danger-tx);
+
+.pendente-vencimento {
+
+    font-size: 9px;
+
+    opacity: .88;
 }
 
-.pendente-vencimento{
-  color: var(--danger-tx);
-  font-size: 12px;
-  opacity: .9;
+
+/* =========================================
+   DETALHAMENTO
+========================================= */
+
+.card-detalhamento .card-body {
+
+    padding: 8px 10px 10px;
 }
 
-/* =========================
-   Tabela detalhamento
-========================= */
-.tabela-faturamento-wrapper{
-  margin-top: 10px;
-}
 
-.tabela-faturamento{
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid var(--borda);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--branco);
-}
+.filtros-detalhamento {
 
-.tabela-faturamento thead{
-  background: var(--azul);
-  color: #fff;
-}
-
-.tabela-faturamento th,
-.tabela-faturamento td{
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--borda);
-  border-right: 1px solid var(--borda);
-  text-align: left;
-  font-size: 12px;
-}
-
-.tabela-faturamento tr > *:last-child{ border-right:none; }
-
-.tabela-faturamento th{
-  font-weight: 900;
-}
-
-.tabela-faturamento tbody tr:nth-child(even){
-  background: rgba(245,233,218,.28);
-}
-
-.tabela-faturamento tbody tr:hover{
-  background: rgba(18,56,168,.06);
-}
-
-.tabela-faturamento .linha-total{
-  font-weight: 900;
-  background: rgba(245,233,218,.40);
-}
-
-.tabela-faturamento .linha-total td{
-  border-top: 2px solid var(--borda);
-}
-
-/* Cores de saldo */
-.saldo-positivo{ color: var(--ok-tx); font-weight: 900; }
-.saldo-negativo{ color: var(--danger-tx); font-weight: 900; }
-
-/* =========================
-   Botão ícone (aplicar detalhamento)
-========================= */
-.btn-icone{
-  width: 36px;
-  height: 36px;
-  border-radius: 12px;
-  background: var(--azul);
-  border: none;
-  cursor: pointer;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition: transform .08s ease, filter .2s ease;
-  padding: 0;
-}
-
-.btn-icone:hover{
-  filter: brightness(1.05);
-  transform: translateY(-1px);
-}
-
-.btn-icone:active{
-  transform: translateY(0);
-}
-
-.btn-icone svg{
-  width: 20px;
-  height: 20px;
-  pointer-events: none;
-}
-
-/* =========================
-   Responsivo
-========================= */
-@media (max-width: 960px){
-  .dashboard-grid{
-    grid-template-columns: 1fr;
-  }
-
-  .card-header{
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .filtros-faturamento,
-  .filtros-detalhamento{
     width: 100%;
-    justify-content: flex-start;
-  }
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        32px;
+
+    gap: 6px;
+
+    align-items: end;
 }
 
-@media (max-width: 720px){
-  .linha-faturamento-superior{
-    grid-template-columns: 1fr;
-  }
 
-  #graficoFaturamentoPizza{
-    max-width: 240px;
-    max-height: 240px;
-  }
+/* =========================================
+   BOTÃO ÍCONE
+========================================= */
+
+.btn-icone {
+
+    width: 32px;
+
+    height: 32px;
+
+    padding: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 1px solid var(--marca);
+
+    border-radius: var(--radius-sm);
+
+    background: var(--marca);
+
+    cursor: pointer;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        transform .08s ease;
+}
+
+
+.btn-icone:hover {
+
+    background: var(--marca-hover);
+
+    border-color: var(--marca-hover);
+
+    transform: translateY(-1px);
+}
+
+
+.btn-icone svg {
+
+    width: 15px;
+
+    height: 15px;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   TABELA
+========================================= */
+
+.tabela-faturamento-wrapper {
+
+    width: 100%;
+
+    margin-top: 8px !important;
+
+    overflow-x: auto;
+}
+
+
+.tabela-faturamento {
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+}
+
+
+.tabela-faturamento thead {
+
+    background: var(--grafite);
+
+    color: #FFFFFF;
+}
+
+
+.tabela-faturamento th {
+
+    padding: 6px 7px;
+
+    color: #FFFFFF;
+
+    text-align: left;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.tabela-faturamento td {
+
+    padding: 5px 7px;
+
+    color: var(--texto);
+
+    text-align: left;
+
+    font-size: 10px;
+
+    line-height: 1.15;
+
+    border-bottom:
+        1px solid var(--borda-suave);
+}
+
+
+.tabela-faturamento th:nth-child(1),
+.tabela-faturamento td:nth-child(1) {
+
+    width: 25%;
+}
+
+
+.tabela-faturamento th:nth-child(2),
+.tabela-faturamento td:nth-child(2),
+.tabela-faturamento th:nth-child(3),
+.tabela-faturamento td:nth-child(3),
+.tabela-faturamento th:nth-child(4),
+.tabela-faturamento td:nth-child(4) {
+
+    width: 25%;
+}
+
+
+.tabela-faturamento tbody tr:nth-child(even) {
+
+    background: #FAF8F5;
+}
+
+
+.tabela-faturamento tbody tr:hover {
+
+    background:
+        rgba(154, 107, 63, .06);
+}
+
+
+.tabela-faturamento tbody tr:last-child td {
+
+    border-bottom: none;
+}
+
+
+.tabela-faturamento .linha-total {
+
+    background: var(--card-suave);
+
+    font-weight: 800;
+}
+
+
+/* =========================================
+   SALDOS
+========================================= */
+
+.saldo-positivo {
+
+    color: var(--success);
+
+    font-weight: 800;
+}
+
+
+.saldo-negativo {
+
+    color: var(--danger);
+
+    font-weight: 800;
+}
+
+
+/* =========================================
+   NOTEBOOK
+========================================= */
+
+@media (max-width: 1050px) {
+
+    .dashboard-grid {
+
+        grid-template-columns:
+            minmax(0, 1.5fr)
+            minmax(330px, .9fr);
+    }
+
+
+    #graficoFaturamentoPizza {
+
+        width: 190px !important;
+        height: 190px !important;
+
+        max-width: 190px;
+        max-height: 190px;
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+    .dashboard-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .linha-faturamento-superior {
+
+        grid-template-columns:
+            minmax(260px, 1fr)
+            minmax(180px, .7fr);
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 620px) {
+
+    body {
+
+        padding: 8px !important;
+    }
+
+
+    .card-header {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .filtros-faturamento {
+
+        width: 100%;
+    }
+
+
+    .linha-faturamento-superior {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .bloco-grafico {
+
+        min-height: auto;
+    }
+
+
+    .filtros-detalhamento {
+
+        grid-template-columns:
+            1fr
+            1fr
+            32px;
+    }
+
 }

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Pedido Odontológico</title>
+
+
+    <!-- jsPDF -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+    </script>
+
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="css/pedido.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <main class="pagina-pedido">
+
+
+        <!-- =========================================
+             CABEÇALHO
+        ========================================== -->
+
+        <header class="cabecalho-pagina">
+
+            <div>
+
+                <h2>
+                    Pedido Odontológico
+                </h2>
+
+                <p>
+                    Gere solicitações de exames e documentações para os pacientes.
+                </p>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =========================================
+             CARD PRINCIPAL
+        ========================================== -->
+
+        <section class="card-pedido">
+
+
+            <!-- =========================================
+                 TIPO DE PEDIDO
+            ========================================== -->
+
+            <div class="tipo-pedido">
+
+
+                <label class="titulo-tipo">
+                    Tipo de pedido
+                </label>
+
+
+                <div class="opcoes-pedido">
+
+
+                    <!-- PANORÂMICA -->
+
+                    <label class="opcao-pedido">
+
+                        <input
+                            type="radio"
+                            name="tipoPedido"
+                            value="panoramica"
+                            checked
+                        >
+
+                        <span>
+                            Panorâmica
+                        </span>
+
+                    </label>
+
+
+
+                    <!-- PERIAPICAL -->
+
+                    <label class="opcao-pedido">
+
+                        <input
+                            type="radio"
+                            name="tipoPedido"
+                            value="periapical"
+                        >
+
+                        <span>
+                            Periapical
+                        </span>
+
+                    </label>
+
+
+
+                    <!-- TOMOGRAFIA -->
+
+                    <label class="opcao-pedido">
+
+                        <input
+                            type="radio"
+                            name="tipoPedido"
+                            value="tomografia"
+                        >
+
+                        <span>
+                            Tomografia
+                        </span>
+
+                    </label>
+
+
+
+                    <!-- DOCUMENTAÇÃO -->
+
+                    <label class="opcao-pedido">
+
+                        <input
+                            type="radio"
+                            name="tipoPedido"
+                            value="documentacao"
+                        >
+
+                        <span>
+                            Documentação
+                        </span>
+
+                    </label>
+
+
+
+                    <!-- SOLICITAÇÃO -->
+
+                    <label class="opcao-pedido">
+
+                        <input
+                            type="radio"
+                            name="tipoPedido"
+                            value="solicitacao"
+                        >
+
+                        <span>
+                            Solicitação Livre
+                        </span>
+
+                    </label>
+
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================================
+                 PACIENTE
+            ========================================== -->
+
+            <div class="grid-pedido">
+
+
+                <div class="campo campo-paciente">
+
+                    <label for="paciente">
+                        Nome do Paciente
+                    </label>
+
+
+                    <div class="autocomplete-wrap">
+
+                        <input
+                            type="text"
+                            id="paciente"
+                            placeholder="Digite o nome"
+                            autocomplete="off"
+                        >
+
+
+                        <div
+                            id="sugestoes"
+                            class="autocomplete-sugestoes"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     TIPO DE DOCUMENTAÇÃO
+                ====================================== -->
+
+                <div
+                    class="campo campo-documentacao"
+                    id="campoDocumentacao"
+                    hidden
+                >
+
+                    <label>
+                        Tipo de documentação
+                    </label>
+
+
+                    <div class="opcoes-documentacao">
+
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="tipoDocumentacao"
+                                value="simples"
+                                checked
+                            >
+
+                            <span>
+                                Simples
+                            </span>
+
+                        </label>
+
+
+                        <label>
+
+                            <input
+                                type="radio"
+                                name="tipoDocumentacao"
+                                value="completa"
+                            >
+
+                            <span>
+                                Completa
+                            </span>
+
+                        </label>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     PERIAPICAL
+                ====================================== -->
+
+                <div
+                    class="campo campo-dente"
+                    id="campoDente"
+                    hidden
+                >
+
+                    <label for="numDente">
+                        Dente
+                    </label>
+
+                    <input
+                        type="number"
+                        id="numDente"
+                        min="11"
+                        max="85"
+                        placeholder="Ex: 11"
+                    >
+
+                </div>
+
+
+
+                <!-- =====================================
+                     TOMOGRAFIA - REGIÃO
+                ====================================== -->
+
+                <div
+                    class="campo campo-regiao"
+                    id="campoRegiao"
+                    hidden
+                >
+
+                    <label for="regiao">
+                        Região
+                    </label>
+
+
+                    <select id="regiao">
+
+                        <option value="">
+                            Selecione
+                        </option>
+
+                        <option value="Maxila">
+                            Maxila
+                        </option>
+
+                        <option value="Mandíbula">
+                            Mandíbula
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     BOTÃO ADICIONAR DENTE / REGIÃO
+                ====================================== -->
+
+                <div
+                    class="campo campo-adicionar"
+                    id="campoAdicionar"
+                    hidden
+                >
+
+                    <label>&nbsp;</label>
+
+
+                    <button
+                        type="button"
+                        class="btn-add"
+                        id="btnAdicionarItem"
+                        onclick="adicionarItemPedido()"
+                    >
+                        + Adicionar
+                    </button>
+
+                </div>
+
+
+
+                <!-- =====================================
+                     SOLICITAÇÃO LIVRE
+                ====================================== -->
+
+                <div
+                    class="campo campo-solicitacao"
+                    id="campoSolicitacao"
+                    hidden
+                >
+
+                    <label for="solicitacao">
+                        Solicitação
+                    </label>
+
+
+                    <textarea
+                        id="solicitacao"
+                        rows="4"
+                        placeholder="Digite aqui a solicitação..."
+                    ></textarea>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =========================================
+                 LISTA DENTES / REGIÕES
+            ========================================== -->
+
+            <div
+                class="itens-pedido"
+                id="areaItensPedido"
+                hidden
+            >
+
+
+                <div class="itens-pedido-titulo">
+
+                    <span id="tituloItensPedido">
+                        Itens adicionados
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="listaItensPedido"
+                    class="lista-itens-pedido"
+                ></div>
+
+
+            </div>
+
+
+
+            <!-- =========================================
+                 AÇÕES
+            ========================================== -->
+
+            <div class="acoes-pedido">
+
+
+                <div class="assinatura-container">
+
+                    <input
+                        type="checkbox"
+                        id="assinatura"
+                    >
+
+                    <label for="assinatura">
+                        Carimbo
+                    </label>
+
+                </div>
+
+
+
+                <button
+                    type="button"
+                    class="btn-pdf"
+                    onclick="gerarPedido()"
+                >
+                    Gerar Pedido PDF
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================================
+         SCRIPTS DO SISTEMA
+    ========================================== -->
+
+    <script src="js/logo.js"></script>
+
+    <script src="js/pdf.js"></script>
+
+    <script src="js/pedido.js"></script>
+
+
+</body>
+
+</html>

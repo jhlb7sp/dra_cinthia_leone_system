@@ -2,86 +2,313 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Tela de Faturamento</title>
+
   <link rel="stylesheet" href="css/faturamento.css">
+
   <script src="js/faturamento.js" defer></script>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Tela de Faturamento</h1>
 
-    <div class="filter-group">
+  <main class="container">
+
+    <!-- =========================================
+         CABEÇALHO
+    ========================================== -->
+
+    <header class="topo-pagina">
+
       <div>
-        <label for="filterStart">Data Início</label>
-        <input type="date" id="filterStart" />
+        <h1>Faturamento</h1>
+
+        <p>
+          Controle de entradas, saídas e pagamentos.
+        </p>
       </div>
-      <div>
-        <label for="filterEnd">Data Fim</label>
-        <input type="date" id="filterEnd" />
+
+    </header>
+
+
+    <!-- =========================================
+         FILTROS
+    ========================================== -->
+
+    <section class="filter-group">
+
+      <div class="campo filtro-inicio">
+
+        <label for="filterStart">
+          Data Início
+        </label>
+
+        <input
+          type="date"
+          id="filterStart"
+        >
+
       </div>
-      <div>
-        <label for="filterEnd">Tipo</label>
-        <select id="filterTipo" required>
-          <option value="Todos">Todos</option>
-          <option value="entrada">Entrada</option>
-          <option value="saida">Saída</option>
-          <option value="pendente">Pendente</option>
+
+
+      <div class="campo filtro-fim">
+
+        <label for="filterEnd">
+          Data Fim
+        </label>
+
+        <input
+          type="date"
+          id="filterEnd"
+        >
+
+      </div>
+
+
+      <div class="campo filtro-tipo">
+
+        <label for="filterTipo">
+          Tipo
+        </label>
+
+        <select
+          id="filterTipo"
+          required
+        >
+
+          <option value="Todos">
+            Todos
+          </option>
+
+          <option value="entrada">
+            Entrada
+          </option>
+
+          <option value="saida">
+            Saída
+          </option>
+
+          <option value="pendente">
+            Pendente
+          </option>
+
         </select>
+
       </div>
-      <button id="btnFilter">Filtrar</button>
-    </div>
+
+
+      <div class="acoes-filtro">
+
+        <button
+          type="button"
+          id="btnFilter"
+        >
+          Filtrar
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         NOVO LANÇAMENTO
+    ========================================== -->
 
     <form id="formLancamento">
-      <input type="date" id="data" required />
 
-      <select id="tipo" required>
-        <option value="">Tipo</option>
-        <option value="entrada">Entrada</option>
-        <option value="saida">Saída</option>
-      </select>
+      <div class="campo campo-data">
 
-      <textarea id="descricao" placeholder="Descrição" required></textarea>
+        <label for="data">
+          Data
+        </label>
 
-      <div class="valor-parcelas-group">
-        <input type="text" id="valor" name="valor" placeholder="Valor total" inputmode="numeric" required />
-        <input type="number" id="parcelas" placeholder="Parcelas" min="1" value="1" title="Quantidade de parcelas" />
+        <input
+          type="date"
+          id="data"
+          required
+        >
+
       </div>
 
-      <div class="pagamento-group">
-        <label>Pagamento:</label>
-        <label><input type="radio" name="pagamento" value="ok" required> Sim</label>
-        <label><input type="radio" name="pagamento" value="pendente" required> Não</label>
+
+      <div class="campo campo-tipo">
+
+        <label for="tipo">
+          Tipo
+        </label>
+
+        <select
+          id="tipo"
+          required
+        >
+
+          <option value="">
+            Selecione
+          </option>
+
+          <option value="entrada">
+            Entrada
+          </option>
+
+          <option value="saida">
+            Saída
+          </option>
+
+        </select>
+
       </div>
 
-      <button type="submit">Adicionar</button>
+
+      <div class="campo campo-descricao">
+
+        <label for="descricao">
+          Descrição
+        </label>
+
+        <textarea
+          id="descricao"
+          placeholder="Descrição"
+          required
+        ></textarea>
+
+      </div>
+
+
+      <div class="campo campo-valor">
+
+        <label>
+          Valor / Parcelas
+        </label>
+
+        <div class="valor-parcelas-group">
+
+          <input
+            type="text"
+            id="valor"
+            name="valor"
+            placeholder="Valor total"
+            inputmode="numeric"
+            required
+          >
+
+          <input
+            type="number"
+            id="parcelas"
+            placeholder="Parcelas"
+            min="1"
+            value="1"
+            title="Quantidade de parcelas"
+          >
+
+        </div>
+
+      </div>
+
+
+      <div class="campo campo-pagamento">
+
+        <label>
+          Pagamento
+        </label>
+
+        <div class="pagamento-group">
+
+          <label>
+            <input
+              type="radio"
+              name="pagamento"
+              value="ok"
+              required
+            >
+            Sim
+          </label>
+
+          <label>
+            <input
+              type="radio"
+              name="pagamento"
+              value="pendente"
+              required
+            >
+            Não
+          </label>
+
+        </div>
+
+      </div>
+
+
+      <div class="acoes-formulario">
+
+        <button type="submit">
+          Adicionar
+        </button>
+
+      </div>
+
     </form>
 
 
+    <!-- =========================================
+         TABELA
+    ========================================== -->
 
-    <table>
-      <thead>
-        <tr>
-          <th>Data</th>
-          <th>Tipo</th>
-          <th>Descrição</th>
-          <th>Valor (R$)</th>
-          <th>Pgto</th>
-          <th>Ação</th>
-        </tr>
-      </thead>
-      <tbody id="lancamentosTbody"></tbody>
-    </table>
+    <section class="tabela-card">
 
+      <div class="tabela-wrapper">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>Data</th>
+              <th>Tipo</th>
+              <th>Descrição</th>
+              <th>Valor (R$)</th>
+              <th>Pgto</th>
+              <th>Ação</th>
+            </tr>
+
+          </thead>
+
+          <tbody id="lancamentosTbody"></tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         TOTAIS
+    ========================================== -->
 
     <div class="totals">
-      <span id="totalEntradas">Entradas: R$ 0,00</span>
-      <span id="totalSaidas">Saídas: R$ 0,00</span>
-      <span class="saldo" id="saldo">Saldo: R$ 0,00</span>
+
+      <span id="totalEntradas">
+        Entradas: R$ 0,00
+      </span>
+
+      <span id="totalSaidas">
+        Saídas: R$ 0,00
+      </span>
+
+      <span
+        class="saldo"
+        id="saldo"
+      >
+        Saldo: R$ 0,00
+      </span>
+
     </div>
-  </div>
+
+  </main>
+
 </body>
 
 </html>

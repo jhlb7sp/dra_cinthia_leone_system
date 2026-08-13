@@ -1,200 +1,782 @@
 /* =========================================
-   CADASTRO DE PACIENTE — PREMIUM (Azul/Bege)
-   CSS LIMPO + PROFISSIONAL
+   CADASTRO DE PACIENTE
+   CINTHIA LEONE
+   FULL WIDTH / COMPACTO / PREMIUM
 ========================================= */
 
-:root{
-  --azul: #1238A8;
-  --azul-hover:#1E4BD8;
-  --azul-escuro:#0D2C82;
+:root {
 
-  --bege:#FAF3E7;
-  --bege-card:#F5E9DA;
+    --marca: #9A6B3F;
+    --marca-hover: #865B35;
 
-  --branco:#FFFFFF;
-  --texto:#1F2937;
-  --texto-fraco:#6B7280;
-  --borda:#E7E1D7;
+    --grafite: #494641;
 
-  --sombra: 0 10px 30px rgba(13,44,130,.10);
-  --radius: 14px;
+    --texto: #494641;
+    --texto-fraco: #6F6962;
+
+    --fundo: #F6F3EE;
+
+    --card: #FFFFFF;
+    --card-suave: #F4F0EA;
+
+    --input-bg: #FBFAF8;
+
+    --borda: #DDD8D1;
+    --borda-suave: #EBE7E1;
+
+    --sombra:
+        0 4px 16px rgba(73, 70, 65, .07);
+
+    --sombra-modal:
+        0 18px 45px rgba(73, 70, 65, .20);
+
+    --radius: 10px;
+    --radius-sm: 7px;
 }
 
-/* Reset básico */
-*{ box-sizing:border-box; }
 
-body{
-  font-family: Arial, sans-serif;
-  background: var(--bege);
-  margin: 0;
-  padding: 16px;
-  color: var(--texto);
-  font-size: 12px;
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
 }
 
-/* Container vira CARD premium */
-.container{
-  background: var(--branco);
-  padding: 16px;
-  border-radius: var(--radius);
-  max-width: 920px;
-  margin: 0 auto;
-  border: 1px solid var(--borda);
-  box-shadow: var(--sombra);
+
+html,
+body {
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
 }
 
-/* Títulos */
-h2, h3{
-  margin: 0 0 12px 0;
-  color: var(--azul-escuro);
-  font-weight: 900;
-  letter-spacing: 0.2px;
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    padding: 10px !important;
+
+    margin: 0 !important;
+
+    background: var(--fundo);
+
+    color: var(--texto);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    overflow-x: hidden;
 }
 
-h2{
-  font-size: 14px;
-  padding: 12px 14px;
-  border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--branco), var(--bege-card));
-  border: 1px solid var(--borda);
-  box-shadow: var(--sombra);
+
+/* =========================================
+   CONTAINER
+   FORÇA OCUPAR TODA A TELA
+========================================= */
+
+body .container {
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    min-width: 0 !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
 }
 
-h3{
-  font-size: 13px;
-  margin-top: 14px;
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
+.topo-cadastro {
+
+    width: 100%;
+
+    margin: 0 0 8px;
+
+    padding: 9px 12px;
+
+    background: var(--card);
+
+    border:
+        1px solid var(--borda);
+
+    border-top:
+        3px solid var(--marca);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--sombra);
 }
 
-/* Linhas do formulário */
-.form-row{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 12px 0;
+
+.topo-cadastro h2 {
+
+    margin: 0;
+
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--grafite);
+
+    font-size: 15px;
+
+    font-weight: 800;
 }
 
-.form-group{
-  flex: 1;
-  min-width: 180px;
+
+.topo-cadastro p {
+
+    margin: 3px 0 0;
+
+    color: var(--texto-fraco);
+
+    font-size: 11px;
 }
 
-/* Labels */
-label{
-  display: block;
-  margin-bottom: 6px;
-  font-weight: 800;
-  color: var(--texto);
+
+/* =========================================
+   CARD FORMULÁRIO
+========================================= */
+
+.card-cadastro {
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 10px 12px;
+
+    background: var(--card);
+
+    border:
+        1px solid var(--borda);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--sombra);
 }
 
-/* Inputs */
+
+/* =========================================
+   GRID PRINCIPAL
+   12 COLUNAS
+========================================= */
+
+.grid-cadastro {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(12, minmax(0, 1fr));
+
+    gap:
+        8px 10px;
+
+    align-items: end;
+
+    width: 100%;
+}
+
+
+/* =========================================
+   DISTRIBUIÇÃO DOS CAMPOS
+
+   LINHA 1:
+   Nome 5
+   CPF 2
+   Nascimento 2
+   Telefone 3
+========================================= */
+
+.campo-nome {
+    grid-column: span 5;
+}
+
+
+.campo-cpf {
+    grid-column: span 2;
+}
+
+
+.campo-nascimento {
+    grid-column: span 2;
+}
+
+
+.campo-telefone {
+    grid-column: span 3;
+}
+
+
+/* =========================================
+   LINHA 2
+
+   Email 3
+   CEP 2
+   Rua 5
+   Número 2
+========================================= */
+
+.campo-email {
+    grid-column: span 3;
+}
+
+
+.campo-cep {
+    grid-column: span 2;
+}
+
+
+.campo-rua {
+    grid-column: span 5;
+}
+
+
+.campo-numero {
+    grid-column: span 2;
+}
+
+
+/* =========================================
+   LINHA 3
+
+   Bairro 3
+   Cidade 3
+   Estado 1
+   Complemento 5
+========================================= */
+
+.campo-bairro {
+    grid-column: span 3;
+}
+
+
+.campo-cidade {
+    grid-column: span 3;
+}
+
+
+.campo-estado {
+    grid-column: span 1;
+}
+
+
+.campo-complemento {
+    grid-column: span 5;
+}
+
+
+/* =========================================
+   LINHA 4
+
+   Origem 7
+   Botões 5
+========================================= */
+
+.campo-origem {
+    grid-column: span 7;
+}
+
+
+.acoes-cadastro {
+
+    grid-column: span 5;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    align-items: end;
+
+    gap: 6px;
+
+    min-width: 0;
+}
+
+
+/* =========================================
+   FORM GROUP
+========================================= */
+
+.form-group {
+
+    display: flex;
+
+    flex-direction: column;
+
+    min-width: 0;
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+label {
+
+    display: block;
+
+    margin: 0 0 3px;
+
+    color: var(--texto);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1.15;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
 input[type="text"],
 input[type="email"],
 input[type="date"],
-input[type="tel"]{
-  width: 100%;
-  height: 36px;
-  padding: 0 10px;
-  border: 1px solid var(--borda);
-  border-radius: 12px;
-  outline: none;
-  background: var(--branco);
-  font-size: 12px;
+input[type="tel"] {
+
+    width: 100%;
+
+    min-width: 0;
+
+    height: 32px;
+
+    padding: 0 8px;
+
+    border:
+        1px solid var(--borda);
+
+    border-radius:
+        var(--radius-sm);
+
+    outline: none;
+
+    background:
+        var(--input-bg);
+
+    color:
+        var(--texto);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease,
+        background .15s ease;
 }
 
-input::placeholder{
-  color:#9CA3AF;
+
+input:hover {
+
+    border-color:
+        #C9C2B9;
 }
 
-input:focus{
-  border-color: rgba(18,56,168,.45);
-  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+
+input:focus {
+
+    background:
+        #FFFFFF;
+
+    border-color:
+        var(--marca);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(154, 107, 63, .11);
 }
 
-/* Botões (padrão do sistema) */
-button{
-  height: 38px;
-  padding: 0 16px;
-  background: var(--azul);
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 900;
-  transition: transform .08s ease, filter .2s ease;
+
+/* =========================================
+   BOTÕES
+========================================= */
+
+button {
+
+    height: 32px;
+
+    padding: 0 10px;
+
+    border:
+        1px solid var(--marca);
+
+    border-radius:
+        var(--radius-sm);
+
+    background:
+        var(--marca);
+
+    color:
+        #FFFFFF;
+
+    cursor: pointer;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        transform .08s ease;
 }
 
-button:hover{
-  filter: brightness(1.05);
-  transform: translateY(-1px);
+
+button:hover {
+
+    background:
+        var(--marca-hover);
+
+    border-color:
+        var(--marca-hover);
+
+    transform:
+        translateY(-1px);
 }
 
-/* Se tiver botão secundário (opcional)
-   use class="btn-secondary" no HTML */
-.btn-secondary{
-  background: #6B7280;
-}
-.btn-secondary:hover{
-  filter: brightness(1.05);
+
+.btn-secondary {
+
+    background: #FFFFFF;
+
+    color: var(--grafite);
+
+    border-color:
+        var(--borda);
 }
 
-/* Área do QR Code */
-#qrcode{
-  margin-top: 14px;
-  padding: 14px;
-  border-radius: var(--radius);
-  border: 1px dashed rgba(18,56,168,.35);
-  background: rgba(245,233,218,.35);
+
+.btn-secondary:hover {
+
+    background:
+        var(--card-suave);
+
+    border-color:
+        #CFC8BF;
 }
 
-/* Responsivo */
-@media (max-width: 520px){
-  .container{ padding: 14px; }
-  .form-group{ min-width: 100%; }
-  button{ width: 100%; }
+
+/* =========================================
+   QR CODE
+========================================= */
+
+#qrcode {
+
+    margin-top: 8px;
+
+    padding: 8px;
+
+    border:
+        1px dashed
+        rgba(154, 107, 63, .35);
+
+    border-radius:
+        var(--radius);
+
+    background:
+        rgba(154, 107, 63, .04);
 }
+
+
+#qrcode:empty,
+#qrcodeLink:empty {
+
+    display: none;
+}
+
+
+/* =========================================
+   POPUP
+========================================= */
 
 .popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 18px;
+
+    background:
+        rgba(49, 46, 42, .52);
 }
+
 
 .popup-box {
-  background: #fff;
-  width: 100%;
-  max-width: 700px;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+
+    width:
+        min(680px, 100%);
+
+    max-height:
+        calc(100vh - 36px);
+
+    overflow-y: auto;
+
+    padding: 14px;
+
+    background:
+        var(--card);
+
+    border:
+        1px solid var(--borda);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--sombra-modal);
 }
+
 
 .popup-box h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
+
+    margin:
+        0 0 8px;
+
+    color:
+        var(--grafite);
+
+    font-size:
+        14px;
 }
+
+
+/* =========================================
+   TEXTAREA
+========================================= */
 
 .popup-box textarea {
-  width: 100%;
-  min-height: 420px;
-  resize: vertical;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 12px;
-  font-size: 14px;
-  outline: none;
-  box-sizing: border-box;
+
+    width: 100%;
+
+    min-height: 280px;
+
+    resize: vertical;
+
+    padding: 8px 9px;
+
+    border:
+        1px solid var(--borda);
+
+    border-radius:
+        var(--radius-sm);
+
+    outline: none;
+
+    background:
+        var(--input-bg);
+
+    color:
+        var(--texto);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.4;
 }
 
+
+.popup-box textarea:focus {
+
+    border-color:
+        var(--marca);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(154, 107, 63, .11);
+}
+
+
+/* =========================================
+   AÇÕES POPUP
+========================================= */
+
 .popup-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 15px;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 6px;
+
+    margin-top: 8px;
+}
+
+
+/* =========================================
+   NOTEBOOK
+========================================= */
+
+@media (max-width: 1000px) {
+
+    .campo-nome {
+        grid-column: span 6;
+    }
+
+    .campo-cpf {
+        grid-column: span 3;
+    }
+
+    .campo-nascimento {
+        grid-column: span 3;
+    }
+
+    .campo-telefone {
+        grid-column: span 3;
+    }
+
+    .campo-email {
+        grid-column: span 4;
+    }
+
+    .campo-cep {
+        grid-column: span 2;
+    }
+
+    .campo-rua {
+        grid-column: span 6;
+    }
+
+    .campo-numero {
+        grid-column: span 2;
+    }
+
+    .campo-bairro {
+        grid-column: span 3;
+    }
+
+    .campo-cidade {
+        grid-column: span 3;
+    }
+
+    .campo-estado {
+        grid-column: span 2;
+    }
+
+    .campo-complemento {
+        grid-column: span 4;
+    }
+
+    .campo-origem {
+        grid-column: span 6;
+    }
+
+    .acoes-cadastro {
+        grid-column: span 6;
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 720px) {
+
+    .grid-cadastro > * {
+
+        grid-column:
+            span 6;
+    }
+
+
+    .campo-nome,
+    .campo-rua,
+    .campo-complemento,
+    .campo-origem,
+    .acoes-cadastro {
+
+        grid-column:
+            1 / -1;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 520px) {
+
+    body {
+
+        padding: 8px !important;
+    }
+
+
+    .grid-cadastro > * {
+
+        grid-column:
+            1 / -1;
+    }
+
+
+    .acoes-cadastro {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+
+    .acoes-cadastro button {
+
+        width: 100%;
+    }
+
 }

@@ -1,546 +1,1242 @@
+/* =========================================
+   NOTA FISCAL
+   CINTHIA LEONE
+   FULL WIDTH / COMPACTO / PREMIUM
+========================================= */
+
 :root {
-  --azul-principal: #173a9b;
-  --azul-secundario: #0f2d7a;
 
-  --bege-fundo: #f4efe6;
-  --bege-card: #faf8f3;
-  --bege-borda: #ddd2bf;
+    --marca: #9A6B3F;
+    --marca-hover: #865B35;
 
-  --texto: #2e2e2e;
-  --texto-suave: #6d6d6d;
+    --grafite: #494641;
+    --grafite-hover: #3D3A36;
 
-  --verde: #2f8f4e;
-  --verde-hover: #26743f;
+    --texto: #494641;
+    --texto-fraco: #6F6962;
 
-  --cinza: #7a7a7a;
-  --cinza-hover: #626262;
+    --fundo: #F6F3EE;
 
-  --sombra:
-    0 8px 24px rgba(0, 0, 0, 0.08);
+    --card: #FFFFFF;
+    --card-suave: #F4F0EA;
+    --input-bg: #FBFAF8;
+
+    --borda: #DDD8D1;
+    --borda-suave: #EBE7E1;
+
+    --success: #58705D;
+    --success-hover: #49604F;
+
+    --danger: #A5524B;
+
+    --sombra:
+        0 4px 16px rgba(73, 70, 65, .07);
+
+    --radius: 10px;
+    --radius-sm: 7px;
 }
+
+
+/* =========================================
+   RESET
+========================================= */
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 
-  font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 }
+
+
+html,
+body {
+    width: 100%;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
 
 body {
-  background: transparent;
-  padding: 20px;
-  color: var(--texto);
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    padding: 10px !important;
+
+    background: var(--fundo);
+
+    color: var(--texto);
+
+    font-size: 12px;
+
+    overflow-x: hidden;
 }
 
-/* CONTAINER */
+
+/* =========================================
+   CONTAINER
+========================================= */
 
 .nota-container {
-  width: 100%;
+
+    width: 100% !important;
+
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
 }
 
-/* HEADER */
+
+/* =========================================
+   HEADER
+========================================= */
 
 .nota-header {
-  background: var(--bege-fundo);
 
-  border: 1px solid var(--bege-borda);
+    width: 100%;
 
-  border-radius: 22px;
+    margin: 0 0 8px;
 
-  padding: 24px;
+    padding: 9px 12px;
 
-  margin-bottom: 22px;
+    background: var(--card);
 
-  box-shadow: var(--sombra);
+    border:
+        1px solid var(--borda);
+
+    border-top:
+        3px solid var(--marca);
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--sombra);
 }
+
 
 .nota-header h1 {
-  color: var(--azul-principal);
 
-  font-size: 30px;
+    display: flex;
 
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    align-items: center;
 
-  margin-bottom: 10px;
+    gap: 7px;
+
+    margin: 0;
+
+    color: var(--grafite);
+
+    font-size: 15px;
+
+    font-weight: 800;
 }
+
 
 .nota-header p {
-  color: var(--texto-suave);
 
-  font-size: 15px;
+    margin: 3px 0 0;
+
+    color: var(--texto-fraco);
+
+    font-size: 11px;
 }
 
-/* CARD */
+
+/* =========================================
+   CARD
+========================================= */
 
 .nota-card {
-  background: var(--bege-card);
 
-  border: 1px solid var(--bege-borda);
+    width: 100%;
 
-  border-radius: 22px;
+    margin: 0 0 8px;
 
-  margin-bottom: 22px;
+    background: var(--card);
 
-  overflow: hidden;
+    border:
+        1px solid var(--borda);
 
-  box-shadow: var(--sombra);
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--sombra);
+
+    overflow: visible;
 }
+
+
+/* =========================================
+   CARD TITLE
+========================================= */
 
 .nota-card-title {
-  background: var(--bege-fundo);
 
-  border-bottom: 1px solid var(--bege-borda);
+    padding: 7px 10px;
 
-  padding: 18px 22px;
+    background:
+        var(--card-suave);
+
+    border-bottom:
+        1px solid var(--borda);
+
+    border-radius:
+        var(--radius)
+        var(--radius)
+        0
+        0;
 }
+
 
 .nota-card-title h2 {
-  color: var(--azul-principal);
 
-  font-size: 22px;
+    margin: 0;
+
+    color:
+        var(--grafite);
+
+    font-size:
+        12px;
+
+    font-weight:
+        800;
 }
 
-/* GRID */
+
+/* =========================================
+   GRID 12 COLUNAS
+========================================= */
 
 .nota-grid {
-  display: grid;
 
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    display: grid;
 
-  gap: 20px;
+    grid-template-columns:
+        repeat(12, minmax(0, 1fr));
 
-  padding: 24px;
+    gap:
+        8px 10px;
+
+    align-items:
+        end;
+
+    width:
+        100%;
+
+    padding:
+        10px;
 }
+
+
+/* =========================================
+   LINHA 1
+========================================= */
+
+.campo-busca {
+    grid-column: span 2;
+}
+
+
+.campo-nome {
+    grid-column: span 3;
+}
+
+
+.campo-cpf {
+    grid-column: span 2;
+}
+
+
+.campo-email {
+    grid-column: span 3;
+}
+
+
+.campo-valor {
+    grid-column: span 2;
+}
+
+
+/* =========================================
+   LINHA 2
+========================================= */
+
+.campo-descricao {
+
+    grid-column:
+        span 7;
+}
+
+
+.copiar-area {
+
+    grid-column:
+        span 5;
+}
+
+
+/* =========================================
+   FORM GROUP
+========================================= */
 
 .form-group {
-  display: flex;
-  flex-direction: column;
 
-  position: relative;
+    position:
+        relative;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    min-width:
+        0;
 }
 
-.form-group-full {
-  grid-column: 1 / -1;
+
+/* =========================================
+   LABEL
+========================================= */
+
+.form-group label,
+.label-acoes {
+
+    display:
+        block;
+
+    margin:
+        0 0 3px;
+
+    color:
+        var(--texto);
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.15;
 }
 
-/* LABEL */
 
-.form-group label {
-  color: var(--azul-principal);
-
-  font-size: 14px;
-
-  font-weight: 700;
-
-  margin-bottom: 8px;
-}
-
-/* INPUTS */
+/* =========================================
+   INPUTS
+========================================= */
 
 .form-group input,
 .form-group textarea {
-  width: 100%;
 
-  border: 1px solid var(--bege-borda);
+    width:
+        100%;
 
-  border-radius: 14px;
+    min-width:
+        0;
 
-  padding: 14px;
+    border:
+        1px solid var(--borda);
 
-  font-size: 15px;
+    border-radius:
+        var(--radius-sm);
 
-  color: var(--texto);
+    outline:
+        none;
 
-  background: #fff;
+    background:
+        var(--input-bg);
 
-  outline: none;
+    color:
+        var(--texto);
 
-  transition: 0.2s ease;
+    font-size:
+        11px;
+
+    transition:
+        border-color .15s ease,
+        box-shadow .15s ease,
+        background .15s ease;
 }
+
+
+.form-group input {
+
+    height:
+        32px;
+
+    padding:
+        0 8px;
+}
+
+
+.form-group textarea {
+
+    height:
+        54px;
+
+    min-height:
+        54px;
+
+    max-height:
+        90px;
+
+    padding:
+        7px 8px;
+
+    resize:
+        vertical;
+
+    line-height:
+        1.3;
+}
+
+
+.form-group input:hover,
+.form-group textarea:hover {
+
+    border-color:
+        #C9C2B9;
+}
+
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-color: var(--azul-principal);
 
-  box-shadow:
-    0 0 0 3px rgba(23, 58, 155, 0.12);
+    background:
+        #FFFFFF;
+
+    border-color:
+        var(--marca);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(154, 107, 63, .11);
 }
 
-.form-group textarea {
-  resize: vertical;
 
-  min-height: 120px;
+/* =========================================
+   INPUT FILE
+========================================= */
+
+input[type="file"] {
+
+    padding:
+        4px 6px !important;
+
+    font-size:
+        10px !important;
 }
 
-/* LISTA PACIENTES */
+
+/* =========================================
+   AUTOCOMPLETE
+========================================= */
 
 .lista-pacientes {
-  position: absolute;
 
-  top: 100%;
+    position:
+        absolute;
 
-  left: 0;
-  right: 0;
+    top:
+        calc(100% + 4px);
 
-  background: #fff;
+    left:
+        0;
 
-  border: 1px solid var(--bege-borda);
+    right:
+        0;
 
-  border-radius: 14px;
+    z-index:
+        999;
 
-  margin-top: 6px;
+    display:
+        none;
 
-  box-shadow: var(--sombra);
+    max-height:
+        180px;
 
-  overflow: hidden;
+    overflow-y:
+        auto;
 
-  z-index: 999;
+    background:
+        #FFFFFF;
 
-  display: none;
+    border:
+        1px solid var(--borda);
 
-  max-height: 250px;
+    border-radius:
+        var(--radius-sm);
 
-  overflow-y: auto;
+    box-shadow:
+        0 8px 24px
+        rgba(73, 70, 65, .14);
 }
+
 
 .item-paciente {
-  padding: 12px 14px;
 
-  cursor: pointer;
+    padding:
+        7px 9px;
 
-  border-bottom: 1px solid #f1ece2;
+    cursor:
+        pointer;
 
-  transition: 0.2s;
+    border-bottom:
+        1px solid
+        var(--borda-suave);
 }
+
 
 .item-paciente:last-child {
-  border-bottom: none;
+
+    border-bottom:
+        none;
 }
+
 
 .item-paciente:hover {
-  background: #f8f4ec;
+
+    background:
+        rgba(154, 107, 63, .08);
 }
+
 
 .item-paciente strong {
-  display: block;
 
-  color: var(--azul-principal);
+    display:
+        block;
 
-  margin-bottom: 4px;
+    color:
+        var(--marca);
+
+    font-size:
+        11px;
 }
+
 
 .item-paciente span {
-  color: var(--texto-suave);
 
-  font-size: 13px;
+    color:
+        var(--texto-fraco);
+
+    font-size:
+        10px;
 }
 
-/* COPIAR */
+
+/* =========================================
+   COPIAR
+========================================= */
 
 .copiar-area {
-  padding:
-    0 24px
-    24px;
+
+    min-width:
+        0;
 }
 
-.copiar-area h3 {
-  color: var(--azul-principal);
-
-  margin-bottom: 14px;
-
-  font-size: 17px;
-}
 
 .copiar-botoes {
-  display: flex;
 
-  flex-wrap: wrap;
+    display:
+        flex;
 
-  gap: 12px;
+    align-items:
+        center;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        5px;
 }
 
-/* BUTTONS */
+
+/* =========================================
+   BUTTONS
+========================================= */
 
 .btn {
-  border: none;
 
-  border-radius: 14px;
+    height:
+        32px;
 
-  padding:
-    13px 18px;
+    min-height:
+        32px;
 
-  font-size: 14px;
+    padding:
+        0 10px;
 
-  font-weight: 700;
+    border:
+        1px solid
+        transparent;
 
-  cursor: pointer;
+    border-radius:
+        var(--radius-sm);
 
-  transition: 0.2s ease;
+    display:
+        inline-flex;
 
-  display: inline-flex;
+    align-items:
+        center;
 
-  align-items: center;
+    justify-content:
+        center;
 
-  justify-content: center;
+    gap:
+        5px;
 
-  gap: 8px;
+    font-size:
+        10px;
+
+    font-weight:
+        700;
+
+    white-space:
+        nowrap;
+
+    cursor:
+        pointer;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        transform .08s ease;
 }
+
+
+.btn:hover {
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================
+   PRIMÁRIO
+========================================= */
 
 .btn-primary {
-  background: var(--azul-principal);
 
-  color: white;
+    background:
+        var(--marca);
+
+    border-color:
+        var(--marca);
+
+    color:
+        #FFFFFF;
 }
+
 
 .btn-primary:hover {
-  background: var(--azul-secundario);
+
+    background:
+        var(--marca-hover);
+
+    border-color:
+        var(--marca-hover);
 }
+
+
+/* =========================================
+   SUCCESS
+========================================= */
 
 .btn-success {
-  background: var(--verde);
 
-  color: white;
+    background:
+        var(--success);
+
+    border-color:
+        var(--success);
+
+    color:
+        #FFFFFF;
 }
+
 
 .btn-success:hover {
-  background: var(--verde-hover);
+
+    background:
+        var(--success-hover);
+
+    border-color:
+        var(--success-hover);
 }
+
+
+/* =========================================
+   SECONDARY
+========================================= */
 
 .btn-secondary {
-  background: var(--cinza);
 
-  color: white;
+    background:
+        var(--grafite);
+
+    border-color:
+        var(--grafite);
+
+    color:
+        #FFFFFF;
 }
+
 
 .btn-secondary:hover {
-  background: var(--cinza-hover);
+
+    background:
+        var(--grafite-hover);
+
+    border-color:
+        var(--grafite-hover);
 }
+
+
+/* =========================================
+   COPY
+========================================= */
 
 .btn-copy {
-  background: #ece6d8;
 
-  color: var(--azul-principal);
+    background:
+        var(--card-suave);
 
-  border: 1px solid var(--bege-borda);
+    color:
+        var(--grafite);
+
+    border:
+        1px solid var(--borda);
 }
+
 
 .btn-copy:hover {
-  background: #e3dbc9;
+
+    background:
+        #ECE6DE;
+
+    border-color:
+        #CFC8BF;
 }
 
-/* ACTIONS */
+
+/* =========================================
+   AÇÕES PRINCIPAIS
+========================================= */
 
 .nota-actions {
-  display: flex;
 
-  flex-wrap: wrap;
+    grid-column:
+        1 / -1;
 
-  gap: 14px;
+    display:
+        flex;
 
-  justify-content: flex-end;
+    align-items:
+        center;
 
-  padding:
-    0 24px
-    24px;
+    justify-content:
+        flex-end;
+
+    flex-wrap:
+        wrap;
+
+    gap:
+        6px;
+
+    padding:
+        0;
 }
 
-/* TABELA */
+
+/* =========================================
+   SALVAR NOTA
+========================================= */
+
+.nota-grid-salvar {
+
+    grid-template-columns:
+        repeat(12, minmax(0, 1fr));
+}
+
+
+.nota-grid-salvar .form-group {
+
+    grid-column:
+        span 3;
+}
+
+
+.salvar-actions {
+
+    grid-column:
+        1 / -1;
+}
+
+
+/* =========================================
+   TABELA
+========================================= */
 
 .tabela-wrapper {
-  width: 100%;
 
-  overflow-x: auto;
+    width:
+        100%;
+
+    overflow-x:
+        auto;
 }
+
 
 .tabela-notas {
-  width: 100%;
 
-  border-collapse: collapse;
+    width:
+        100%;
+
+    border-collapse:
+        collapse;
+
+    table-layout:
+        fixed;
 }
+
 
 .tabela-notas thead {
-  background: var(--bege-fundo);
+
+    background:
+        var(--grafite);
+
+    color:
+        #FFFFFF;
 }
+
 
 .tabela-notas th {
-  padding: 16px;
 
-  text-align: left;
+    padding:
+        6px 8px;
 
-  color: var(--azul-principal);
+    text-align:
+        left;
 
-  font-size: 14px;
+    font-size:
+        10px;
 
-  border-bottom: 1px solid var(--bege-borda);
+    font-weight:
+        700;
 }
+
 
 .tabela-notas td {
-  padding: 15px 16px;
 
-  border-bottom: 1px solid #ece5d9;
+    padding:
+        5px 8px;
 
-  font-size: 14px;
+    border-bottom:
+        1px solid
+        var(--borda-suave);
+
+    color:
+        var(--texto);
+
+    font-size:
+        11px;
+
+    line-height:
+        1.15;
 }
+
+
+.tabela-notas tbody tr:nth-child(even) {
+
+    background:
+        #FAF8F5;
+}
+
 
 .tabela-notas tbody tr:hover {
-  background: #faf6ef;
+
+    background:
+        rgba(154, 107, 63, .06);
 }
+
+
+.tabela-notas tbody tr:last-child td {
+
+    border-bottom:
+        none;
+}
+
 
 .tabela-vazia {
-  text-align: center;
 
-  color: var(--texto-suave);
+    padding:
+        13px !important;
 
-  padding: 30px !important;
+    text-align:
+        center;
+
+    color:
+        var(--texto-fraco);
+
+    font-size:
+        11px;
 }
 
-/* STATUS */
+
+/* =========================================
+   COLUNAS
+========================================= */
+
+.tabela-notas th:nth-child(1),
+.tabela-notas td:nth-child(1) {
+    width: 10%;
+}
+
+
+.tabela-notas th:nth-child(2),
+.tabela-notas td:nth-child(2) {
+    width: 27%;
+}
+
+
+.tabela-notas th:nth-child(3),
+.tabela-notas td:nth-child(3) {
+    width: 16%;
+}
+
+
+.tabela-notas th:nth-child(4),
+.tabela-notas td:nth-child(4) {
+    width: 11%;
+}
+
+
+.tabela-notas th:nth-child(5),
+.tabela-notas td:nth-child(5) {
+    width: 12%;
+}
+
+
+.tabela-notas th:nth-child(6),
+.tabela-notas td:nth-child(6) {
+    width: 11%;
+}
+
+
+.tabela-notas th:nth-child(7),
+.tabela-notas td:nth-child(7) {
+    width: 13%;
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
 
 .status {
-  padding:
-    6px 10px;
 
-  border-radius: 999px;
+    display:
+        inline-block;
 
-  font-size: 12px;
+    padding:
+        3px 7px;
 
-  font-weight: bold;
+    border-radius:
+        999px;
 
-  display: inline-block;
+    font-size:
+        10px;
+
+    font-weight:
+        700;
 }
+
 
 .status.emitida {
-  background: rgba(47, 143, 78, 0.12);
 
-  color: var(--verde);
+    background:
+        rgba(88, 112, 93, .12);
+
+    color:
+        var(--success);
 }
+
 
 .status.cancelada {
-  background: rgba(192, 57, 43, 0.12);
 
-  color: #c0392b;
+    background:
+        rgba(165, 82, 75, .10);
+
+    color:
+        var(--danger);
 }
 
-/* AÇÕES TABELA */
+
+/* =========================================
+   AÇÕES TABELA
+========================================= */
 
 .acoes-tabela {
-  display: flex;
 
-  gap: 8px;
+    display:
+        flex;
+
+    gap:
+        4px;
 }
+
 
 .btn-acao {
-  width: 36px;
-  height: 36px;
 
-  border: none;
+    width:
+        26px;
 
-  border-radius: 10px;
+    height:
+        26px;
 
-  cursor: pointer;
+    min-height:
+        26px;
 
-  display: flex;
+    padding:
+        0;
 
-  align-items: center;
+    border:
+        none;
 
-  justify-content: center;
+    border-radius:
+        6px;
 
-  transition: 0.2s ease;
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    cursor:
+        pointer;
 }
+
 
 .btn-visualizar {
-  background: rgba(23, 58, 155, 0.12);
 
-  color: var(--azul-principal);
+    background:
+        var(--card-suave);
+
+    color:
+        var(--grafite);
 }
 
-.btn-visualizar:hover {
-  background: rgba(23, 58, 155, 0.2);
-}
 
 .btn-download {
-  background: rgba(47, 143, 78, 0.12);
 
-  color: var(--verde);
+    background:
+        rgba(88, 112, 93, .12);
+
+    color:
+        var(--success);
 }
 
-.btn-download:hover {
-  background: rgba(47, 143, 78, 0.2);
-}
 
-/* TOAST */
+/* =========================================
+   TOAST
+========================================= */
 
 .toast {
-  position: fixed;
 
-  right: 25px;
-  bottom: 25px;
+    position:
+        fixed;
 
-  background: var(--azul-principal);
+    right:
+        16px;
 
-  color: white;
+    bottom:
+        16px;
 
-  padding:
-    14px 18px;
+    z-index:
+        99999;
 
-  border-radius: 14px;
+    padding:
+        8px 11px;
 
-  font-size: 14px;
+    border-radius:
+        var(--radius-sm);
 
-  font-weight: 600;
+    background:
+        var(--grafite);
 
-  box-shadow: var(--sombra);
+    color:
+        #FFFFFF;
 
-  opacity: 0;
+    font-size:
+        11px;
 
-  pointer-events: none;
+    font-weight:
+        600;
 
-  transform: translateY(20px);
+    opacity:
+        0;
 
-  transition: 0.3s ease;
+    pointer-events:
+        none;
 
-  z-index: 99999;
+    transform:
+        translateY(12px);
+
+    transition:
+        .25s ease;
 }
+
 
 .toast.show {
-  opacity: 1;
 
-  transform: translateY(0);
+    opacity:
+        1;
+
+    transform:
+        translateY(0);
 }
 
-/* RESPONSIVO */
 
-@media (max-width: 768px) {
+/* =========================================
+   NOTEBOOK
+========================================= */
 
-  body {
-    padding: 14px;
-  }
+@media (max-width: 1000px) {
 
-  .nota-header h1 {
-    font-size: 24px;
-  }
+    .campo-busca {
+        grid-column: span 3;
+    }
 
-  .nota-actions {
-    flex-direction: column;
-  }
 
-  .nota-actions .btn {
-    width: 100%;
-  }
+    .campo-nome {
+        grid-column: span 4;
+    }
 
-  .copiar-botoes {
-    flex-direction: column;
-  }
 
-  .copiar-botoes .btn {
-    width: 100%;
-  }
+    .campo-cpf {
+        grid-column: span 2;
+    }
 
-  .tabela-notas {
-    min-width: 800px;
-  }
+
+    .campo-email {
+        grid-column: span 3;
+    }
+
+
+    .campo-valor {
+        grid-column: span 2;
+    }
+
+
+    .campo-descricao {
+        grid-column: span 7;
+    }
+
+
+    .copiar-area {
+        grid-column: span 5;
+    }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 760px) {
+
+    .nota-grid > * {
+
+        grid-column:
+            span 6;
+    }
+
+
+    .campo-descricao,
+    .copiar-area,
+    .nota-actions {
+
+        grid-column:
+            1 / -1;
+    }
+
+
+    .nota-grid-salvar .form-group {
+
+        grid-column:
+            span 6;
+    }
+
+
+    .tabela-notas {
+
+        min-width:
+            760px;
+
+        table-layout:
+            auto;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 520px) {
+
+    body {
+
+        padding:
+            8px !important;
+    }
+
+
+    .nota-grid > *,
+    .nota-grid-salvar .form-group {
+
+        grid-column:
+            1 / -1;
+    }
+
+
+    .copiar-botoes,
+    .nota-actions {
+
+        flex-direction:
+            column;
+
+        align-items:
+            stretch;
+    }
+
+
+    .copiar-botoes .btn,
+    .nota-actions .btn {
+
+        width:
+            100%;
+    }
 
 }

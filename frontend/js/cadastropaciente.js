@@ -27,6 +27,49 @@ function validarCPF(cpf) {
   return true;
 }
 
+function copiarmensagem() {
+
+    const mensagem = `Olá 😊
+
+Para adiantar seu pré-cadastro, por favor me envie as informações abaixo:
+
+Nome completo:
+Data nasc:
+CPF:
+Telefone:
+Email:
+CEP:
+Número residência:
+Complemento:
+Como conheceu o consultório:`;
+
+    navigator.clipboard.writeText(mensagem)
+        .then(() => {
+
+            const botao = document.getElementById('btnCopiarMensagem');
+
+            if (botao) {
+
+                const textoOriginal = botao.innerText;
+
+                botao.innerText = 'Copiado ✓';
+
+                setTimeout(() => {
+                    botao.innerText = textoOriginal;
+                }, 1500);
+            }
+
+        })
+        .catch((erro) => {
+
+            console.error(
+                'Erro ao copiar mensagem:',
+                erro
+            );
+
+        });
+}
+
 function buscarEndereco() {
   const cep = document.getElementById("cep").value.replace(/\D/g, '');
   if (cep.length !== 8) {

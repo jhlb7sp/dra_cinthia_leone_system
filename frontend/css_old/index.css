@@ -1,0 +1,140 @@
+/* =========================================
+   LOGIN (index) — PREMIUM Azul Royal + Bege
+========================================= */
+
+:root{
+  --azul:#1238A8;
+  --azul-hover:#1E4BD8;
+  --azul-escuro:#0D2C82;
+
+  --bege:#FAF3E7;
+  --bege-card:#F5E9DA;
+
+  --branco:#FFFFFF;
+  --texto:#1F2937;
+  --texto-fraco:#6B7280;
+  --borda:#E7E1D7;
+
+  --sombra: 0 18px 50px rgba(13,44,130,.14);
+  --radius: 18px;
+}
+
+/* base */
+html, body{
+  height: 100%;
+}
+
+body.login{
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  font-family: Arial, sans-serif;
+  color: var(--texto);
+
+  /* fundo premium */
+  background:
+    radial-gradient(900px 420px at 15% 15%, rgba(18,56,168,.12), transparent 55%),
+    radial-gradient(900px 420px at 85% 75%, rgba(176,137,46,.12), transparent 55%),
+    var(--bege);
+}
+
+/* Se existir .login no HTML, mantém sem interferir */
+.login{ padding: 0 !important; }
+
+/* Card */
+.card{
+  background: var(--branco);
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+
+  padding: 34px 30px 28px;
+  border-radius: var(--radius);
+  border: 1px solid var(--borda);
+  box-shadow: var(--sombra);
+}
+
+/* Logo */
+.logo{
+  width: 360px;
+  max-width: 100%;
+  margin: 0 auto 16px;
+  display: block;
+}
+
+/* Inputs */
+.card input{
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  margin-bottom: 12px;
+
+  border-radius: 12px;
+  border: 1px solid var(--borda);
+  box-sizing: border-box;
+  outline: none;
+  font-size: 12px;
+  background: var(--branco);
+}
+
+.card input:focus{
+  border-color: rgba(18,56,168,.45);
+  box-shadow: 0 0 0 4px rgba(18,56,168,.12);
+}
+
+.card input::placeholder{
+  color: #9CA3AF;
+}
+
+/* Botão login */
+.btn-login{
+  width: 100%;
+  height: 42px;
+  border-radius: 12px;
+  border: none;
+
+  background: var(--azul);
+  color: #fff;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform .08s ease, filter .2s ease;
+  letter-spacing: .2px;
+}
+
+.btn-login:hover{
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.btn-login:active{
+  transform: translateY(0);
+}
+
+/* Senha com "olho" */
+.senha-container{
+  position: relative;
+  width: 100%;
+}
+
+.senha-container input{
+  width: 100%;
+  padding-right: 40px;
+}
+
+.toggle-senha{
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: var(--texto-fraco);
+  font-size: 16px;
+  transition: color 0.2s ease;
+}
+
+.toggle-senha:hover{
+  color: var(--azul);
+}

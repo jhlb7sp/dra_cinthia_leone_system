@@ -1,236 +1,748 @@
-body {
-  font-family: Arial, sans-serif;
-  background: transparent;
-  margin: 0;
-  padding: 0;
-  color: #1f2937;
+/* =========================================
+   ORÇAMENTOS DO PACIENTE
+   CINTHIA LEONE
+   FULL WIDTH / COMPACTO / PREMIUM
+========================================= */
+
+:root {
+
+    /* IDENTIDADE */
+    --marca: #9A6B3F;
+    --marca-hover: #865B35;
+
+    --grafite: #494641;
+    --grafite-hover: #3D3A36;
+
+    --texto: #494641;
+    --texto-fraco: #6F6962;
+
+    /* SUPERFÍCIES */
+    --fundo: #F6F3EE;
+    --card: #FFFFFF;
+    --card-suave: #F4F0EA;
+
+    /* BORDAS */
+    --borda: #DDD8D1;
+    --borda-suave: #EBE7E1;
+
+    /* ESTADOS */
+    --success: #58705D;
+    --warning: #B48745;
+    --danger: #A5524B;
+
+    /* SOMBRA */
+    --sombra:
+        0 4px 16px rgba(73, 70, 65, .07);
+
+    /* FORMAS */
+    --radius: 10px;
+    --radius-sm: 7px;
 }
+
+
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =========================================
+   BODY
+========================================= */
+
+body {
+
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 10px !important;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 12px;
+
+    background: var(--fundo);
+
+    color: var(--texto);
+
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   PÁGINA
+========================================= */
 
 .pagina-orcamentos {
-  width: 100%;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* Cabeçalho */
+
+/* =========================================
+   CABEÇALHO
+========================================= */
+
 .cabecalho-orcamentos {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 14px;
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin: 0 0 8px;
+
+    padding: 9px 12px;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-top: 3px solid var(--marca);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
 }
+
 
 .cabecalho-orcamentos h2 {
-  margin: 0 0 4px 0;
-  font-size: 22px;
-  font-weight: 700;
-  color: #0d2f92;
+
+    margin: 0;
+
+    color: var(--grafite);
+
+    font-size: 15px;
+
+    font-weight: 800;
 }
+
 
 #cpfPaciente {
-  margin: 0;
-  font-size: 13px;
-  color: #6b7280;
+
+    margin: 3px 0 0;
+
+    font-size: 10px;
+
+    color: var(--texto-fraco);
 }
 
-/* Resumo */
+
+/* =========================================
+   RESUMO
+========================================= */
+
 .resumo-orcamentos {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin-bottom: 14px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 8px;
+
+    margin-bottom: 8px;
 }
+
 
 .resumo-card {
-  background: #ffffff;
-  border: 1px solid #ddd5c8;
-  border-radius: 10px;
-  padding: 12px 14px;
+
+    min-width: 0;
+
+    padding: 8px 10px;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
 }
+
 
 .resumo-label {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 11px;
-  font-weight: 700;
-  color: #7a746b;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
+
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: var(--texto-fraco);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: .35px;
 }
+
 
 .resumo-card strong {
-  display: block;
-  font-size: 18px;
-  color: #173ea5;
+
+    display: block;
+
+    color: var(--marca);
+
+    font-size: 14px;
+
+    font-weight: 800;
 }
 
-/* Card principal */
+
+/* =========================================
+   CARD PRINCIPAL
+========================================= */
+
 .card-orcamentos {
-  background: #ffffff;
-  border: 1px solid #d9d1c3;
-  border-radius: 10px;
-  padding: 0;
-  overflow: hidden;
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
+
+    background: var(--card);
+
+    border: 1px solid var(--borda);
+
+    border-radius: var(--radius);
+
+    box-shadow: var(--sombra);
+
+    overflow: hidden;
 }
+
+
+/* =========================================
+   CABEÇALHO DO CARD
+========================================= */
 
 .card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 16px;
-  border-bottom: 1px solid #e7dfd2;
-  background: #fff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 7px 10px;
+
+    background: var(--card-suave);
+
+    border-bottom: 1px solid var(--borda);
 }
+
 
 .card-header h3 {
-  margin: 0 0 3px 0;
-  font-size: 16px;
-  color: #173ea5;
+
+    margin: 0;
+
+    color: var(--grafite);
+
+    font-size: 12px;
+
+    font-weight: 800;
 }
+
 
 .card-header span {
-  font-size: 12px;
-  color: #777;
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--texto-fraco);
+
+    font-size: 10px;
 }
 
-/* Tabela */
+
+/* =========================================
+   TABELA
+========================================= */
+
 .tabela-wrap {
-  width: 100%;
-  overflow-x: auto;
+
+    width: 100%;
+
+    overflow-x: auto;
 }
+
 
 #tabelaOrcamentos {
-  width: 100%;
-  border-collapse: collapse;
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    table-layout: fixed;
 }
+
 
 #tabelaOrcamentos thead {
-  background: #173ea5;
-  color: #ffffff;
+
+    background: var(--grafite);
+
+    color: #FFFFFF;
 }
+
 
 #tabelaOrcamentos th {
-  padding: 10px 12px;
-  text-align: left;
-  font-size: 12px;
-  font-weight: 700;
-  white-space: nowrap;
+
+    padding: 6px 8px;
+
+    text-align: left;
+
+    color: #FFFFFF;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
 }
+
 
 #tabelaOrcamentos td {
-  padding: 10px 12px;
-  text-align: left;
-  font-size: 13px;
-  border-bottom: 1px solid #eee7dc;
-  vertical-align: middle;
+
+    padding: 5px 8px;
+
+    text-align: left;
+
+    vertical-align: middle;
+
+    color: var(--texto);
+
+    font-size: 10px;
+
+    line-height: 1.15;
+
+    border-bottom:
+        1px solid var(--borda-suave);
 }
+
 
 #tabelaOrcamentos tbody tr {
-  transition: background 0.15s ease;
+
+    transition:
+        background .15s ease;
 }
+
+
+#tabelaOrcamentos tbody tr:nth-child(even) {
+
+    background:
+        #FAF8F5;
+}
+
 
 #tabelaOrcamentos tbody tr:hover {
-  background: #f8f6f2;
+
+    background:
+        rgba(154, 107, 63, .06);
 }
+
 
 #tabelaOrcamentos tbody tr:last-child td {
-  border-bottom: none;
+
+    border-bottom:
+        none;
 }
 
-.coluna-acoes {
-  width: 180px;
+
+/* =========================================
+   LARGURAS DAS COLUNAS
+========================================= */
+
+#tabelaOrcamentos th:nth-child(1),
+#tabelaOrcamentos td:nth-child(1) {
+
+    width: 18%;
 }
 
-/* Sem registros */
+
+#tabelaOrcamentos th:nth-child(2),
+#tabelaOrcamentos td:nth-child(2) {
+
+    width: 24%;
+}
+
+
+#tabelaOrcamentos th:nth-child(3),
+#tabelaOrcamentos td:nth-child(3) {
+
+    width: 14%;
+}
+
+
+#tabelaOrcamentos th:nth-child(4),
+#tabelaOrcamentos td:nth-child(4) {
+
+    width: 18%;
+}
+
+
+#tabelaOrcamentos th:nth-child(5),
+#tabelaOrcamentos td:nth-child(5) {
+
+    width: 26%;
+}
+
+
+/* =========================================
+   SEM REGISTROS
+========================================= */
+
 .sem-registros {
-  text-align: center !important;
-  color: #8a8379;
-  padding: 24px !important;
-  font-size: 13px;
+
+    padding: 14px !important;
+
+    text-align: center !important;
+
+    color: var(--texto-fraco);
+
+    font-size: 10px;
 }
 
-/* Ações */
+
+/* =========================================
+   AÇÕES
+========================================= */
+
 .acoes {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 4px;
+
+    flex-wrap: wrap;
 }
+
 
 .btn-acao {
-  border: none;
-  border-radius: 7px;
-  padding: 7px 11px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.15s ease;
+
+    height: 26px;
+
+    min-height: 26px;
+
+    padding: 0 8px;
+
+    border-radius: 6px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background .15s ease,
+        border-color .15s ease,
+        color .15s ease,
+        transform .08s ease;
 }
+
 
 .btn-acao:hover {
-  transform: translateY(-1px);
-  filter: brightness(0.97);
+
+    transform:
+        translateY(-1px);
 }
+
+
+/* =========================================
+   VISUALIZAR
+========================================= */
 
 .btn-ver {
-  background: #2f6fe4;
-  color: #ffffff;
+
+    background:
+        rgba(73, 70, 65, .08);
+
+    color:
+        var(--grafite);
+
+    border:
+        1px solid rgba(73, 70, 65, .16);
 }
+
+
+.btn-ver:hover {
+
+    background:
+        var(--grafite);
+
+    color:
+        #FFFFFF;
+
+    border-color:
+        var(--grafite);
+}
+
+
+/* =========================================
+   EDITAR
+========================================= */
 
 .btn-editar {
-  background: #e8f5ec;
-  color: #18743b;
-  border: 1px solid #bde1c8;
+
+    background:
+        rgba(154, 107, 63, .09);
+
+    color:
+        var(--marca);
+
+    border:
+        1px solid rgba(154, 107, 63, .22);
 }
+
+
+.btn-editar:hover {
+
+    background:
+        var(--marca);
+
+    color:
+        #FFFFFF;
+
+    border-color:
+        var(--marca);
+}
+
+
+/* =========================================
+   EXCLUIR
+========================================= */
 
 .btn-excluir {
-  background: #fff1f1;
-  color: #b42318;
-  border: 1px solid #f1c1bd;
+
+    background:
+        rgba(165, 82, 75, .09);
+
+    color:
+        var(--danger);
+
+    border:
+        1px solid rgba(165, 82, 75, .19);
 }
 
-/* Status - já preparado para o próximo passo */
-.status-orcamento {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px 9px;
-  border-radius: 999px;
-  font-size: 11px;
-  font-weight: 700;
-  white-space: nowrap;
+
+.btn-excluir:hover {
+
+    background:
+        var(--danger);
+
+    color:
+        #FFFFFF;
+
+    border-color:
+        var(--danger);
 }
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+.status-orcamento {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 20px;
+
+    padding: 2px 7px;
+
+    border-radius: 999px;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* Pendente */
 
 .status-pendente {
-  background: #fff7d6;
-  color: #8a6700;
+
+    background:
+        rgba(180, 135, 69, .12);
+
+    color:
+        #8A652D;
 }
+
+
+/* Aprovado */
 
 .status-aprovado {
-  background: #e8f7ed;
-  color: #17743b;
+
+    background:
+        rgba(88, 112, 93, .12);
+
+    color:
+        var(--success);
 }
+
+
+/* Concluído */
 
 .status-concluido {
-  background: #e8f0ff;
-  color: #1947a3;
+
+    background:
+        rgba(154, 107, 63, .10);
+
+    color:
+        var(--marca);
 }
+
+
+/* Cancelado */
 
 .status-cancelado {
-  background: #fdecec;
-  color: #b42318;
+
+    background:
+        rgba(165, 82, 75, .10);
+
+    color:
+        var(--danger);
 }
 
-/* Responsivo */
-@media (max-width: 800px) {
-  .resumo-orcamentos {
-    grid-template-columns: 1fr;
-  }
 
-  .cabecalho-orcamentos {
-    align-items: flex-start;
-  }
+/* =========================================
+   NOTEBOOK
+========================================= */
 
-  #tabelaOrcamentos th,
-  #tabelaOrcamentos td {
-    padding: 9px 10px;
-  }
+@media (max-width: 900px) {
+
+    #tabelaOrcamentos th:nth-child(1),
+    #tabelaOrcamentos td:nth-child(1) {
+        width: 18%;
+    }
+
+
+    #tabelaOrcamentos th:nth-child(2),
+    #tabelaOrcamentos td:nth-child(2) {
+        width: 23%;
+    }
+
+
+    #tabelaOrcamentos th:nth-child(3),
+    #tabelaOrcamentos td:nth-child(3) {
+        width: 14%;
+    }
+
+
+    #tabelaOrcamentos th:nth-child(4),
+    #tabelaOrcamentos td:nth-child(4) {
+        width: 18%;
+    }
+
+
+    #tabelaOrcamentos th:nth-child(5),
+    #tabelaOrcamentos td:nth-child(5) {
+        width: 27%;
+    }
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 700px) {
+
+    .resumo-orcamentos {
+
+        grid-template-columns:
+            repeat(3, minmax(150px, 1fr));
+
+        overflow-x:
+            auto;
+    }
+
+
+    #tabelaOrcamentos {
+
+        min-width:
+            700px;
+
+        table-layout:
+            auto;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 520px) {
+
+    body {
+
+        padding:
+            8px !important;
+    }
+
+
+    .cabecalho-orcamentos {
+
+        align-items:
+            flex-start;
+    }
+
+
+    .resumo-orcamentos {
+
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .acoes {
+
+        flex-wrap:
+            nowrap;
+    }
+
 }
