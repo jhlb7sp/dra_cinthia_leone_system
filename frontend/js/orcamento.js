@@ -1065,7 +1065,7 @@ async function abrirModalObservacao(
 
     const item =
         procedimentos[
-            index
+        index
         ];
 
 
@@ -1379,7 +1379,7 @@ function salvarObservacaoProcedimento() {
 
     const item =
         procedimentos[
-            indiceObservacao
+        indiceObservacao
         ];
 
 
@@ -1613,7 +1613,7 @@ function usarValorFamilia() {
 
         const item =
             procedimentos[
-                index
+            index
             ];
 
 
@@ -1712,7 +1712,7 @@ function manterValorAbaixoFamilia() {
 
         const item =
             procedimentos[
-                index
+            index
             ];
 
 
@@ -1802,14 +1802,22 @@ function gerarPdfOrcamento({
         45;
 
 
-    doc.addImage(
-        logoBase642,
-        'PNG',
-        30,
-        90,
-        150,
-        150
-    );
+    const imgProps =
+        doc.getImageProperties(
+            logoBase64
+        );
+
+
+    const larguraLogo =
+        140;
+
+
+    const alturaLogo =
+        (
+            imgProps.height *
+            larguraLogo
+        ) /
+        imgProps.width;
 
 
     doc.addImage(
@@ -1817,10 +1825,9 @@ function gerarPdfOrcamento({
         'PNG',
         30,
         10,
-        150,
-        23
+        larguraLogo,
+        alturaLogo
     );
-
 
     doc.setFontSize(
         12
