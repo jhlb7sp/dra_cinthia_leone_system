@@ -52,9 +52,41 @@ document.getElementById('consultar').addEventListener('click', async () => {
             <td>${cpfFormatado}</td>
             <td>${dataFormatada}</td>
             <td>
-                <button class="btn-acoes" onclick="paciente('${cpfLimpo}')">Ver</button>
+                <div class="acoes-paciente">
+                    <button
+                        type="button"
+                        class="btn-acoes btn-ver-paciente"
+                    >Ver</button>
+
+                    <button
+                        type="button"
+                        class="btn-acoes btn-excluir-paciente"
+                        title="Excluir paciente"
+                        aria-label="Excluir paciente"
+                    >X</button>
+                </div>
             </td>
             <td>${paciente.status || 'Ativo'}</td>`;
+
+            linha
+                .querySelector('.btn-ver-paciente')
+                .addEventListener('click', () => {
+                    abrirPaciente(cpfLimpo);
+                });
+
+            const botaoExcluir = linha.querySelector(
+                '.btn-excluir-paciente'
+            );
+
+            botaoExcluir.addEventListener('click', () => {
+                excluirPaciente(
+                    paciente._id,
+                    nomeFormatado,
+                    linha,
+                    botaoExcluir
+                );
+            });
+
             tabela.appendChild(linha);
         });
         document.getElementById('quantidadeResultados').textContent = `Total de registros encontrados: ${pacientes.length}`;
@@ -77,6 +109,60 @@ document.getElementById('limpar').addEventListener('click', () => {
     document.getElementById('quantidadeResultados').textContent = '';
 });
 
-function paciente(cpf) {
-  window.location.href = `paciente.html?cpf=${cpf}`;
+function abrirPaciente(cpf) {
+    window.location.href = `paciente.html?cpf=${cpf}`;
+}
+
+async function excluirPaciente(id, nome, linha, botao) {
+    const confirmou = confirm(
+        `Deseja realmente excluir o paciente "${nome}"?\n\n` +
+        'Esta ação não poderá ser desfeita.'
+    );
+
+    if (!confirmou) return;
+
+    botao.disabled = true;
+
+    try {
+        const resposta = await fetch(
+            `/api/pacientes/${encodeURIComponent(id)}`,
+            {
+                method: 'DELETE'
+            }
+        );
+
+        const resultado = await resposta.json();
+
+        if (!resposta.ok || !resultado.sucesso) {
+            throw new Error(
+                resultado.mensagem ||
+                'Não foi possível excluir o paciente.'
+            );
+        }
+
+        linha.remove();
+
+        const tabela = document.getElementById('tabelaPacientes');
+        const quantidade = tabela.querySelectorAll('tr').length;
+
+        document.getElementById('quantidadeResultados').textContent =
+            `Total de registros encontrados: ${quantidade}`;
+
+        if (quantidade === 0) {
+            tabela.innerHTML =
+                '<tr><td colspan="5">Nenhum paciente encontrado.</td></tr>';
+        }
+
+        alert('Paciente excluído com sucesso.');
+
+    } catch (erro) {
+        console.error('Erro ao excluir paciente:', erro);
+
+        botao.disabled = false;
+
+        alert(
+            erro.message ||
+            'Erro ao excluir paciente.'
+        );
+    }
 }

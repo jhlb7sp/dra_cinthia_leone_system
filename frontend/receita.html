@@ -67,12 +67,11 @@
             <div class="tipo-receita">
 
                 <label class="titulo-tipo">
-                    Tipo de receituário
+                    Tipo de receituário (automático)
                 </label>
 
 
                 <div class="opcoes-receita">
-
 
                     <label class="opcao-tipo">
 
@@ -81,25 +80,41 @@
                             name="tipoReceita"
                             value="simples"
                             checked
+                            disabled
                         >
 
                         <span>
-                            Receita Simples
+                            Simples — 1 via
                         </span>
 
                     </label>
-
 
                     <label class="opcao-tipo">
 
                         <input
                             type="radio"
                             name="tipoReceita"
-                            value="controlada"
+                            value="antimicrobiano"
+                            disabled
                         >
 
                         <span>
-                            Receita Controlada
+                            Antimicrobiano — 2 vias
+                        </span>
+
+                    </label>
+
+                    <label class="opcao-tipo">
+
+                        <input
+                            type="radio"
+                            name="tipoReceita"
+                            value="controle_especial"
+                            disabled
+                        >
+
+                        <span>
+                            Controle Especial — 2 vias
                         </span>
 
                     </label>
@@ -434,22 +449,6 @@
                     Gerar Receita PDF
                 </button>
 
-
-            </div>
-
-
-            <!-- =========================================
-                 AVISO CONTROLADA
-            ========================================== -->
-
-            <div
-                id="avisoControlada"
-                class="aviso-controlada"
-                hidden
-            >
-
-                Receita controlada será gerada em
-                <strong>2 vias</strong>.
 
             </div>
 

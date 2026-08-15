@@ -1,6 +1,6 @@
 // ==========================================
 // RECEITUÁRIO
-// SIMPLES / CONTROLADA
+// SIMPLES / ANTIMICROBIANO / CONTROLE ESPECIAL
 // ==========================================
 
 console.log(
@@ -48,8 +48,23 @@ const cpfObrigatorio =
     document.getElementById('cpfObrigatorio');
 
 
-const avisoControlada =
-    document.getElementById('avisoControlada');
+const listaMedicamentosDiv =
+    document.getElementById('listaMedicamentos');
+
+
+let medicamentoSelecionado =
+    null;
+
+
+let receitasSeparadas =
+    false;
+
+
+const CATEGORIAS_RECEITA = {
+    SIMPLES: 'simples',
+    ANTIMICROBIANO: 'antimicrobiano',
+    CONTROLE_ESPECIAL: 'controle_especial'
+};
 
 
 // ==========================================
@@ -74,6 +89,209 @@ function obterTipoReceita() {
 }
 
 
+function normalizarCategoriaReceita(
+    categoria
+) {
+
+    const valor =
+        String(
+            categoria ||
+            ''
+        )
+            .normalize('NFD')
+            .replace(
+                /[\u0300-\u036f]/g,
+                ''
+            )
+            .toLowerCase()
+            .trim()
+            .replace(
+                /[\s-]+/g,
+                '_'
+            );
+
+
+    const categorias = {
+        simples: CATEGORIAS_RECEITA.SIMPLES,
+        receita_simples: CATEGORIAS_RECEITA.SIMPLES,
+        antimicrobiano: CATEGORIAS_RECEITA.ANTIMICROBIANO,
+        antibiotico: CATEGORIAS_RECEITA.ANTIMICROBIANO,
+        controle_especial: CATEGORIAS_RECEITA.CONTROLE_ESPECIAL,
+        controlada: CATEGORIAS_RECEITA.CONTROLE_ESPECIAL,
+        receita_controlada: CATEGORIAS_RECEITA.CONTROLE_ESPECIAL
+    };
+
+
+    return (
+        categorias[valor] ||
+        CATEGORIAS_RECEITA.SIMPLES
+    );
+}
+
+
+function obterCategoriaMedicamento(
+    medicamento
+) {
+
+    if (
+        !medicamento ||
+        typeof medicamento === 'string'
+    ) {
+
+        return CATEGORIAS_RECEITA.SIMPLES;
+    }
+
+
+    return normalizarCategoriaReceita(
+        medicamento.categoria ||
+        medicamento.tipoReceita
+    );
+}
+
+
+function planejarReceitas(
+    medicamentosReceita
+) {
+
+    const meds =
+        Array.isArray(
+            medicamentosReceita
+        )
+            ? medicamentosReceita
+            : [];
+
+
+    const possuiAntimicrobiano =
+        meds.some(
+            medicamento =>
+                obterCategoriaMedicamento(
+                    medicamento
+                ) ===
+                CATEGORIAS_RECEITA.ANTIMICROBIANO
+        );
+
+
+    const possuiControleEspecial =
+        meds.some(
+            medicamento =>
+                obterCategoriaMedicamento(
+                    medicamento
+                ) ===
+                CATEGORIAS_RECEITA.CONTROLE_ESPECIAL
+        );
+
+
+    if (
+        possuiAntimicrobiano &&
+        possuiControleEspecial
+    ) {
+
+        return [
+            {
+                tipo: CATEGORIAS_RECEITA.ANTIMICROBIANO,
+                medicamentos: meds.filter(
+                    medicamento =>
+                        obterCategoriaMedicamento(
+                            medicamento
+                        ) !==
+                        CATEGORIAS_RECEITA.CONTROLE_ESPECIAL
+                )
+            },
+            {
+                tipo: CATEGORIAS_RECEITA.CONTROLE_ESPECIAL,
+                medicamentos: meds.filter(
+                    medicamento =>
+                        obterCategoriaMedicamento(
+                            medicamento
+                        ) ===
+                        CATEGORIAS_RECEITA.CONTROLE_ESPECIAL
+                )
+            }
+        ];
+    }
+
+
+    if (
+        possuiControleEspecial
+    ) {
+
+        return [
+            {
+                tipo: CATEGORIAS_RECEITA.CONTROLE_ESPECIAL,
+                medicamentos: meds
+            }
+        ];
+    }
+
+
+    if (
+        possuiAntimicrobiano
+    ) {
+
+        return [
+            {
+                tipo: CATEGORIAS_RECEITA.ANTIMICROBIANO,
+                medicamentos: meds
+            }
+        ];
+    }
+
+
+    return [
+        {
+            tipo: CATEGORIAS_RECEITA.SIMPLES,
+            medicamentos: meds
+        }
+    ];
+}
+
+
+function selecionarTipoReceita(
+    tipo
+) {
+
+    const radio =
+        document.querySelector(
+            `input[name="tipoReceita"][value="${tipo}"]`
+        );
+
+
+    if (radio) {
+
+        radio.checked =
+            true;
+    }
+}
+
+
+function atualizarTipoAutomatico() {
+
+    const planos =
+        planejarReceitas(
+            window.medicamentos ||
+            []
+        );
+
+
+    receitasSeparadas =
+        planos.length > 1;
+
+
+    const tipoExibido =
+        receitasSeparadas
+            ? CATEGORIAS_RECEITA.CONTROLE_ESPECIAL
+            : planos[0].tipo;
+
+
+    selecionarTipoReceita(
+        tipoExibido
+    );
+
+
+    atualizarTipoReceita();
+}
+
+
 // ==========================================
 // ATUALIZAR TELA
 // ==========================================
@@ -84,28 +302,32 @@ function atualizarTipoReceita() {
         obterTipoReceita();
 
 
-    const controlada =
-        tipo === 'controlada';
+    const antimicrobiano =
+        tipo ===
+        CATEGORIAS_RECEITA.ANTIMICROBIANO;
+
+
+    const controleEspecial =
+        tipo ===
+        CATEGORIAS_RECEITA.CONTROLE_ESPECIAL;
 
 
     // Título
 
     tituloReceita.textContent =
-        controlada
-            ? 'Receituário - Controlado'
-            : 'Receituário - Simples';
+        receitasSeparadas
+            ? 'Receituários - Separados'
+            : controleEspecial
+                ? 'Receituário - Controle Especial'
+                : antimicrobiano
+                    ? 'Receituário - Antimicrobiano'
+                    : 'Receituário - Simples';
 
 
-    // CPF obrigatório apenas controlada
+    // CPF obrigatório apenas para controle especial
 
     cpfObrigatorio.hidden =
-        !controlada;
-
-
-    // Aviso das duas vias
-
-    avisoControlada.hidden =
-        !controlada;
+        !controleEspecial;
 
 }
 
@@ -121,9 +343,9 @@ document
     .forEach(
         radio => {
 
-            radio.addEventListener(
-                'change',
-                atualizarTipoReceita
+            radio.setAttribute(
+                'aria-readonly',
+                'true'
             );
 
         }
@@ -248,7 +470,48 @@ function validarCpfReceita(cpf) {
         Number(numeros[10])
     );
 }
+// ==========================================
+// MÁSCARA DO CPF NO CAMPO
+// ==========================================
 
+cpfInput?.addEventListener(
+    'input',
+    () => {
+
+        cpfInput.value =
+            formatarCPF(
+                cpfInput.value
+            );
+    }
+);
+
+
+
+
+// ==========================================
+// FORMATAR CPF
+//
+function formatarCPF(valor) {
+
+    const numeros =
+        String(valor || '')
+            .replace(/\D/g, '')
+            .slice(0, 11);
+
+    return numeros
+        .replace(
+            /^(\d{3})(\d)/,
+            '$1.$2'
+        )
+        .replace(
+            /^(\d{3})\.(\d{3})(\d)/,
+            '$1.$2.$3'
+        )
+        .replace(
+            /(\d{3})(\d{1,2})$/,
+            '$1-$2'
+        );
+}
 
 // ==========================================
 // GERAR RECEITA
@@ -256,21 +519,124 @@ function validarCpfReceita(cpf) {
 
 function gerarReceita() {
 
-    const tipo =
-        obterTipoReceita();
+    const meds =
+        window.medicamentos ||
+        [];
+
+
+    const paciente =
+        pacienteInput
+            .value
+            .trim();
 
 
     if (
-        tipo === 'controlada'
+        !paciente ||
+        meds.length === 0
     ) {
 
-        gerarReceitaControlada();
+        alert(
+            'Preencha o nome e adicione pelo menos um medicamento.'
+        );
 
         return;
     }
 
 
-    gerarReceitaSimples();
+    const planos =
+        planejarReceitas(
+            meds
+        );
+
+
+    const possuiControleEspecial =
+        planos.some(
+            plano =>
+                plano.tipo ===
+                CATEGORIAS_RECEITA.CONTROLE_ESPECIAL
+        );
+
+
+    if (
+        possuiControleEspecial
+    ) {
+
+        const cpf =
+            cpfInput
+                .value
+                .trim();
+
+
+        if (!cpf) {
+
+            alert(
+                'Informe o CPF do paciente para a receita de controle especial.'
+            );
+
+            cpfInput.focus();
+
+            return;
+        }
+
+
+        if (
+            !validarCpfReceita(
+                cpf
+            )
+        ) {
+
+            alert(
+                'CPF inválido. Por favor, verifique o número digitado.'
+            );
+
+            cpfInput.focus();
+
+            return;
+        }
+    }
+
+
+    planos.forEach(
+        plano => {
+
+            const gerar =
+                () => {
+
+                    if (
+                        plano.tipo ===
+                        CATEGORIAS_RECEITA.ANTIMICROBIANO
+                    ) {
+
+                        gerarReceitaAntimicrobiana(
+                            plano.medicamentos
+                        );
+
+                        return;
+                    }
+
+
+                    if (
+                        plano.tipo ===
+                        CATEGORIAS_RECEITA.CONTROLE_ESPECIAL
+                    ) {
+
+                        gerarReceitaControlada(
+                            plano.medicamentos
+                        );
+
+                        return;
+                    }
+
+
+                    gerarReceitaSimples(
+                        plano.medicamentos
+                    );
+                };
+
+
+            gerar();
+        }
+    );
 
 }
 
@@ -479,7 +845,7 @@ function adicionarPaciente(
 
 
         doc.text(
-            cpf,
+            formatarCPF(cpf),
             143,
             pacienteY
         );
@@ -765,7 +1131,9 @@ function adicionarMedicamentosPDF(
 // RECEITA SIMPLES
 // ==========================================
 
-function gerarReceitaSimples() {
+function gerarReceitaSimples(
+    medicamentosReceita
+) {
 
     const { jsPDF } =
         window.jspdf;
@@ -791,8 +1159,12 @@ function gerarReceitaSimples() {
 
 
     const meds =
-        window.medicamentos ||
-        [];
+        Array.isArray(
+            medicamentosReceita
+        )
+            ? medicamentosReceita
+            : window.medicamentos ||
+            [];
 
 
     if (
@@ -833,17 +1205,17 @@ function gerarReceitaSimples() {
     const prescricaoY =
         enderecoPaciente
             ? dados.pacienteY +
-              21 +
-              Math.max(
-                  0,
-                  (
-                      dados.enderecoLinhas -
-                      1
-                  ) *
-                  4
-              )
+            21 +
+            Math.max(
+                0,
+                (
+                    dados.enderecoLinhas -
+                    1
+                ) *
+                4
+            )
             : dados.pacienteY +
-              17;
+            17;
 
 
     doc.setFontSize(
@@ -975,16 +1347,18 @@ function gerarReceitaSimples() {
 
 
     doc.save(
-        `Receita_${paciente}.pdf`
+        `Receita_Simples_${paciente}.pdf`
     );
 }
 
 
 // ==========================================
-// RECEITA CONTROLADA
+// RECEITA ANTIMICROBIANA
 // ==========================================
 
-function gerarReceitaControlada() {
+function gerarReceitaAntimicrobiana(
+    medicamentosReceita
+) {
 
     const { jsPDF } =
         window.jspdf;
@@ -1010,8 +1384,250 @@ function gerarReceitaControlada() {
 
 
     const meds =
-        window.medicamentos ||
-        [];
+        Array.isArray(
+            medicamentosReceita
+        )
+            ? medicamentosReceita
+            : window.medicamentos ||
+            [];
+
+
+    if (
+        !paciente ||
+        meds.length === 0
+    ) {
+
+        alert(
+            'Preencha o nome e adicione pelo menos um medicamento.'
+        );
+
+        return;
+    }
+
+
+    const doc =
+        new jsPDF();
+
+
+    const dataFormatada =
+        obterDataAtualExtenso();
+
+
+    for (
+        let via = 1;
+        via <= 2;
+        via++
+    ) {
+
+        if (
+            via > 1
+        ) {
+
+            doc.addPage();
+        }
+
+
+        adicionarLogo(
+            doc
+        );
+
+
+        doc.setFontSize(
+            10
+        );
+
+
+        doc.setFont(
+            undefined,
+            'bold'
+        );
+
+
+        doc.text(
+            `${via}ª VIA`,
+            180,
+            20
+        );
+
+
+        const dados =
+            adicionarPaciente(
+                doc,
+                paciente,
+                cpf,
+                enderecoPaciente
+            );
+
+
+        const prescricaoY =
+            enderecoPaciente
+                ? dados.pacienteY +
+                21 +
+                Math.max(
+                    0,
+                    (
+                        dados.enderecoLinhas -
+                        1
+                    ) *
+                    4
+                )
+                : dados.pacienteY +
+                17;
+
+
+        doc.setFontSize(
+            14
+        );
+
+
+        doc.setFont(
+            undefined,
+            'bold'
+        );
+
+
+        doc.text(
+            'Prescrição',
+            105,
+            prescricaoY,
+            {
+                align: 'center'
+            }
+        );
+
+
+        adicionarMedicamentosPDF(
+            doc,
+            meds,
+            prescricaoY + 10,
+            215
+        );
+
+
+        doc.setFontSize(
+            10
+        );
+
+
+        doc.setFont(
+            undefined,
+            'normal'
+        );
+
+
+        doc.text(
+            `São Paulo, ${dataFormatada}`,
+            20,
+            245
+        );
+
+
+        doc.setFontSize(
+            9
+        );
+
+
+        doc.text(
+            ass1,
+            120,
+            240
+        );
+
+
+        doc.text(
+            ass2,
+            120,
+            245
+        );
+
+
+        doc.text(
+            cnpj,
+            120,
+            250
+        );
+
+
+        if (
+            assinaturaInput &&
+            assinaturaInput.checked
+        ) {
+
+            doc.addImage(
+                carimbo,
+                'PNG',
+                135,
+                205,
+                38,
+                38
+            );
+        }
+
+
+        doc.setFontSize(
+            9
+        );
+
+
+        doc.text(
+            endereco,
+            50,
+            275
+        );
+
+
+        doc.text(
+            telefone,
+            80,
+            280
+        );
+    }
+
+
+    doc.save(
+        `Receita_Antimicrobiano_${paciente}.pdf`
+    );
+}
+
+
+// ==========================================
+// RECEITA DE CONTROLE ESPECIAL
+// ==========================================
+
+function gerarReceitaControlada(
+    medicamentosReceita
+) {
+
+    const { jsPDF } =
+        window.jspdf;
+
+
+    const paciente =
+        pacienteInput
+            .value
+            .trim();
+
+
+    const cpf =
+        cpfInput
+            .value
+            .trim();
+
+
+    const enderecoPaciente =
+        enderecoInput
+            ?.value
+            .trim() ||
+        '';
+
+
+    const meds =
+        Array.isArray(
+            medicamentosReceita
+        )
+            ? medicamentosReceita
+            : window.medicamentos ||
+            [];
 
 
     // CPF obrigatório
@@ -1021,7 +1637,7 @@ function gerarReceitaControlada() {
     ) {
 
         alert(
-            'Informe o CPF do paciente para a receita controlada.'
+            'Informe o CPF do paciente para a receita de controle especial.'
         );
 
         cpfInput.focus();
@@ -1360,7 +1976,7 @@ function gerarReceitaControlada() {
 
 
     doc.save(
-        `Receita_${paciente}.pdf`
+        `Receita_Controle_Especial_${paciente}.pdf`
     );
 }
 
@@ -1432,8 +2048,10 @@ pacienteInput?.addEventListener(
 
 
                             cpfInput.value =
-                                p.cpf ||
-                                '';
+                                formatarCPF(
+                                    p.cpf ||
+                                    ''
+                                );
 
 
                             enderecoInput.value =
@@ -1455,15 +2073,13 @@ pacienteInput?.addEventListener(
                                     `${e.numero || ''} - ` +
                                     `${e.bairro || ''} - ` +
                                     `${e.cep || ''}` +
-                                    `${
-                                        e.cidade
-                                            ? `, ${e.cidade}`
-                                            : ''
+                                    `${e.cidade
+                                        ? `, ${e.cidade}`
+                                        : ''
                                     }` +
-                                    `${
-                                        e.estado
-                                            ? ` - ${e.estado}`
-                                            : ''
+                                    `${e.estado
+                                        ? ` - ${e.estado}`
+                                        : ''
                                     }`;
 
 
@@ -1489,7 +2105,7 @@ pacienteInput?.addEventListener(
 
 
         } catch (
-            error
+        error
         ) {
 
 
@@ -1520,6 +2136,17 @@ medicamentoInput?.addEventListener(
 
 
         if (
+            !medicamentoSelecionado ||
+            medicamentoSelecionado.descricao !==
+            termo
+        ) {
+
+            medicamentoSelecionado =
+                null;
+        }
+
+
+        if (
             termo.length < 2
         ) {
 
@@ -1541,6 +2168,20 @@ medicamentoInput?.addEventListener(
 
             const medsAPI =
                 await response.json();
+
+
+            if (
+                !response.ok ||
+                !Array.isArray(
+                    medsAPI
+                )
+            ) {
+
+                throw new Error(
+                    medsAPI?.error ||
+                    'Não foi possível carregar os medicamentos.'
+                );
+            }
 
 
             sugestoesMedDiv.innerHTML =
@@ -1576,6 +2217,23 @@ medicamentoInput?.addEventListener(
                                 descricao;
 
 
+                            medicamentoSelecionado =
+                            {
+                                id: med._id ||
+                                    med.id ||
+                                    '',
+                                nome: med.nome ||
+                                    '',
+                                mg: med.mg ||
+                                    '',
+                                categoria:
+                                    normalizarCategoriaReceita(
+                                        med.categoria
+                                    ),
+                                descricao
+                            };
+
+
                             sugestoesMedDiv.innerHTML =
                                 '';
 
@@ -1592,7 +2250,7 @@ medicamentoInput?.addEventListener(
 
 
         } catch (
-            error
+        error
         ) {
 
 
@@ -1751,6 +2409,211 @@ document
 
 
 // ==========================================
+// INTEGRAÇÃO COM A LISTA DE MEDICAMENTOS
+// ==========================================
+
+function integrarCategoriasAoAdicionar() {
+
+    const adicionarOriginal =
+        window.addMedicamento;
+
+
+    if (
+        typeof adicionarOriginal !==
+        'function'
+    ) {
+
+        console.error(
+            'A função addMedicamento não foi encontrada.'
+        );
+
+        return;
+    }
+
+
+    if (
+        adicionarOriginal
+            .__categoriaAutomatica
+    ) {
+
+        return;
+    }
+
+
+    const adicionarComCategoria =
+        function (
+            ...args
+        ) {
+
+            const descricaoAtual =
+                medicamentoInput
+                    ?.value
+                    .trim() ||
+                '';
+
+
+            if (
+                !medicamentoSelecionado ||
+                medicamentoSelecionado.descricao !==
+                descricaoAtual
+            ) {
+
+                alert(
+                    'Selecione o medicamento na lista de sugestões para que o tipo de receituário seja identificado.'
+                );
+
+                medicamentoInput?.focus();
+
+                return;
+            }
+
+
+            const medicamentoAtual =
+            {
+                ...medicamentoSelecionado
+            };
+
+
+            const medicamentosAntes =
+                Array.isArray(
+                    window.medicamentos
+                )
+                    ? window.medicamentos.length
+                    : 0;
+
+
+            const resultado =
+                adicionarOriginal.apply(
+                    this,
+                    args
+                );
+
+
+            const registrarCategoria =
+                () => {
+
+                    const lista =
+                        window.medicamentos;
+
+
+                    if (
+                        !Array.isArray(
+                            lista
+                        ) ||
+                        lista.length <=
+                        medicamentosAntes
+                    ) {
+
+                        return;
+                    }
+
+
+                    for (
+                        let indice =
+                            medicamentosAntes;
+                        indice <
+                        lista.length;
+                        indice++
+                    ) {
+
+                        const item =
+                            lista[indice];
+
+
+                        if (
+                            typeof item ===
+                            'string'
+                        ) {
+
+                            lista[indice] =
+                            {
+                                texto: item,
+                                obs: '',
+                                ...medicamentoAtual
+                            };
+
+                            continue;
+                        }
+
+
+                        Object.assign(
+                            item,
+                            medicamentoAtual
+                        );
+                    }
+
+
+                    medicamentoSelecionado =
+                        null;
+
+
+                    atualizarTipoAutomatico();
+                };
+
+
+            if (
+                resultado &&
+                typeof resultado.then ===
+                'function'
+            ) {
+
+                resultado.then(
+                    registrarCategoria
+                );
+
+                return resultado;
+            }
+
+
+            registrarCategoria();
+
+
+            return resultado;
+        };
+
+
+    adicionarComCategoria
+        .__categoriaAutomatica =
+        true;
+
+
+    window.addMedicamento =
+        adicionarComCategoria;
+}
+
+
+function observarRemocaoMedicamentos() {
+
+    if (
+        !listaMedicamentosDiv ||
+        typeof MutationObserver ===
+        'undefined'
+    ) {
+
+        return;
+    }
+
+
+    const observador =
+        new MutationObserver(
+            () => {
+
+                atualizarTipoAutomatico();
+            }
+        );
+
+
+    observador.observe(
+        listaMedicamentosDiv,
+        {
+            childList: true,
+            subtree: true
+        }
+    );
+}
+
+
+// ==========================================
 // INICIALIZAÇÃO
 // ==========================================
 
@@ -1762,7 +2625,16 @@ document.addEventListener(
         preencherHoras();
 
 
-        atualizarTipoReceita();
+        atualizarTipoAutomatico();
+
+
+        observarRemocaoMedicamentos();
+
+
+        window.setTimeout(
+            integrarCategoriasAoAdicionar,
+            0
+        );
 
     }
 );

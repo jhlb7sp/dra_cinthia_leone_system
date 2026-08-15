@@ -201,6 +201,11 @@ function tratarMudancaTabela(event) {
 
   if (novaSituacao === manutencao.situacao) return;
 
+  if (novaSituacao === 'excluido') {
+    excluirManutencao(manutencao, selectSituacao);
+    return;
+  }
+
   if (novaSituacao === 'concluido') {
     selectSituacao.value = manutencao.situacao;
     concluirManutencao(manutencao);
@@ -472,6 +477,39 @@ async function alterarSituacao(manutencao, situacao, controle = null) {
   }
 }
 
+async function excluirManutencao(manutencao, controle = null) {
+  const confirmou = confirm(
+    `Excluir definitivamente a manutenção de ${manutencao.pacienteNome} (${manutencao.tipoManutencao})?\n\n` +
+    'Esta ação não poderá ser desfeita. O cadastro do paciente não será excluído.'
+  );
+
+  if (!confirmou) {
+    if (controle) controle.value = manutencao.situacao;
+    return;
+  }
+
+  try {
+    if (controle) controle.disabled = true;
+
+    await chamarEndpointAcao(
+      `${API_MANUTENCOES}/${manutencao._id}`,
+      'DELETE'
+    );
+
+    await carregarManutencoes();
+    alert('Manutenção excluída com sucesso.');
+  } catch (error) {
+    console.error(error);
+
+    if (controle) {
+      controle.disabled = false;
+      controle.value = manutencao.situacao;
+    }
+
+    alert(error.message || 'Erro ao excluir manutenção.');
+  }
+}
+
 function abrirAgendaParaManutencao(manutencao) {
   sessionStorage.setItem('rascunhoAgendamentoManutencao', JSON.stringify({
     manutencaoId: manutencao._id,
@@ -612,7 +650,8 @@ function montarSelectSituacao(manutencao) {
     ['agendado', 'Agendado'],
     ['concluido', 'Concluído'],
     ['cancelado', 'Cancelado'],
-    ['arquivado', 'Arquivar']
+    ['arquivado', 'Arquivar'],
+    ['excluido', 'Excluir']
   ];
 
   return `
@@ -630,7 +669,8 @@ function formatarSituacao(situacao) {
     agendado: 'Agendado',
     concluido: 'Concluído',
     cancelado: 'Cancelado',
-    arquivado: 'Arquivado'
+    arquivado: 'Arquivado',
+    excluido: 'Excluído'
   };
 
   return mapa[situacao] || 'Pendente';
@@ -695,4 +735,4 @@ function escapeHtml(valor) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
-}
+} 

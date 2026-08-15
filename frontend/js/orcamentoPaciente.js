@@ -15,6 +15,8 @@ const ultimoOrcamentoEl =
 const valorTotalOrcamentosEl =
   document.getElementById('valorTotalOrcamentos');
 
+let orcamentoModalAtual = null;
+
 
 cpfPacienteEl.textContent =
   `CPF: ${cpf || 'não informado'}`;
@@ -354,6 +356,8 @@ async function verOrcamento(id) {
 function abrirModalOrcamento(orcamento) {
 
   fecharModalOrcamento();
+
+  orcamentoModalAtual = orcamento;
 
 
   const status =
@@ -809,6 +813,21 @@ function abrirModalOrcamento(orcamento) {
       ">
 
         <button
+          onclick="gerarPdfOrcamentoSalvo(this)"
+          style="
+            border: 1px solid #9A6B3F;
+            background: #9A6B3F;
+            color: #FFFFFF;
+            border-radius: 8px;
+            padding: 9px 16px;
+            font-weight: 700;
+            cursor: pointer;
+          "
+        >
+          Gerar PDF
+        </button>
+
+        <button
           onclick="fecharModalOrcamento()"
           style="
             border: 1px solid #d8dce5;
@@ -850,6 +869,239 @@ function abrirModalOrcamento(orcamento) {
 
 
 // ======================================================
+// GERAR PDF DO ORÇAMENTO SALVO
+// ======================================================
+
+function gerarPdfOrcamentoSalvo(botao = null) {
+
+  const orcamento = orcamentoModalAtual;
+
+  if (!orcamento) {
+    alert('Não foi possível identificar o orçamento selecionado.');
+    return;
+  }
+
+  if (!window.jspdf || !window.jspdf.jsPDF) {
+    alert('Não foi possível carregar o gerador de PDF.');
+    return;
+  }
+
+  if (typeof logoBase64 === 'undefined' || !logoBase64) {
+    alert('Não foi possível carregar o logo do documento.');
+    return;
+  }
+
+  const textoOriginal = botao ? botao.textContent : '';
+
+  if (botao) {
+    botao.disabled = true;
+    botao.textContent = 'Gerando...';
+  }
+
+  try {
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+    const inicioY = 45;
+
+    const croDocumento =
+      typeof cro !== 'undefined'
+        ? String(cro)
+        : '126.543';
+
+    const enderecoDocumento =
+      typeof endereco !== 'undefined'
+        ? String(endereco)
+        : 'Praça Barão de Macaúbas, 31 - Vila Formosa - CEP: 03357-040';
+
+    const telefoneDocumento =
+      typeof telefone !== 'undefined'
+        ? String(telefone)
+        : 'Telefone: (11) 96801-3319';
+
+    const paciente =
+      String(orcamento.pacienteNome || 'Paciente').trim();
+
+    const cpfLimpo =
+      String(orcamento.cpf || '').replace(/\D/g, '');
+
+    const cpfDocumento =
+      cpfLimpo.length === 11
+        ? cpfLimpo.replace(
+            /(\d{3})(\d{3})(\d{3})(\d{2})/,
+            '$1.$2.$3-$4'
+          )
+        : cpfLimpo;
+
+    const desconto = Number(orcamento.desconto || 0);
+    const parcelas = Math.max(
+      1,
+      parseInt(orcamento.parcelas, 10) || 1
+    );
+    const total = Number(orcamento.total || 0);
+    const totalComDesconto =
+      total - (total * (desconto / 100));
+    const valorParcela = total / parcelas;
+    const itens = Array.isArray(orcamento.itens)
+      ? orcamento.itens
+      : [];
+
+    const dataDocumento =
+      formatarData(orcamento.data) !== '-'
+        ? formatarData(orcamento.data)
+        : new Date().toLocaleDateString('pt-BR');
+
+    const imgProps = doc.getImageProperties(logoBase64);
+    const larguraLogo = 140;
+    const alturaLogo =
+      (imgProps.height * larguraLogo) / imgProps.width;
+
+    doc.addImage(
+      logoBase64,
+      'PNG',
+      30,
+      10,
+      larguraLogo,
+      alturaLogo
+    );
+
+    doc.setFontSize(12);
+    doc.setFont(undefined, 'normal');
+    doc.text('Dra. Cinthia Leone da Cunha', 15, inicioY + 9);
+    doc.line(15, inicioY + 12, 195, inicioY + 12);
+
+    doc.setFont(undefined, 'bold');
+    doc.text('CRO:', 75, inicioY + 9);
+    doc.setFont(undefined, 'normal');
+    doc.text(croDocumento, 90, inicioY + 9);
+
+    doc.setFont(undefined, 'bold');
+    doc.text('Data:', 115, inicioY + 9);
+    doc.setFont(undefined, 'normal');
+    doc.text(dataDocumento, 130, inicioY + 9);
+
+    doc.setFont(undefined, 'bold');
+    doc.text('-    São Paulo - SP', 155, inicioY + 9);
+
+    doc.setFontSize(16);
+    doc.text('Orçamento Odontológico', 70, inicioY + 25);
+
+    doc.setFontSize(14);
+    doc.setFont(undefined, 'bold');
+    doc.text('Paciente:', 20, inicioY + 37);
+    doc.setFont(undefined, 'normal');
+    doc.text(paciente, 45, inicioY + 37);
+
+    if (cpfDocumento) {
+      doc.setFont(undefined, 'bold');
+      doc.text('CPF:', 130, inicioY + 37);
+      doc.setFont(undefined, 'normal');
+      doc.text(cpfDocumento, 142, inicioY + 37);
+    }
+
+    let y = 95;
+
+    doc.setFontSize(12);
+    doc.setFont(undefined, 'bold');
+    doc.text('Procedimentos:', 20, y);
+    y += 10;
+    doc.setFont(undefined, 'normal');
+
+    itens.forEach(item => {
+
+      const texto =
+        `${item.nomeProcedimento || item.nome || 'Procedimento'}` +
+        `${item.tipo ? ' (' + item.tipo + ')' : ''}` +
+        `${item.dente ? ' - Dente: ' + item.dente : ''}` +
+        `  ${formatarMoeda(item.valorCobrado)}`;
+
+      doc.text(texto, 20, y);
+      y += 7;
+
+      if (
+        item.manutencao &&
+        item.manutencao.nomeProcedimento
+      ) {
+        doc.setFontSize(10);
+        doc.setFont(undefined, 'normal');
+        doc.text(
+          `Manutenção: ${item.manutencao.nomeProcedimento} - ${formatarMoeda(item.manutencao.valorCobrado)}`,
+          25,
+          y
+        );
+        y += 6;
+        doc.setFontSize(12);
+      }
+
+      if (item.observacao) {
+        doc.setFontSize(9);
+        doc.setTextColor(90, 90, 90);
+
+        const linhasObservacao = doc.splitTextToSize(
+          `Obs.: ${item.observacao}`,
+          165
+        );
+
+        doc.text(linhasObservacao, 25, y);
+        y += linhasObservacao.length * 5;
+        doc.setTextColor(0, 0, 0);
+        doc.setFontSize(12);
+      }
+
+      y += 2;
+    });
+
+    y += 8;
+
+    doc.setFontSize(16);
+    doc.setFont(undefined, 'bold');
+    doc.text(`Total: ${formatarMoeda(total)}`, 20, y);
+    y += 10;
+
+    doc.setFontSize(12);
+    doc.text(
+      `Em ${parcelas}x de ${formatarMoeda(valorParcela)} sem juros`,
+      20,
+      y
+    );
+
+    if (desconto > 0) {
+      y += 9;
+      doc.setFontSize(11);
+      doc.setFont(undefined, 'normal');
+      doc.text(
+        `Desconto de ${desconto}% no Pix ou dinheiro: ${formatarMoeda(totalComDesconto)}.`,
+        20,
+        y
+      );
+    }
+
+    y += 10;
+    doc.setFontSize(9);
+    doc.text('Orçamento válido por 30 dias.', 20, y);
+    doc.text(enderecoDocumento, 50, 275);
+    doc.text(telefoneDocumento, 80, 280);
+
+    const nomeArquivo =
+      paciente
+        .replace(/[\\/:*?"<>|]/g, '')
+        .trim() || 'paciente';
+
+    doc.save(`orcamento_${nomeArquivo}.pdf`);
+
+  } catch (error) {
+    console.error('Erro ao gerar PDF do orçamento salvo:', error);
+    alert('Não foi possível gerar o PDF deste orçamento.');
+  } finally {
+    if (botao) {
+      botao.disabled = false;
+      botao.textContent = textoOriginal || 'Gerar PDF';
+    }
+  }
+}
+
+
+// ======================================================
 // FECHAR MODAL
 // ======================================================
 
@@ -864,6 +1116,8 @@ function fecharModalOrcamento() {
   if (modal) {
     modal.remove();
   }
+
+  orcamentoModalAtual = null;
 }
 
 

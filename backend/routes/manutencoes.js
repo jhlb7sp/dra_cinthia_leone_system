@@ -193,6 +193,30 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+    if (!validarObjectId(req.params.id)) {
+      return res.status(400).json({ erro: 'Manutenção inválida.' });
+    }
+
+    const manutencaoExcluida = await Manutencao.findByIdAndDelete(
+      req.params.id
+    );
+
+    if (!manutencaoExcluida) {
+      return res.status(404).json({ erro: 'Manutenção não encontrada.' });
+    }
+
+    res.json({
+      sucesso: true,
+      mensagem: 'Manutenção excluída com sucesso.'
+    });
+  } catch (error) {
+    console.error('Erro ao excluir manutenção:', error);
+    res.status(500).json({ erro: 'Erro ao excluir manutenção.' });
+  }
+});
+
 router.post('/', async (req, res) => {
   try {
     const {

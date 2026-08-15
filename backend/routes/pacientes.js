@@ -54,6 +54,41 @@ router.get('/pacientes/busca', async (req, res) => {
   }
 });
 
+// Excluir somente o cadastro principal do paciente
+router.delete('/pacientes/:id', async (req, res) => {
+  try {
+    const pacienteExcluido = await Paciente.findByIdAndDelete(
+      req.params.id
+    );
+
+    if (!pacienteExcluido) {
+      return res.status(404).json({
+        sucesso: false,
+        mensagem: 'Paciente não encontrado.'
+      });
+    }
+
+    res.json({
+      sucesso: true,
+      mensagem: 'Paciente excluído com sucesso.'
+    });
+  } catch (error) {
+    console.error('Erro ao excluir paciente:', error);
+
+    if (error.name === 'CastError') {
+      return res.status(400).json({
+        sucesso: false,
+        mensagem: 'Identificação do paciente inválida.'
+      });
+    }
+
+    res.status(500).json({
+      sucesso: false,
+      mensagem: 'Erro ao excluir paciente.'
+    });
+  }
+});
+
 // ✅ Aniversariantes do dia
 router.get('/pacientes/aniversariantes-hoje', async (req, res) => {
   try {

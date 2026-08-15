@@ -464,6 +464,39 @@ button:hover {
 }
 
 
+/* Mantém o botão Cancelar centralizado quando o JS o exibe */
+
+#btnCancelar:not([style*="display:none"]):not([style*="display: none"]) {
+
+    display:
+        inline-flex !important;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    height:
+        32px;
+
+    min-height:
+        32px;
+
+    max-height:
+        32px;
+
+    margin:
+        0;
+
+    line-height:
+        1;
+
+    text-align:
+        center;
+}
+
+
 /* =========================================
    SALVAR
 ========================================= */

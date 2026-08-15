@@ -67,6 +67,37 @@
             </div>
 
 
+            <div class="campo campo-categoria">
+
+                <label for="categoria">
+                    Categoria
+                </label>
+
+                <select id="categoria">
+                    <option
+                        value=""
+                        selected
+                        disabled
+                    >
+                        Selecione...
+                    </option>
+
+                    <option value="simples">
+                        Simples
+                    </option>
+
+                    <option value="antimicrobiano">
+                        Antimicrobiano
+                    </option>
+
+                    <option value="controle_especial">
+                        Controle Especial
+                    </option>
+                </select>
+
+            </div>
+
+
             <div class="campo campo-botao">
 
                 <label>&nbsp;</label>
@@ -76,6 +107,43 @@
                     onclick="adicionarMedicamento()"
                 >
                     Adicionar
+                </button>
+
+            </div>
+
+
+            <div class="campo campo-botao">
+
+                <label>&nbsp;</label>
+
+                <button
+                    class="btn-secundario"
+                    type="button"
+                    onclick="abrirImportacaoMedicamentos()"
+                >
+                    Importar
+                </button>
+
+                <input
+                    type="file"
+                    id="arquivoImportacao"
+                    accept=".xlsx,.xls"
+                    hidden
+                >
+
+            </div>
+
+
+            <div class="campo campo-botao">
+
+                <label>&nbsp;</label>
+
+                <button
+                    class="btn-secundario"
+                    type="button"
+                    onclick="exportarMedicamentos()"
+                >
+                    Exportar
                 </button>
 
             </div>
@@ -122,6 +190,7 @@
                         <tr>
                             <th>Nome</th>
                             <th>MG</th>
+                            <th>Categoria</th>
                             <th>Ação</th>
                         </tr>
 
@@ -139,6 +208,10 @@
 
     </main>
 
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"
+    ></script>
 
     <script src="js/medicamentos.js"></script>
 
